@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
-		AD8F524820F6042300E765B8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* ViewController.m */; };
-		AD8F524B20F6042300E765B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524920F6042300E765B8 /* Main.storyboard */; };
+		AD8F524820F6042300E765B8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* MainViewController.m */; };
 		AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524C20F6042500E765B8 /* Assets.xcassets */; };
 		AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */; };
 		AD8F525320F6042500E765B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F525220F6042500E765B8 /* main.m */; };
@@ -22,9 +21,8 @@
 		AD8F524020F6042300E765B8 /* MyiOSFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyiOSFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8F524320F6042300E765B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD8F524420F6042300E765B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		AD8F524620F6042300E765B8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		AD8F524720F6042300E765B8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		AD8F524A20F6042300E765B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AD8F524620F6042300E765B8 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		AD8F524720F6042300E765B8 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		AD8F524C20F6042500E765B8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AD8F524F20F6042500E765B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD8F525120F6042500E765B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,9 +65,8 @@
 			children = (
 				AD8F524320F6042300E765B8 /* AppDelegate.h */,
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
-				AD8F524620F6042300E765B8 /* ViewController.h */,
-				AD8F524720F6042300E765B8 /* ViewController.m */,
-				AD8F524920F6042300E765B8 /* Main.storyboard */,
+				AD8F524620F6042300E765B8 /* MainViewController.h */,
+				AD8F524720F6042300E765B8 /* MainViewController.m */,
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
 				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
 				AD8F525120F6042500E765B8 /* Info.plist */,
@@ -156,7 +153,6 @@
 			files = (
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
-				AD8F524B20F6042300E765B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +208,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD8F524820F6042300E765B8 /* ViewController.m in Sources */,
+				AD8F524820F6042300E765B8 /* MainViewController.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 			);
@@ -221,14 +217,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AD8F524920F6042300E765B8 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AD8F524A20F6042300E765B8 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
