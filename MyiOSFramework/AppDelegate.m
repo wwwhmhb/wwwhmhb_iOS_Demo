@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import "WWWBaseNavigationController.h"
+#import "MainViewController.h"
+
 @interface AppDelegate ()
 
 @end
@@ -17,6 +20,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    //加载并显示根视图控制器
+    MainViewController *mainViewController = [[MainViewController alloc] init];
+    WWWBaseNavigationController *baseNavigationController = [[WWWBaseNavigationController alloc]initWithRootViewController:mainViewController];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = baseNavigationController;
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -13,6 +13,7 @@
 		AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524C20F6042500E765B8 /* Assets.xcassets */; };
 		AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */; };
 		AD8F525320F6042500E765B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F525220F6042500E765B8 /* main.m */; };
+		AD8F525B20F60E0300E765B8 /* WWWBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		AD8F524F20F6042500E765B8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AD8F525120F6042500E765B8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AD8F525220F6042500E765B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		AD8F525920F60E0300E765B8 /* WWWBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWBaseNavigationController.h; sourceTree = "<group>"; };
+		AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWBaseNavigationController.m; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,6 +68,8 @@
 			children = (
 				AD8F524320F6042300E765B8 /* AppDelegate.h */,
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
+				AD8F525920F60E0300E765B8 /* WWWBaseNavigationController.h */,
+				AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */,
 				AD8F524620F6042300E765B8 /* MainViewController.h */,
 				AD8F524720F6042300E765B8 /* MainViewController.m */,
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
@@ -208,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8F525B20F60E0300E765B8 /* WWWBaseNavigationController.m in Sources */,
 				AD8F524820F6042300E765B8 /* MainViewController.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
@@ -353,7 +359,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.www.MyiOSFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -372,7 +378,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.www.MyiOSFramework;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
