@@ -30,6 +30,7 @@
 		AD8F525220F6042500E765B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		AD8F525920F60E0300E765B8 /* WWWBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWBaseNavigationController.h; sourceTree = "<group>"; };
 		AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWBaseNavigationController.m; sourceTree = "<group>"; };
+		AD8F526020F6F7B800E765B8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,9 +69,9 @@
 			children = (
 				AD8F525D20F6F19700E765B8 /* Common */,
 				AD8F525E20F6F25700E765B8 /* Base */,
+				AD8F525F20F6F6F100E765B8 /* Resource */,
 				AD8F524620F6042300E765B8 /* MainViewController.h */,
 				AD8F524720F6042300E765B8 /* MainViewController.m */,
-				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
 			);
 			path = MyiOSFramework;
 			sourceTree = "<group>";
@@ -79,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				AD8F525220F6042500E765B8 /* main.m */,
+				AD8F526020F6F7B800E765B8 /* PrefixHeader.pch */,
 				AD8F524320F6042300E765B8 /* AppDelegate.h */,
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
 				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
@@ -94,6 +96,14 @@
 				AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		AD8F525F20F6F6F100E765B8 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		E251F7914D307428C78A8FFC /* Pods */ = {
@@ -367,6 +377,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W33P5S72D3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyiOSFramework/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -386,6 +397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W33P5S72D3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/MyiOSFramework/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
