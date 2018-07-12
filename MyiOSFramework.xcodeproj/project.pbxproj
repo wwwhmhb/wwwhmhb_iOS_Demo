@@ -73,7 +73,6 @@
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
 				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
 				AD8F525120F6042500E765B8 /* Info.plist */,
-				AD8F525220F6042500E765B8 /* main.m */,
 			);
 			path = MyiOSFramework;
 			sourceTree = "<group>";
@@ -81,6 +80,7 @@
 		AD8F525D20F6F19700E765B8 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				AD8F525220F6042500E765B8 /* main.m */,
 				AD8F524320F6042300E765B8 /* AppDelegate.h */,
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
 			);
