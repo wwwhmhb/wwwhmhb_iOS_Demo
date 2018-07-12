@@ -71,7 +71,6 @@
 				AD8F524620F6042300E765B8 /* MainViewController.h */,
 				AD8F524720F6042300E765B8 /* MainViewController.m */,
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
-				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
 				AD8F525120F6042500E765B8 /* Info.plist */,
 			);
 			path = MyiOSFramework;
@@ -83,6 +82,7 @@
 				AD8F525220F6042500E765B8 /* main.m */,
 				AD8F524320F6042300E765B8 /* AppDelegate.h */,
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
+				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
 			);
 			path = Common;
 			sourceTree = "<group>";
