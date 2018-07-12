@@ -27,10 +27,10 @@
     
     self.title = @"TestViewController";
     
+    WWWWifiInfoManager *wifiInfoManager = [[WWWWifiInfoManager alloc] init];
+    NSDictionary *dict = [wifiInfoManager getWifiInformation];
     
-    self.clientSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-    
-//    NSLog(@"dict = %@",dict);
+    NSLog(@"dict = %@",dict);
 }
 
 - (void)didReceiveMemoryWarning {

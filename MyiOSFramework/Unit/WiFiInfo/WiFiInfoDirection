@@ -2,3 +2,9 @@
 WiFiInfo文件的主要功能就是获取WiFi的网关信息
 
 引入该功能时，尤其是引入 getgateway.c 文件时需要修改此文件的Type属性为 Objective-C Source，否则会报原生文件的错
+
+WiFiInfo文件的使用步骤:
+1,初始化对象
+WWWWifiInfoManager *wifiInfoManager = [[WWWWifiInfoManager alloc] init];
+2,获取WiFi信息
+NSDictionary *dict = [wifiInfoManager getWifiInformation];

@@ -6,7 +6,7 @@ TCPSocket文件的主要功能：通过TCP进行Socket连接，实现WiFi的点�
 另外，在引入GCDAsyncSocket文件时，可能会报很多错误，比如 Too many arguments provided to function-like macro invocation 错误，其解决方法是将Build Setting下的Apple LLVM 9.0选择成GUN99；如果还有错误可能就是没有添加依赖库 CFNetwork.framework、Security.framework...
 
 
-GCDAsyncSocket文件的步骤:
+GCDAsyncSocket文件的使用步骤:（参考地址：http://www.cocoachina.com/ios/20170614/19529.html）
 1.继承GCDAsyncSocketDelegate协议.
 
 
