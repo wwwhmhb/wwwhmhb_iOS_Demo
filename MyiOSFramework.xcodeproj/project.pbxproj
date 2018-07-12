@@ -66,10 +66,8 @@
 		AD8F524220F6042300E765B8 /* MyiOSFramework */ = {
 			isa = PBXGroup;
 			children = (
-				AD8F524320F6042300E765B8 /* AppDelegate.h */,
-				AD8F524420F6042300E765B8 /* AppDelegate.m */,
-				AD8F525920F60E0300E765B8 /* WWWBaseNavigationController.h */,
-				AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */,
+				AD8F525D20F6F19700E765B8 /* Common */,
+				AD8F525E20F6F25700E765B8 /* Base */,
 				AD8F524620F6042300E765B8 /* MainViewController.h */,
 				AD8F524720F6042300E765B8 /* MainViewController.m */,
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
@@ -78,6 +76,24 @@
 				AD8F525220F6042500E765B8 /* main.m */,
 			);
 			path = MyiOSFramework;
+			sourceTree = "<group>";
+		};
+		AD8F525D20F6F19700E765B8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F524320F6042300E765B8 /* AppDelegate.h */,
+				AD8F524420F6042300E765B8 /* AppDelegate.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AD8F525E20F6F25700E765B8 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F525920F60E0300E765B8 /* WWWBaseNavigationController.h */,
+				AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		E251F7914D307428C78A8FFC /* Pods */ = {

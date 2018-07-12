@@ -28,6 +28,7 @@
     //加载并显示根视图控制器
     MainViewController *mainViewController = [[MainViewController alloc] init];
     WWWBaseNavigationController *baseNavigationController = [[WWWBaseNavigationController alloc]initWithRootViewController:mainViewController];
+    //设置窗口的大小和位置，如果不设置，就不显示根视图，界面呈现黑色
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = baseNavigationController;
     [self.window makeKeyAndVisible];
