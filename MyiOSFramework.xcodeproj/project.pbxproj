@@ -14,6 +14,12 @@
 		AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */; };
 		AD8F525320F6042500E765B8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F525220F6042500E765B8 /* main.m */; };
 		AD8F525B20F60E0300E765B8 /* WWWBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */; };
+		AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */; };
+		AD8F526A20F708D500E765B8 /* WWWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F526920F708D500E765B8 /* WWWBaseViewController.m */; };
+		AD8F527120F7364300E765B8 /* getgateway.c in Sources */ = {isa = PBXBuildFile; fileRef = AD8F526C20F7364300E765B8 /* getgateway.c */; };
+		AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F526F20F7364300E765B8 /* WWWWifiInfoManager.m */; };
+		AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */ = {isa = PBXBuildFile; fileRef = AD8F527320F736C500E765B8 /* WiFiInfoDirection */; };
+		AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +37,18 @@
 		AD8F525920F60E0300E765B8 /* WWWBaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWBaseNavigationController.h; sourceTree = "<group>"; };
 		AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWBaseNavigationController.m; sourceTree = "<group>"; };
 		AD8F526020F6F7B800E765B8 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		AD8F526520F6FF4600E765B8 /* WWWTestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWTestViewController.h; sourceTree = "<group>"; };
+		AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWTestViewController.m; sourceTree = "<group>"; };
+		AD8F526820F708D500E765B8 /* WWWBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWBaseViewController.h; sourceTree = "<group>"; };
+		AD8F526920F708D500E765B8 /* WWWBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWBaseViewController.m; sourceTree = "<group>"; };
+		AD8F526C20F7364300E765B8 /* getgateway.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; fileEncoding = 4; path = getgateway.c; sourceTree = "<group>"; };
+		AD8F526D20F7364300E765B8 /* route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = route.h; sourceTree = "<group>"; };
+		AD8F526E20F7364300E765B8 /* WWWWifiInfoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWWifiInfoManager.h; sourceTree = "<group>"; };
+		AD8F526F20F7364300E765B8 /* WWWWifiInfoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWWifiInfoManager.m; sourceTree = "<group>"; };
+		AD8F527020F7364300E765B8 /* getgateway.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = getgateway.h; sourceTree = "<group>"; };
+		AD8F527320F736C500E765B8 /* WiFiInfoDirection */ = {isa = PBXFileReference; lastKnownFileType = text; path = WiFiInfoDirection; sourceTree = "<group>"; };
+		AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWTcpSocketStreamManager.m; sourceTree = "<group>"; };
+		AD8F527720F73C1500E765B8 /* WWWTcpSocketStreamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWTcpSocketStreamManager.h; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,8 +88,9 @@
 				AD8F525D20F6F19700E765B8 /* Common */,
 				AD8F525E20F6F25700E765B8 /* Base */,
 				AD8F525F20F6F6F100E765B8 /* Resource */,
-				AD8F524620F6042300E765B8 /* MainViewController.h */,
-				AD8F524720F6042300E765B8 /* MainViewController.m */,
+				AD8F526220F6FD3500E765B8 /* Unit */,
+				AD8F526320F6FDDC00E765B8 /* Category */,
+				AD8F526420F6FEAE00E765B8 /* Test */,
 			);
 			path = MyiOSFramework;
 			sourceTree = "<group>";
@@ -83,6 +102,8 @@
 				AD8F526020F6F7B800E765B8 /* PrefixHeader.pch */,
 				AD8F524320F6042300E765B8 /* AppDelegate.h */,
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
+				AD8F524620F6042300E765B8 /* MainViewController.h */,
+				AD8F524720F6042300E765B8 /* MainViewController.m */,
 				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
 				AD8F525120F6042500E765B8 /* Info.plist */,
 			);
@@ -94,6 +115,8 @@
 			children = (
 				AD8F525920F60E0300E765B8 /* WWWBaseNavigationController.h */,
 				AD8F525A20F60E0300E765B8 /* WWWBaseNavigationController.m */,
+				AD8F526820F708D500E765B8 /* WWWBaseViewController.h */,
+				AD8F526920F708D500E765B8 /* WWWBaseViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -104,6 +127,53 @@
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		AD8F526220F6FD3500E765B8 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F527520F73B6100E765B8 /* TCPSocket */,
+				AD8F526B20F7361500E765B8 /* WiFiInfo */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		AD8F526320F6FDDC00E765B8 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		AD8F526420F6FEAE00E765B8 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F526520F6FF4600E765B8 /* WWWTestViewController.h */,
+				AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
+		AD8F526B20F7361500E765B8 /* WiFiInfo */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F526C20F7364300E765B8 /* getgateway.c */,
+				AD8F527020F7364300E765B8 /* getgateway.h */,
+				AD8F526D20F7364300E765B8 /* route.h */,
+				AD8F526E20F7364300E765B8 /* WWWWifiInfoManager.h */,
+				AD8F526F20F7364300E765B8 /* WWWWifiInfoManager.m */,
+				AD8F527320F736C500E765B8 /* WiFiInfoDirection */,
+			);
+			path = WiFiInfo;
+			sourceTree = "<group>";
+		};
+		AD8F527520F73B6100E765B8 /* TCPSocket */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F527720F73C1500E765B8 /* WWWTcpSocketStreamManager.h */,
+				AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */,
+			);
+			path = TCPSocket;
 			sourceTree = "<group>";
 		};
 		E251F7914D307428C78A8FFC /* Pods */ = {
@@ -183,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */,
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
 			);
@@ -241,9 +312,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD8F525B20F60E0300E765B8 /* WWWBaseNavigationController.m in Sources */,
+				AD8F526A20F708D500E765B8 /* WWWBaseViewController.m in Sources */,
 				AD8F524820F6042300E765B8 /* MainViewController.m in Sources */,
+				AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
+				AD8F527120F7364300E765B8 /* getgateway.c in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
+				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
+				AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
