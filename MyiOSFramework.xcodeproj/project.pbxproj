@@ -151,6 +151,7 @@
 		AD8F523820F6042300E765B8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WWW;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Weiwei Wang";
 				TargetAttributes = {
