@@ -21,6 +21,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //启动图片延时: 1秒
+    [NSThread sleepForTimeInterval:1];
+    
+    
     //加载并显示根视图控制器
     MainViewController *mainViewController = [[MainViewController alloc] init];
     WWWBaseNavigationController *baseNavigationController = [[WWWBaseNavigationController alloc]initWithRootViewController:mainViewController];
