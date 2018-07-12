@@ -38,7 +38,7 @@
     CFReadStreamRef readStream;
     CFWriteStreamRef writeStream;
     CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)_gateWayId, _port, &readStream, &writeStream);
-    NSLog(@"_gateWayId = %@",_gateWayId);
+    
     _inputStream = (__bridge_transfer NSInputStream *)readStream;
     _outputStream = (__bridge_transfer NSOutputStream
                      *)writeStream;

@@ -1,0 +1,119 @@
+
+TCPSocket文件的主要功能：通过TCP进行Socket连接，实现WiFi的点对点的通讯
+
+两个文件是独立的，其功能都能实现TCPSocket。WWWTcpSocketStreamManager文件主要是通过流创建连接的，并且只进行一次读写，并不是很完善；GCDAsyncSocket文件是一个第三方库 CocoaAsyncSocket 中的TCP连接部分，这个库还包含UDP连接部分，也可以通过 pod 'CocoaAsyncSocket' 直接引入第三方库进行使用。
+
+另外，在引入GCDAsyncSocket文件时，可能会报很多错误，比如 Too many arguments provided to function-like macro invocation 错误，其解决方法是将Build Setting下的Apple LLVM 9.0选择成GUN99；如果还有错误可能就是没有添加依赖库 CFNetwork.framework、Security.framework...
+
+
+GCDAsyncSocket文件的步骤:
+1.继承GCDAsyncSocketDelegate协议.
+
+
+2.声明属性
+// 客户端socket
+@property (strong, nonatomic) GCDAsyncSocket *clientSocket;
+
+
+3.创建socket并指定代理对象为self,代理队列必须为主队列.
+self.clientSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+
+
+4.连接指定主机的对应端口.
+
+NSError *error = nil;
+self.connected = [self.clientSocket connectToHost:self.addressTF.text onPort:[self.portTF.text integerValue] viaInterface:nil withTimeout:-1 error:&error];
+
+
+5.成功连接主机对应端口号.
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
+{
+//    NSLog(@"连接主机对应端口%@", sock);
+[self showMessageWithStr:@"链接成功"];
+[self showMessageWithStr:[NSString stringWithFormat:@"服务器IP: %@-------端口: %d", host,port]];
+
+// 连接成功开启定时器
+[self addTimer];
+// 连接后,可读取服务端的数据
+[self.clientSocket readDataWithTimeout:- 1 tag:0];
+self.connected = YES;
+}
+注意:The host parameter will be an IP address, not a DNS name. -- 引自GCDAsyncSocket  连接的主机为IP地址,并非DNS名称.
+
+
+6.发送数据给服务端
+// 发送数据
+- (IBAction)sendMessageAction:(id)sender
+{
+NSData *data = [self.messageTextF.text dataUsingEncoding:NSUTF8StringEncoding];
+// withTimeout -1 : 无穷大,一直等
+// tag : 消息标记
+[self.clientSocket writeData:data withTimeout:- 1 tag:0];
+}
+注意:发送数据主要通过- (void)writeData:(NSData *)data withTimeout:(NSTimeInterval)timeout tag:(long)tag写入数据的.
+
+
+7.读取服务端数据
+/**
+读取数据
+
+@param sock 客户端socket
+@param data 读取到的数据
+@param tag 本次读取的标记
+*/
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+NSString *text = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+[self showMessageWithStr:text];
+// 读取到服务端数据值后,能再次读取
+[self.clientSocket readDataWithTimeout:- 1 tag:0];
+}
+注意:有的人写好代码,而且第一次能够读取到数据,之后,再也接收不到数据.那是因为,在读取到数据的代理方法中,需要再次调用[self.clientSocket readDataWithTimeout:- 1 tag:0];方法,框架本身就是这么设计的.
+
+
+8.客户端socket断开连接.
+/**
+客户端socket断开
+
+@param sock 客户端socket
+@param err 错误描述
+*/
+- (void)socketDidDisconnect:(GCDAsyncSocket *)sock withError:(NSError *)err
+{
+[self showMessageWithStr:@"断开连接"];
+self.clientSocket.delegate = nil;
+self.clientSocket = nil;
+self.connected = NO;
+[self.connectTimer invalidate];
+}
+注意:sokect断开连接时,需要清空代理和客户端本身的socket.
+
+self.clientSocket.delegate = nil;
+self.clientSocket = nil;
+
+
+9.建立心跳连接.
+// 计时器
+@property (nonatomic, strong) NSTimer *connectTimer;
+
+// 添加定时器
+- (void)addTimer
+{
+// 长连接定时器
+self.connectTimer = [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(longConnectToSocket) userInfo:nil repeats:YES];
+// 把定时器添加到当前运行循环,并且调为通用模式
+[[NSRunLoop currentRunLoop] addTimer:self.connectTimer forMode:NSRunLoopCommonModes];
+}
+
+// 心跳连接
+- (void)longConnectToSocket
+{
+// 发送固定格式的数据,指令@"longConnect"
+float version = [[UIDevice currentDevice] systemVersion].floatValue;
+NSString *longConnect = [NSString stringWithFormat:@"123%f",version];
+
+NSData  *data = [longConnect dataUsingEncoding:NSUTF8StringEncoding];
+
+[self.clientSocket writeData:data withTimeout:- 1 tag:0];
+}
+注意:心跳连接中发送给服务端的数据只是作为测试代码,根据你们公司需求,或者和后台商定好心跳包的数据以及发送心跳的时间间隔.因为这个项目的服务端socket也是我写的,所以,我自定义心跳包协议.客户端发送心跳包,服务端也需要有对应的心跳检测,以此检测客户端是否在线.

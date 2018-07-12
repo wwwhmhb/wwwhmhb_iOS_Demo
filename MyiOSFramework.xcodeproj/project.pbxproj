@@ -20,6 +20,8 @@
 		AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F526F20F7364300E765B8 /* WWWWifiInfoManager.m */; };
 		AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */ = {isa = PBXBuildFile; fileRef = AD8F527320F736C500E765B8 /* WiFiInfoDirection */; };
 		AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */; };
+		AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F527A20F741B700E765B8 /* GCDAsyncSocket.m */; };
+		AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */ = {isa = PBXBuildFile; fileRef = AD8F527C20F743F000E765B8 /* TCPSocketDirection */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,9 @@
 		AD8F527320F736C500E765B8 /* WiFiInfoDirection */ = {isa = PBXFileReference; lastKnownFileType = text; path = WiFiInfoDirection; sourceTree = "<group>"; };
 		AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWTcpSocketStreamManager.m; sourceTree = "<group>"; };
 		AD8F527720F73C1500E765B8 /* WWWTcpSocketStreamManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWTcpSocketStreamManager.h; sourceTree = "<group>"; };
+		AD8F527920F741B700E765B8 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		AD8F527A20F741B700E765B8 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		AD8F527C20F743F000E765B8 /* TCPSocketDirection */ = {isa = PBXFileReference; lastKnownFileType = text; path = TCPSocketDirection; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +177,9 @@
 			children = (
 				AD8F527720F73C1500E765B8 /* WWWTcpSocketStreamManager.h */,
 				AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */,
+				AD8F527920F741B700E765B8 /* GCDAsyncSocket.h */,
+				AD8F527A20F741B700E765B8 /* GCDAsyncSocket.m */,
+				AD8F527C20F743F000E765B8 /* TCPSocketDirection */,
 			);
 			path = TCPSocket;
 			sourceTree = "<group>";
@@ -256,6 +264,7 @@
 				AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */,
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
+				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +326,7 @@
 				AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
 				AD8F527120F7364300E765B8 /* getgateway.c in Sources */,
+				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
 				AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */,

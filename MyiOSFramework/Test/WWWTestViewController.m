@@ -9,8 +9,13 @@
 #import "WWWTestViewController.h"
 
 #import "WWWWifiInfoManager.h"
+#import "GCDAsyncSocket.h"
 
-@interface WWWTestViewController ()
+@interface WWWTestViewController () <GCDAsyncSocketDelegate>
+
+// 客户端socket
+@property (strong, nonatomic) GCDAsyncSocket *clientSocket;
+@property (assign, nonatomic) BOOL connected;
 
 @end
 
@@ -22,10 +27,10 @@
     
     self.title = @"TestViewController";
     
-    WWWWifiInfoManager *wifiInfoManager = [[WWWWifiInfoManager alloc] init];
-    NSDictionary *dict = [wifiInfoManager getWifiInformation];
     
-    NSLog(@"dict = %@",dict);
+    self.clientSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+//    NSLog(@"dict = %@",dict);
 }
 
 - (void)didReceiveMemoryWarning {
