@@ -71,7 +71,6 @@
 				AD8F524620F6042300E765B8 /* MainViewController.h */,
 				AD8F524720F6042300E765B8 /* MainViewController.m */,
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
-				AD8F525120F6042500E765B8 /* Info.plist */,
 			);
 			path = MyiOSFramework;
 			sourceTree = "<group>";
@@ -83,6 +82,7 @@
 				AD8F524320F6042300E765B8 /* AppDelegate.h */,
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
 				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
+				AD8F525120F6042500E765B8 /* Info.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -367,7 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W33P5S72D3;
-				INFOPLIST_FILE = MyiOSFramework/Info.plist;
+				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -386,7 +386,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W33P5S72D3;
-				INFOPLIST_FILE = MyiOSFramework/Info.plist;
+				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
