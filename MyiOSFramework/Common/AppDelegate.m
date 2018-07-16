@@ -21,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    
     //启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
     

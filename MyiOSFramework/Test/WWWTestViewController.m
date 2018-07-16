@@ -8,14 +8,9 @@
 
 #import "WWWTestViewController.h"
 
-#import "WWWWifiInfoManager.h"
-#import "GCDAsyncSocket.h"
+#import "BlazeiceScreenAndAudioRecordViewController.h"
 
-@interface WWWTestViewController () <GCDAsyncSocketDelegate>
-
-// 客户端socket
-@property (strong, nonatomic) GCDAsyncSocket *clientSocket;
-@property (assign, nonatomic) BOOL connected;
+@interface WWWTestViewController ()
 
 @end
 
@@ -27,10 +22,9 @@
     
     self.title = @"TestViewController";
     
-    WWWWifiInfoManager *wifiInfoManager = [[WWWWifiInfoManager alloc] init];
-    NSDictionary *dict = [wifiInfoManager getWifiInformation];
+    BlazeiceScreenAndAudioRecordViewController *viewController = [[BlazeiceScreenAndAudioRecordViewController alloc] init];
+    [self.navigationController pushViewController:viewController animated:YES];
     
-    NSLog(@"dict = %@",dict);
 }
 
 - (void)didReceiveMemoryWarning {

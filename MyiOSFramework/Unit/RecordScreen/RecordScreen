@@ -1,0 +1,8 @@
+
+RecordScreen文件的功能为录屏，其功能包含两部分：录制屏幕画面和录制周围声音。录制屏幕画面，其实就是将一帧帧图片按照时间间隔拼接成视频。
+
+THCapture文件主要功能是录屏幕画面；
+BlazeiceAudioRecordAndTransCoding文件主要功能是录制声音；
+THCaptureUtilities文件主要功能是将画面和声音合成视频。
+BlazeiceScreenAndAudioRecordViewController文件主要功能是录屏的管理者
+
