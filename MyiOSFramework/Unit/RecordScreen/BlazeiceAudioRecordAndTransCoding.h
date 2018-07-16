@@ -19,10 +19,8 @@
 @interface BlazeiceAudioRecordAndTransCoding : NSObject
 
 @property (retain, nonatomic)   AVAudioRecorder     *recorder;
-@property (copy, nonatomic)     NSString            *recordFileName;//录音文件名
-@property (copy, nonatomic)     NSString            *recordFilePath;//录音文件路径
-@property (assign,nonatomic) BOOL nowPause;
 @property (nonatomic, assign) id<BlazeiceAudioRecordAndTransCodingDelegate>delegate;
-- (void)beginRecordByFileName:(NSString*)_fileName;
+
+- (void)beginRecordByFilePath:(NSString*)filePath;
 - (void)endRecord;
 @end

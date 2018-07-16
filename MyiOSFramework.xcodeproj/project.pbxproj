@@ -24,9 +24,10 @@
 		AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */ = {isa = PBXBuildFile; fileRef = AD8F527C20F743F000E765B8 /* TCPSocketDirection */; };
 		AD8F529A20FC350500E765B8 /* THCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F529120FC350300E765B8 /* THCapture.m */; };
 		AD8F529B20FC350500E765B8 /* THCaptureUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F529520FC350400E765B8 /* THCaptureUtilities.m */; };
-		AD8F529C20FC350500E765B8 /* BlazeiceScreenAndAudioRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F529720FC350500E765B8 /* BlazeiceScreenAndAudioRecordViewController.m */; };
 		AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F529820FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m */; };
 		AD8F529E20FC350500E765B8 /* RecordScreen in Resources */ = {isa = PBXBuildFile; fileRef = AD8F529920FC350500E765B8 /* RecordScreen */; };
+		AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52A020FC4E1900E765B8 /* WWWRecordScreenManager.m */; };
+		AD8F52A420FC702C00E765B8 /* WWWTools.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52A320FC702C00E765B8 /* WWWTools.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,14 +61,16 @@
 		AD8F527A20F741B700E765B8 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		AD8F527C20F743F000E765B8 /* TCPSocketDirection */ = {isa = PBXFileReference; lastKnownFileType = text; path = TCPSocketDirection; sourceTree = "<group>"; };
 		AD8F529120FC350300E765B8 /* THCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCapture.m; sourceTree = "<group>"; };
-		AD8F529220FC350300E765B8 /* BlazeiceScreenAndAudioRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeiceScreenAndAudioRecordViewController.h; sourceTree = "<group>"; };
 		AD8F529320FC350400E765B8 /* BlazeiceAudioRecordAndTransCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeiceAudioRecordAndTransCoding.h; sourceTree = "<group>"; };
 		AD8F529420FC350400E765B8 /* THCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCapture.h; sourceTree = "<group>"; };
 		AD8F529520FC350400E765B8 /* THCaptureUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCaptureUtilities.m; sourceTree = "<group>"; };
 		AD8F529620FC350400E765B8 /* THCaptureUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCaptureUtilities.h; sourceTree = "<group>"; };
-		AD8F529720FC350500E765B8 /* BlazeiceScreenAndAudioRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeiceScreenAndAudioRecordViewController.m; sourceTree = "<group>"; };
 		AD8F529820FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeiceAudioRecordAndTransCoding.m; sourceTree = "<group>"; };
 		AD8F529920FC350500E765B8 /* RecordScreen */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RecordScreen; sourceTree = "<group>"; };
+		AD8F529F20FC4E1900E765B8 /* WWWRecordScreenManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWRecordScreenManager.h; sourceTree = "<group>"; };
+		AD8F52A020FC4E1900E765B8 /* WWWRecordScreenManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWRecordScreenManager.m; sourceTree = "<group>"; };
+		AD8F52A220FC702C00E765B8 /* WWWTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWTools.h; sourceTree = "<group>"; };
+		AD8F52A320FC702C00E765B8 /* WWWTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWTools.m; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,6 +126,8 @@
 				AD8F524420F6042300E765B8 /* AppDelegate.m */,
 				AD8F524620F6042300E765B8 /* MainViewController.h */,
 				AD8F524720F6042300E765B8 /* MainViewController.m */,
+				AD8F52A220FC702C00E765B8 /* WWWTools.h */,
+				AD8F52A320FC702C00E765B8 /* WWWTools.m */,
 				AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */,
 				AD8F525120F6042500E765B8 /* Info.plist */,
 			);
@@ -202,10 +207,10 @@
 		AD8F529020FC34DB00E765B8 /* RecordScreen */ = {
 			isa = PBXGroup;
 			children = (
+				AD8F529F20FC4E1900E765B8 /* WWWRecordScreenManager.h */,
+				AD8F52A020FC4E1900E765B8 /* WWWRecordScreenManager.m */,
 				AD8F529320FC350400E765B8 /* BlazeiceAudioRecordAndTransCoding.h */,
 				AD8F529820FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m */,
-				AD8F529220FC350300E765B8 /* BlazeiceScreenAndAudioRecordViewController.h */,
-				AD8F529720FC350500E765B8 /* BlazeiceScreenAndAudioRecordViewController.m */,
 				AD8F529420FC350400E765B8 /* THCapture.h */,
 				AD8F529120FC350300E765B8 /* THCapture.m */,
 				AD8F529620FC350400E765B8 /* THCaptureUtilities.h */,
@@ -352,7 +357,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD8F529C20FC350500E765B8 /* BlazeiceScreenAndAudioRecordViewController.m in Sources */,
 				AD8F525B20F60E0300E765B8 /* WWWBaseNavigationController.m in Sources */,
 				AD8F526A20F708D500E765B8 /* WWWBaseViewController.m in Sources */,
 				AD8F524820F6042300E765B8 /* MainViewController.m in Sources */,
@@ -360,8 +364,10 @@
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
 				AD8F527120F7364300E765B8 /* getgateway.c in Sources */,
 				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
+				AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 				AD8F529A20FC350500E765B8 /* THCapture.m in Sources */,
+				AD8F52A420FC702C00E765B8 /* WWWTools.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
 				AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
 				AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */,

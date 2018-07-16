@@ -12,6 +12,7 @@
 #import "WWWBaseViewController.h"
 
 #import "Masonry.h"
+#import "WWWTools.h"
 
 #define kMainScreenWidth       [[UIScreen mainScreen] applicationFrame].size.width
 #define kMainScreenHeight       [[UIScreen mainScreen] applicationFrame].size.height

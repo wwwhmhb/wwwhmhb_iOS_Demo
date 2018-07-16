@@ -4,5 +4,5 @@ RecordScreen文件的功能为录屏，其功能包含两部分：录制屏幕�
 THCapture文件主要功能是录屏幕画面；
 BlazeiceAudioRecordAndTransCoding文件主要功能是录制声音；
 THCaptureUtilities文件主要功能是将画面和声音合成视频。
-BlazeiceScreenAndAudioRecordViewController文件主要功能是录屏的管理者
+WWWRecordScreenManager文件主要功能是录屏的管理者
 

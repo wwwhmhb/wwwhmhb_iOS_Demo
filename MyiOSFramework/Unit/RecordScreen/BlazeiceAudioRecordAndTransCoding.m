@@ -7,25 +7,29 @@
 //
 
 #import "BlazeiceAudioRecordAndTransCoding.h"
-//#import "BlazeiceAppDelegate.h"
+
+@interface BlazeiceAudioRecordAndTransCoding ()
+
+@property (assign,nonatomic) BOOL nowPause;
+@end
 
 @implementation BlazeiceAudioRecordAndTransCoding
-@synthesize recorder,recordFileName,recordFilePath,delegate;
+
+@synthesize delegate = delegate;
+
 
 #pragma mark - 开始录音
-- (void)beginRecordByFileName:(NSString*)_fileName;{
-    
+- (void)beginRecordByFilePath:(NSString*)filePath;{
+    //接受暂停开始的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(toRecordOrPause:) name:@"toRecordOrPause" object:nil];
-    
-    recordFileName = _fileName;
-    //设置文件名和录音路径
-    recordFilePath = [self getPathByFileName:recordFileName ofType:@"wav"];
+
     //初始化录音
-    AVAudioRecorder *temp = [[AVAudioRecorder alloc]initWithURL:[NSURL URLWithString:[recordFilePath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]
+    AVAudioRecorder *temp = [[AVAudioRecorder alloc]initWithURL:[NSURL URLWithString:[filePath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]]
                                                        settings:[self getAudioRecorderSettingDict]
                                                           error:nil];
+    
     self.recorder = temp;
-    recorder.meteringEnabled = YES;
+    self.recorder.meteringEnabled = YES;
     [self.recorder prepareToRecord];
     //开始录音
     [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayAndRecord error:nil];
@@ -45,7 +49,7 @@
     }
 }
 
-#pragma mark - 录音开始
+#pragma mark - 暂停后，录音开始
 -(void)startRecord{
     [self.recorder record];
     _nowPause=NO;
@@ -69,11 +73,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"toRecordOrPause" object:nil];
 }
 
-- (NSString*)getPathByFileName:(NSString *)_fileName ofType:(NSString *)_type
-{
-    NSString* fileDirectory = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:_fileName]stringByAppendingPathExtension:_type];
-    return fileDirectory;
-}
+//- (NSString*)getPathByFileName:(NSString *)_fileName ofType:(NSString *)_type
+//{
+//    NSString* fileDirectory = [[[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)objectAtIndex:0]stringByAppendingPathComponent:_fileName]stringByAppendingPathExtension:_type];
+//    return fileDirectory;
+//}
 
 - (NSDictionary*)getAudioRecorderSettingDict
 {

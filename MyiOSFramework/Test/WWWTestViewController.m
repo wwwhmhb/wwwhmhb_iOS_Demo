@@ -8,8 +8,6 @@
 
 #import "WWWTestViewController.h"
 
-#import "BlazeiceScreenAndAudioRecordViewController.h"
-
 @interface WWWTestViewController ()
 
 @end
@@ -22,8 +20,6 @@
     
     self.title = @"TestViewController";
     
-    BlazeiceScreenAndAudioRecordViewController *viewController = [[BlazeiceScreenAndAudioRecordViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
     
 }
 
