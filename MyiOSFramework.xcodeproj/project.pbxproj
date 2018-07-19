@@ -32,7 +32,7 @@
 		AD8F52AA20FD8AF100E765B8 /* UIButton+AddSelectorForClick.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52A920FD8AF100E765B8 /* UIButton+AddSelectorForClick.m */; };
 		AD8F52B020FF36B500E765B8 /* WWWBottomPickerViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52AF20FF36B500E765B8 /* WWWBottomPickerViewManager.m */; };
 		AD8F52B320FF36D300E765B8 /* WWWBottomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52B220FF36D300E765B8 /* WWWBottomPickerView.m */; };
-		AD8F52B52100690800E765B8 /* WWWBottomPickerViewManager in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52B42100690800E765B8 /* WWWBottomPickerViewManager */; };
+		AD8F52B52100690800E765B8 /* BottomPickerView in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52B42100690800E765B8 /* BottomPickerView */; };
 		AD8F52BD21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52BC21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m */; };
 		AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52BF21007D7600E765B8 /* WWWMulti_lineTextAlertView.m */; };
 		AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */; };
@@ -87,7 +87,7 @@
 		AD8F52AF20FF36B500E765B8 /* WWWBottomPickerViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWBottomPickerViewManager.m; sourceTree = "<group>"; };
 		AD8F52B120FF36D300E765B8 /* WWWBottomPickerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWBottomPickerView.h; sourceTree = "<group>"; };
 		AD8F52B220FF36D300E765B8 /* WWWBottomPickerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWBottomPickerView.m; sourceTree = "<group>"; };
-		AD8F52B42100690800E765B8 /* WWWBottomPickerViewManager */ = {isa = PBXFileReference; lastKnownFileType = text; path = WWWBottomPickerViewManager; sourceTree = "<group>"; };
+		AD8F52B42100690800E765B8 /* BottomPickerView */ = {isa = PBXFileReference; lastKnownFileType = text; path = BottomPickerView; sourceTree = "<group>"; };
 		AD8F52BB21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWMulti_lineTextAlertViewManager.h; sourceTree = "<group>"; };
 		AD8F52BC21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWMulti_lineTextAlertViewManager.m; sourceTree = "<group>"; };
 		AD8F52BE21007D7600E765B8 /* WWWMulti_lineTextAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWMulti_lineTextAlertView.h; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 				AD8F52AF20FF36B500E765B8 /* WWWBottomPickerViewManager.m */,
 				AD8F52B120FF36D300E765B8 /* WWWBottomPickerView.h */,
 				AD8F52B220FF36D300E765B8 /* WWWBottomPickerView.m */,
-				AD8F52B42100690800E765B8 /* WWWBottomPickerViewManager */,
+				AD8F52B42100690800E765B8 /* BottomPickerView */,
 			);
 			path = BottomPickerView;
 			sourceTree = "<group>";
@@ -361,7 +361,7 @@
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
 				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
-				AD8F52B52100690800E765B8 /* WWWBottomPickerViewManager in Resources */,
+				AD8F52B52100690800E765B8 /* BottomPickerView in Resources */,
 				AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
 			);
