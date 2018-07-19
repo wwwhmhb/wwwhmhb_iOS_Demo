@@ -8,8 +8,7 @@
 
 #import "WWWTestViewController.h"
 
-#import "WWWBottomPickerViewManager.h"
-#import "UIButton+AddSelectorForClick.h"
+#import "WWWMulti_lineTextAlertViewManager.h"
 
 @interface WWWTestViewController ()
 
@@ -24,7 +23,6 @@
     self.title = @"TestViewController";
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [testButton addSelectorForClickActionSequentialOrder:ClickActionBack andSelectorType:NetworkPermissionRequestSelector];
     [testButton setTitle:@"Test" forState:UIControlStateNormal];
     [testButton setBackgroundColor:[UIColor orangeColor]];
     [testButton addTarget:self action:@selector(testButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -39,8 +37,8 @@
 
 - (void)testButtonAction:(UIButton *)button {
     NSLog(@"testButtonAction:");
-    [WWWBottomPickerViewManager showEditPickerViewWithData:@[@"早晨",@"中午",@"下午"] andBlock:^(NSString *temp) {
-        NSLog(@"%@",temp);
+    [WWWMulti_lineTextAlertViewManager showMulti_lineTextAlertViewWithRequestDataBlock:^(NSString *text) {
+        NSLog(@"text = %@",text);
     }];
 }
 

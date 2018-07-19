@@ -24,7 +24,9 @@
 	<string>LaunchScreen</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>打开麦克风权限</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
+	<key>NSCameraUsageDescription</key>
+	<string>打开相机权限</string>
+	<key>NSPhotoLibraryUsageDescription</key>
 	<string>打开相册权限</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>

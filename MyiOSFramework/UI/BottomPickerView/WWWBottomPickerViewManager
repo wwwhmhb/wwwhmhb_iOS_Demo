@@ -1,7 +1,8 @@
+BottomPickerView文件主要功能是提供一个自定义的底部弹出的pickerView的提示框。
 
-WWWBottomPickerView文件是对视图的创建
+WWWBottomPickerView文件是对提示框视图的创建
 
-WWWBottomPickerViewManager文件是对视图中的数据进行处理的，接受数据和传出数据。具体使用如下：
+WWWBottomPickerViewManager文件是对提示框视图中的数据进行处理的，接受数据和传出数据。具体使用如下：
 
 [WWWBottomPickerViewManager showEditPickerViewWithData:@[@"早晨",@"中午",@"下午"] andBlock:^(NSString *temp) {
 NSLog(@"%@",temp);

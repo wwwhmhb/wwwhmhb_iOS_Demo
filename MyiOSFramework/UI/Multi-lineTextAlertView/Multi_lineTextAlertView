@@ -1,0 +1,9 @@
+Multi-lineTextAlertView文件主要功能是提供一个自定义的多行文本输入的提示框。
+
+WWWMulti_lineTextAlertView文件是对提示框视图的创建
+
+WWWMulti_lineTextAlertViewManager文件是对提示框视图中的数据进行处理的，接受数据和传出数据。具体使用如下：
+
+[WWWMulti_lineTextAlertViewManager showMulti_lineTextAlertViewWithRequestDataBlock:^(NSString *text) {
+NSLog(@"text = %@",text);
+}];
