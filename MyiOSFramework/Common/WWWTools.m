@@ -7,6 +7,12 @@
 //
 
 #import "WWWTools.h"
+#import <CoreTelephony/CTCellularData.h>//网络权限
+#import <AVFoundation/AVCaptureDevice.h>//摄像头权限
+#import <Photos/Photos.h>//相册权限
+#import <CoreLocation/CoreLocation.h>//位置权限
+#import <CoreBluetooth/CoreBluetooth.h>//蓝牙权限
+
 
 @implementation WWWTools
 
@@ -57,6 +63,7 @@
 //    return [NSHomeDirectory() stringByAppendingFormat:@"/tmp"];
 }
 
+//获取自定义目录路径
 + (NSString*)getCustomPathByFilePathType:(FilePathType)filePathType andFilePathName:(NSString *)filePathName andFilePathExtension:(NSString *)filePathExtension {
     
     //根路径
@@ -112,4 +119,69 @@
     }
     return filePath;
 }
+
+
+
+
+//获取网络权限
++ (void)requestNetworkPermission {
+    if (@available(iOS 9.0, *)) {
+        CTCellularData *cellularData = [[CTCellularData alloc] init];
+        CTCellularDataRestrictedState state = cellularData.restrictedState;
+        if (state == kCTCellularDataRestrictedStateUnknown) {
+            [self simpleNetworkRequest];
+        }
+    } else {
+        [self simpleNetworkRequest];
+    }
+}
+//简单的网络请求，获取网络权限
++ (void)simpleNetworkRequest {
+    
+    //1. 创建一个网络请求地址，如果使用http，info.plist中需要创建App Transport Security Settings中Allow Arbitrary Loads，并设置为YES，建议使用https，请求的速度会快点，因为请求的内容比较少
+    NSURL *url = [NSURL URLWithString:@"https://www.baidu.com"];
+    //2.创建请求对象
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    //3.获得会话对象
+    NSURLSession *session=[NSURLSession sharedSession];
+    //4.获取网络请求任务
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSString *result =[[ NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"result = %@",result);
+    }];
+    //5.开始任务
+    [dataTask resume];
+}
+
+
+//获取相册权限
++ (void)requestPhotoLibraryPermission {
+    
+    PHAuthorizationStatus photoAuthorStatus = [PHPhotoLibrary authorizationStatus];
+    if (photoAuthorStatus == PHAuthorizationStatusNotDetermined) {
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+        }];
+    }
+}
+
+//获取摄像头权限
++ (void)requestCameraPermission {
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType: AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+        }];
+    }
+}
+
+//获取麦克风权限
++ (void)requestMicrophonePermission {
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio];
+    if (authStatus == AVAuthorizationStatusNotDetermined) {
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeAudio completionHandler:^(BOOL granted) {
+        }];
+    }
+}
+
+
+
 @end

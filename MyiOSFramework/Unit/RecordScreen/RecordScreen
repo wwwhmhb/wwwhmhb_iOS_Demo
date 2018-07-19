@@ -6,3 +6,20 @@ BlazeiceAudioRecordAndTransCoding文件主要功能是录制声音；
 THCaptureUtilities文件主要功能是将画面和声音合成视频。
 WWWRecordScreenManager文件主要功能是录屏的管理者
 
+
+ASScreenRecorder文件只是进行录屏合成没有声音的视频，独立于上面的一套文件
+//开始或者停止录制屏幕
+- (void)startAndStop {
+ASScreenRecorder *recorder = [ASScreenRecorder sharedInstance];
+recorder.recordView = self.callSession.remoteVideoView;
+if (recorder.isRecording) {
+[recorder stopRecordingWithCompletion:^{
+NSLog(@"Finished recording");
+[self playEndSound];
+}];
+} else {
+[recorder startRecording];
+NSLog(@"Start recording");
+[self playStartSound];
+}
+}

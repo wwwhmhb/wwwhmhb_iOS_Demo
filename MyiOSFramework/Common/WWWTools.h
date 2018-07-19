@@ -84,4 +84,29 @@ typedef NS_ENUM(NSInteger,FilePathType) {
  */
 + (NSString*)getCustomPathByFilePathType:(FilePathType)filePathType andFilePathName:(NSString *)filePathName andFilePathExtension:(NSString *)filePathExtension;
 
+
+
+/*=============== 隐私权限请求操作部分 =================*/
+/**
+ 获取网络权限
+ */
++ (void)requestNetworkPermission;
+
+/**
+ 获取相册权限
+ */
++ (void)requestPhotoLibraryPermission;
+
+/**
+ 获取摄像头权限
+ */
++ (void)requestCameraPermission;
+
+/**
+ 获取麦克风权限
+ */
++ (void)requestMicrophonePermission;
+
+
+
 @end

@@ -8,6 +8,9 @@
 
 #import "WWWTestViewController.h"
 
+#import "WWWBottomPickerViewManager.h"
+#import "UIButton+AddSelectorForClick.h"
+
 @interface WWWTestViewController ()
 
 @end
@@ -20,7 +23,25 @@
     
     self.title = @"TestViewController";
     
+    UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [testButton addSelectorForClickActionSequentialOrder:ClickActionBack andSelectorType:NetworkPermissionRequestSelector];
+    [testButton setTitle:@"Test" forState:UIControlStateNormal];
+    [testButton setBackgroundColor:[UIColor orangeColor]];
+    [testButton addTarget:self action:@selector(testButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:testButton];
+    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view).offset(80);
+        make.left.mas_equalTo(self.view).offset(20);
+        make.size.mas_equalTo(CGSizeMake(100, 60));
+    }];
     
+}
+
+- (void)testButtonAction:(UIButton *)button {
+    NSLog(@"testButtonAction:");
+    [WWWBottomPickerViewManager showEditPickerViewWithData:@[@"早晨",@"中午",@"下午"] andBlock:^(NSString *temp) {
+        NSLog(@"%@",temp);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
