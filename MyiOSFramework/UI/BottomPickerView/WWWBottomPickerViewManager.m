@@ -95,6 +95,7 @@ WWWBottomPickerViewManager *_bottom;
         } completion:^(BOOL finished) {
             [UIView animateWithDuration:0.5 animations:^{
                 self->_grayBgView.hidden=YES;
+                _bottom = nil;
             }];
         }];
     }
@@ -114,4 +115,7 @@ WWWBottomPickerViewManager *_bottom;
     return YES;
 }
 
+- (void)dealloc {
+    [_grayBgView removeFromSuperview];
+}
 @end

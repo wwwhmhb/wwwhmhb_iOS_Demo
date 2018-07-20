@@ -9,6 +9,7 @@
 #import "WWWTestViewController.h"
 
 #import "WWWMulti_lineTextAlertViewManager.h"
+#import "WWWBottomPickerViewManager.h"
 
 @interface WWWTestViewController ()
 
@@ -37,9 +38,14 @@
 
 - (void)testButtonAction:(UIButton *)button {
     NSLog(@"testButtonAction:");
-    [WWWMulti_lineTextAlertViewManager showMulti_lineTextAlertViewWithRequestDataBlock:^(NSString *text) {
-        NSLog(@"text = %@",text);
+//    [WWWMulti_lineTextAlertViewManager showMulti_lineTextAlertViewWithRequestDataBlock:^(NSString *text) {
+//        NSLog(@"text = %@",text);
+//    }];
+    
+    [WWWBottomPickerViewManager showEditPickerViewWithData:@[@"早晨",@"中午",@"下午"] andBlock:^(NSString *temp) {
+        NSLog(@"%@",temp);
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

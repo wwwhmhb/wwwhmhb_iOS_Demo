@@ -62,6 +62,10 @@
     return self;
 }
 
+-(void)dealloc {
+    NSLog(@"WWWBottomPickerView-dealloc");
+}
+
 //设置data并且设设置_result的初始值
 -(void)setData:(NSArray *)data{
     if(_data!=data){
