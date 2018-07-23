@@ -103,7 +103,7 @@ WWWMulti_lineTextAlertViewManager *_editTextView;
 
 - (void)dealloc {
     [self.grayBgView removeFromSuperview];
-    NSLog(@"WWWMulti_lineTextAlertViewManager - dealloc");
+    NSLog(@"WWWMulti_lineTextAlertViewManager_dealloc");
 }
 
 @end

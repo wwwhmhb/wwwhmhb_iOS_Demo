@@ -7,8 +7,10 @@
 //
 
 #import "WWWMulti_lineTextAlertView.h"
-
-@interface WWWMulti_lineTextAlertView () <UITextViewDelegate>
+#import "WWWKVOObservationManager.h"
+@interface WWWMulti_lineTextAlertView () <UITextViewDelegate> {
+    WWWKVOObservationManager *_kvoManager;
+}
 
 @property (nonatomic,strong)UITextView *textView;
 
@@ -19,6 +21,8 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self=[super initWithFrame:frame];
     if(self){
+        
+        
         //设置两个控件之间的间距
         CGFloat space=10.0;
         //设置与边框的间距
@@ -75,40 +79,23 @@
         [sureBtn addTarget:self action:@selector(clickSubmit:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:sureBtn];
         
-        //监听自身的hidden值的变化
-        [self addObserver:self
-               forKeyPath:@"hidden"
-                  options:NSKeyValueObservingOptionNew
-                  context:@"Multi_lineTextAlertView.hidden"];
+        if (!_kvoManager) {
+            _kvoManager = [[WWWKVOObservationManager alloc] init];
+        }
+        __weak __typeof__(self) weakSelf = self;
         
+        [_kvoManager addObserveObject:_textView andKeyPath:@"hidden" andContext:nil andResultBlock:^(NSDictionary *dict) {
+            __strong __typeof(self) strongSelf = weakSelf;
+            [strongSelf.textView removeFromSuperview];
+        }];
     }
     return self;
 }
 
 //移除观察者
 - (void)dealloc {
-    
-    /*
-     当对同一个keypath进行两次removeObserver时会导致程序crash
-     我们可以分别在父类以及本类中定义各自的context字符串，比如在本类中定义context为@"Multi_lineTextAlertView.hidden";然后在dealloc中remove observer时指定移除的自身添加的observer。这样iOS就能知道移除的是自己的kvo，而不是父类中的kvo，避免二次remove造成crash。
-     */
-    NSLog(@"WWWMulti_lineTextAlertView - dealloc");
-    [self removeObserver:self forKeyPath:@"hidden" context:@"Multi_lineTextAlertView.hidden"];
-}
 
-//观察者接受器,如果被观察者的属性通过 setter 发生变化,就会自动调用该方法
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if (object == self && [keyPath isEqualToString:@"hidden"]) {//必须对触发回调函数的来源进行判断
-        NSLog(@"context = %@;change = %@",context,change);
-        NSNumber *num = change[@"new"];
-        BOOL value = [num boolValue];
-        if (value) {
-            [_textView resignFirstResponder];
-        }
-    } else {//判断父类是否添加了响应的相应的观察方法
-        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    }
-    
+    NSLog(@"WWWMulti_lineTextAlertView_dealloc");
 }
 
 //处理确定点击事件

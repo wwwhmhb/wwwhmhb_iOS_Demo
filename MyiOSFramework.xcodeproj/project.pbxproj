@@ -36,6 +36,8 @@
 		AD8F52BD21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52BC21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m */; };
 		AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52BF21007D7600E765B8 /* WWWMulti_lineTextAlertView.m */; };
 		AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */; };
+		ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */; };
+		ADE6C5D72105B3D00061674B /* KVOObservation in Resources */ = {isa = PBXBuildFile; fileRef = ADE6C5D62105B3D00061674B /* KVOObservation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +95,9 @@
 		AD8F52BE21007D7600E765B8 /* WWWMulti_lineTextAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWMulti_lineTextAlertView.h; sourceTree = "<group>"; };
 		AD8F52BF21007D7600E765B8 /* WWWMulti_lineTextAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWMulti_lineTextAlertView.m; sourceTree = "<group>"; };
 		AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */ = {isa = PBXFileReference; lastKnownFileType = text; path = Multi_lineTextAlertView; sourceTree = "<group>"; };
+		ADE6C5D321018A270061674B /* WWWKVOObservationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWKVOObservationManager.h; sourceTree = "<group>"; };
+		ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWKVOObservationManager.m; sourceTree = "<group>"; };
+		ADE6C5D62105B3D00061674B /* KVOObservation */ = {isa = PBXFileReference; lastKnownFileType = text; path = KVOObservation; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,9 +184,10 @@
 		AD8F526220F6FD3500E765B8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				ADE6C5D22101890B0061674B /* KVOObservation */,
+				ADE6C5D1210188150061674B /* WiFiInfo */,
+				ADE6C5D0210187BD0061674B /* TCPSocket */,
 				AD8F529020FC34DB00E765B8 /* RecordScreen */,
-				AD8F527520F73B6100E765B8 /* TCPSocket */,
-				AD8F526B20F7361500E765B8 /* WiFiInfo */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -202,31 +208,6 @@
 				AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */,
 			);
 			path = Test;
-			sourceTree = "<group>";
-		};
-		AD8F526B20F7361500E765B8 /* WiFiInfo */ = {
-			isa = PBXGroup;
-			children = (
-				AD8F526C20F7364300E765B8 /* getgateway.c */,
-				AD8F527020F7364300E765B8 /* getgateway.h */,
-				AD8F526D20F7364300E765B8 /* route.h */,
-				AD8F526E20F7364300E765B8 /* WWWWifiInfoManager.h */,
-				AD8F526F20F7364300E765B8 /* WWWWifiInfoManager.m */,
-				AD8F527320F736C500E765B8 /* WiFiInfoDirection */,
-			);
-			path = WiFiInfo;
-			sourceTree = "<group>";
-		};
-		AD8F527520F73B6100E765B8 /* TCPSocket */ = {
-			isa = PBXGroup;
-			children = (
-				AD8F527720F73C1500E765B8 /* WWWTcpSocketStreamManager.h */,
-				AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */,
-				AD8F527920F741B700E765B8 /* GCDAsyncSocket.h */,
-				AD8F527A20F741B700E765B8 /* GCDAsyncSocket.m */,
-				AD8F527C20F743F000E765B8 /* TCPSocketDirection */,
-			);
-			path = TCPSocket;
 			sourceTree = "<group>";
 		};
 		AD8F529020FC34DB00E765B8 /* RecordScreen */ = {
@@ -278,6 +259,41 @@
 				AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */,
 			);
 			path = "Multi-lineTextAlertView";
+			sourceTree = "<group>";
+		};
+		ADE6C5D0210187BD0061674B /* TCPSocket */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F527720F73C1500E765B8 /* WWWTcpSocketStreamManager.h */,
+				AD8F527620F73C1500E765B8 /* WWWTcpSocketStreamManager.m */,
+				AD8F527920F741B700E765B8 /* GCDAsyncSocket.h */,
+				AD8F527A20F741B700E765B8 /* GCDAsyncSocket.m */,
+				AD8F527C20F743F000E765B8 /* TCPSocketDirection */,
+			);
+			path = TCPSocket;
+			sourceTree = "<group>";
+		};
+		ADE6C5D1210188150061674B /* WiFiInfo */ = {
+			isa = PBXGroup;
+			children = (
+				AD8F526C20F7364300E765B8 /* getgateway.c */,
+				AD8F527020F7364300E765B8 /* getgateway.h */,
+				AD8F526D20F7364300E765B8 /* route.h */,
+				AD8F526E20F7364300E765B8 /* WWWWifiInfoManager.h */,
+				AD8F526F20F7364300E765B8 /* WWWWifiInfoManager.m */,
+				AD8F527320F736C500E765B8 /* WiFiInfoDirection */,
+			);
+			path = WiFiInfo;
+			sourceTree = "<group>";
+		};
+		ADE6C5D22101890B0061674B /* KVOObservation */ = {
+			isa = PBXGroup;
+			children = (
+				ADE6C5D321018A270061674B /* WWWKVOObservationManager.h */,
+				ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */,
+				ADE6C5D62105B3D00061674B /* KVOObservation */,
+			);
+			path = KVOObservation;
 			sourceTree = "<group>";
 		};
 		E251F7914D307428C78A8FFC /* Pods */ = {
@@ -359,6 +375,7 @@
 			files = (
 				AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */,
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
+				ADE6C5D72105B3D00061674B /* KVOObservation in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
 				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
 				AD8F52B52100690800E765B8 /* BottomPickerView in Resources */,
@@ -436,6 +453,7 @@
 				AD8F52B020FF36B500E765B8 /* WWWBottomPickerViewManager.m in Sources */,
 				AD8F529A20FC350500E765B8 /* THCapture.m in Sources */,
 				AD8F52A420FC702C00E765B8 /* WWWTools.m in Sources */,
+				ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
 				AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
 				AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */,
