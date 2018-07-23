@@ -187,7 +187,7 @@
 				ADE6C5D22101890B0061674B /* KVOObservation */,
 				ADE6C5D1210188150061674B /* WiFiInfo */,
 				ADE6C5D0210187BD0061674B /* TCPSocket */,
-				AD8F529020FC34DB00E765B8 /* RecordScreen111 */,
+				AD8F529020FC34DB00E765B8 /* RecordScreen */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
-		AD8F529020FC34DB00E765B8 /* RecordScreen111 */ = {
+		AD8F529020FC34DB00E765B8 /* RecordScreen */ = {
 			isa = PBXGroup;
 			children = (
 				AD8F529F20FC4E1900E765B8 /* WWWRecordScreenManager.h */,
@@ -225,7 +225,7 @@
 				AD8F52A520FD80C200E765B8 /* ASScreenRecorder.m */,
 				AD8F529920FC350500E765B8 /* RecordScreen */,
 			);
-			path = RecordScreen111;
+			path = RecordScreen;
 			sourceTree = "<group>";
 		};
 		AD8F52AD20FF357000E765B8 /* UI */ = {
