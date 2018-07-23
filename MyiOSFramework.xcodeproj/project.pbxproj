@@ -38,6 +38,12 @@
 		AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */; };
 		ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */; };
 		ADE6C5D72105B3D00061674B /* KVOObservation in Resources */ = {isa = PBXBuildFile; fileRef = ADE6C5D62105B3D00061674B /* KVOObservation */; };
+		ADE6C5E42105CEDD0061674B /* RecordScreen in Resources */ = {isa = PBXBuildFile; fileRef = ADE6C5D92105CEDD0061674B /* RecordScreen */; };
+		ADE6C5E52105CEDD0061674B /* BlazeiceAudioRecordAndTransCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5DB2105CEDD0061674B /* BlazeiceAudioRecordAndTransCoding.m */; };
+		ADE6C5E62105CEDD0061674B /* THCapture.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5DC2105CEDD0061674B /* THCapture.m */; };
+		ADE6C5E72105CEDD0061674B /* BlazeiceScreenAndAudioRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5DE2105CEDD0061674B /* BlazeiceScreenAndAudioRecordViewController.m */; };
+		ADE6C5E82105CEDD0061674B /* CGContextCreator.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5E02105CEDD0061674B /* CGContextCreator.m */; };
+		ADE6C5E92105CEDD0061674B /* THCaptureUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5E32105CEDD0061674B /* THCaptureUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +104,17 @@
 		ADE6C5D321018A270061674B /* WWWKVOObservationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWKVOObservationManager.h; sourceTree = "<group>"; };
 		ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWKVOObservationManager.m; sourceTree = "<group>"; };
 		ADE6C5D62105B3D00061674B /* KVOObservation */ = {isa = PBXFileReference; lastKnownFileType = text; path = KVOObservation; sourceTree = "<group>"; };
+		ADE6C5D92105CEDD0061674B /* RecordScreen */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RecordScreen; sourceTree = "<group>"; };
+		ADE6C5DA2105CEDD0061674B /* CGContextCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGContextCreator.h; sourceTree = "<group>"; };
+		ADE6C5DB2105CEDD0061674B /* BlazeiceAudioRecordAndTransCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeiceAudioRecordAndTransCoding.m; sourceTree = "<group>"; };
+		ADE6C5DC2105CEDD0061674B /* THCapture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCapture.m; sourceTree = "<group>"; };
+		ADE6C5DD2105CEDD0061674B /* THCaptureUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCaptureUtilities.h; sourceTree = "<group>"; };
+		ADE6C5DE2105CEDD0061674B /* BlazeiceScreenAndAudioRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeiceScreenAndAudioRecordViewController.m; sourceTree = "<group>"; };
+		ADE6C5DF2105CEDD0061674B /* BlazeiceAudioRecordAndTransCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeiceAudioRecordAndTransCoding.h; sourceTree = "<group>"; };
+		ADE6C5E02105CEDD0061674B /* CGContextCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CGContextCreator.m; sourceTree = "<group>"; };
+		ADE6C5E12105CEDD0061674B /* THCapture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THCapture.h; sourceTree = "<group>"; };
+		ADE6C5E22105CEDD0061674B /* BlazeiceScreenAndAudioRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeiceScreenAndAudioRecordViewController.h; sourceTree = "<group>"; };
+		ADE6C5E32105CEDD0061674B /* THCaptureUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THCaptureUtilities.m; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,10 +201,11 @@
 		AD8F526220F6FD3500E765B8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				ADE6C5D82105CEDD0061674B /* RecordScreen */,
 				ADE6C5D22101890B0061674B /* KVOObservation */,
 				ADE6C5D1210188150061674B /* WiFiInfo */,
 				ADE6C5D0210187BD0061674B /* TCPSocket */,
-				AD8F529020FC34DB00E765B8 /* RecordScreen */,
+				AD8F529020FC34DB00E765B8 /* RecordScreen111 */,
 			);
 			path = Unit;
 			sourceTree = "<group>";
@@ -210,7 +228,7 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
-		AD8F529020FC34DB00E765B8 /* RecordScreen */ = {
+		AD8F529020FC34DB00E765B8 /* RecordScreen111 */ = {
 			isa = PBXGroup;
 			children = (
 				AD8F529F20FC4E1900E765B8 /* WWWRecordScreenManager.h */,
@@ -225,7 +243,7 @@
 				AD8F52A520FD80C200E765B8 /* ASScreenRecorder.m */,
 				AD8F529920FC350500E765B8 /* RecordScreen */,
 			);
-			path = RecordScreen;
+			path = RecordScreen111;
 			sourceTree = "<group>";
 		};
 		AD8F52AD20FF357000E765B8 /* UI */ = {
@@ -294,6 +312,24 @@
 				ADE6C5D62105B3D00061674B /* KVOObservation */,
 			);
 			path = KVOObservation;
+			sourceTree = "<group>";
+		};
+		ADE6C5D82105CEDD0061674B /* RecordScreen */ = {
+			isa = PBXGroup;
+			children = (
+				ADE6C5D92105CEDD0061674B /* RecordScreen */,
+				ADE6C5DA2105CEDD0061674B /* CGContextCreator.h */,
+				ADE6C5DB2105CEDD0061674B /* BlazeiceAudioRecordAndTransCoding.m */,
+				ADE6C5DC2105CEDD0061674B /* THCapture.m */,
+				ADE6C5DD2105CEDD0061674B /* THCaptureUtilities.h */,
+				ADE6C5DE2105CEDD0061674B /* BlazeiceScreenAndAudioRecordViewController.m */,
+				ADE6C5DF2105CEDD0061674B /* BlazeiceAudioRecordAndTransCoding.h */,
+				ADE6C5E02105CEDD0061674B /* CGContextCreator.m */,
+				ADE6C5E12105CEDD0061674B /* THCapture.h */,
+				ADE6C5E22105CEDD0061674B /* BlazeiceScreenAndAudioRecordViewController.h */,
+				ADE6C5E32105CEDD0061674B /* THCaptureUtilities.m */,
+			);
+			path = "Record\bScreen";
 			sourceTree = "<group>";
 		};
 		E251F7914D307428C78A8FFC /* Pods */ = {
@@ -379,6 +415,7 @@
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
 				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
 				AD8F52B52100690800E765B8 /* BottomPickerView in Resources */,
+				ADE6C5E42105CEDD0061674B /* RecordScreen in Resources */,
 				AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
 			);
@@ -444,19 +481,24 @@
 				AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */,
 				AD8F52B320FF36D300E765B8 /* WWWBottomPickerView.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
+				ADE6C5E92105CEDD0061674B /* THCaptureUtilities.m in Sources */,
 				AD8F527120F7364300E765B8 /* getgateway.c in Sources */,
 				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
+				ADE6C5E82105CEDD0061674B /* CGContextCreator.m in Sources */,
 				AD8F52A720FD80C300E765B8 /* ASScreenRecorder.m in Sources */,
 				AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 				AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */,
+				ADE6C5E62105CEDD0061674B /* THCapture.m in Sources */,
 				AD8F52B020FF36B500E765B8 /* WWWBottomPickerViewManager.m in Sources */,
 				AD8F529A20FC350500E765B8 /* THCapture.m in Sources */,
 				AD8F52A420FC702C00E765B8 /* WWWTools.m in Sources */,
 				ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
 				AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
+				ADE6C5E52105CEDD0061674B /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
 				AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */,
+				ADE6C5E72105CEDD0061674B /* BlazeiceScreenAndAudioRecordViewController.m in Sources */,
 				AD8F529B20FC350500E765B8 /* THCaptureUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
