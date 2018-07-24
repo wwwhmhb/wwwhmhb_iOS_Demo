@@ -38,6 +38,14 @@
 		AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */; };
 		ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */; };
 		ADE6C5D72105B3D00061674B /* KVOObservation in Resources */ = {isa = PBXBuildFile; fileRef = ADE6C5D62105B3D00061674B /* KVOObservation */; };
+		ADE6C5F22105D7B90061674B /* ACEDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5EB2105D7B90061674B /* ACEDrawingView.m */; };
+		ADE6C5F32105D7B90061674B /* BlazeiceDooleView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5EE2105D7B90061674B /* BlazeiceDooleView.m */; };
+		ADE6C5F42105D7B90061674B /* ACEDrawingTools.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5EF2105D7B90061674B /* ACEDrawingTools.m */; };
+		ADE6C5F72105E1690061674B /* BlazeiceObject.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5F52105E1680061674B /* BlazeiceObject.m */; };
+		ADE6C5FA2105E1CF0061674B /* BlazeicePlist.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5F92105E1CE0061674B /* BlazeicePlist.m */; };
+		ADE6C5FD2105E2140061674B /* UIColor+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5FC2105E2140061674B /* UIColor+Extend.m */; };
+		ADE6C6002105E2400061674B /* UIView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5FE2105E2400061674B /* UIView+UIImage.m */; };
+		ADE6C6032105E2700061674B /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C6012105E2700061674B /* UIImage-Extensions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +106,23 @@
 		ADE6C5D321018A270061674B /* WWWKVOObservationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWKVOObservationManager.h; sourceTree = "<group>"; };
 		ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWKVOObservationManager.m; sourceTree = "<group>"; };
 		ADE6C5D62105B3D00061674B /* KVOObservation */ = {isa = PBXFileReference; lastKnownFileType = text; path = KVOObservation; sourceTree = "<group>"; };
+		ADE6C5EB2105D7B90061674B /* ACEDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDrawingView.m; sourceTree = "<group>"; };
+		ADE6C5EC2105D7B90061674B /* ACEDrawingTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEDrawingTools.h; sourceTree = "<group>"; };
+		ADE6C5ED2105D7B90061674B /* Mark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mark.h; sourceTree = "<group>"; };
+		ADE6C5EE2105D7B90061674B /* BlazeiceDooleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeiceDooleView.m; sourceTree = "<group>"; };
+		ADE6C5EF2105D7B90061674B /* ACEDrawingTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDrawingTools.m; sourceTree = "<group>"; };
+		ADE6C5F02105D7B90061674B /* BlazeiceDooleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeiceDooleView.h; sourceTree = "<group>"; };
+		ADE6C5F12105D7B90061674B /* ACEDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACEDrawingView.h; sourceTree = "<group>"; };
+		ADE6C5F52105E1680061674B /* BlazeiceObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeiceObject.m; sourceTree = "<group>"; };
+		ADE6C5F62105E1690061674B /* BlazeiceObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeiceObject.h; sourceTree = "<group>"; };
+		ADE6C5F82105E1CE0061674B /* BlazeicePlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeicePlist.h; sourceTree = "<group>"; };
+		ADE6C5F92105E1CE0061674B /* BlazeicePlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeicePlist.m; sourceTree = "<group>"; };
+		ADE6C5FB2105E2140061674B /* UIColor+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Extend.h"; sourceTree = "<group>"; };
+		ADE6C5FC2105E2140061674B /* UIColor+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Extend.m"; sourceTree = "<group>"; };
+		ADE6C5FE2105E2400061674B /* UIView+UIImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+UIImage.m"; sourceTree = "<group>"; };
+		ADE6C5FF2105E2400061674B /* UIView+UIImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+UIImage.h"; sourceTree = "<group>"; };
+		ADE6C6012105E2700061674B /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
+		ADE6C6022105E2700061674B /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -231,6 +256,7 @@
 		AD8F52AD20FF357000E765B8 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				ADE6C5EA2105D5EE0061674B /* DrawingBoardView */,
 				AD8F52B72100768100E765B8 /* Multi-lineTextAlertView */,
 				AD8F52B62100753400E765B8 /* BottomPickerView */,
 			);
@@ -294,6 +320,30 @@
 				ADE6C5D62105B3D00061674B /* KVOObservation */,
 			);
 			path = KVOObservation;
+			sourceTree = "<group>";
+		};
+		ADE6C5EA2105D5EE0061674B /* DrawingBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				ADE6C6022105E2700061674B /* UIImage-Extensions.h */,
+				ADE6C6012105E2700061674B /* UIImage-Extensions.m */,
+				ADE6C5FF2105E2400061674B /* UIView+UIImage.h */,
+				ADE6C5FE2105E2400061674B /* UIView+UIImage.m */,
+				ADE6C5FB2105E2140061674B /* UIColor+Extend.h */,
+				ADE6C5FC2105E2140061674B /* UIColor+Extend.m */,
+				ADE6C5F82105E1CE0061674B /* BlazeicePlist.h */,
+				ADE6C5F92105E1CE0061674B /* BlazeicePlist.m */,
+				ADE6C5F62105E1690061674B /* BlazeiceObject.h */,
+				ADE6C5F52105E1680061674B /* BlazeiceObject.m */,
+				ADE6C5EC2105D7B90061674B /* ACEDrawingTools.h */,
+				ADE6C5EF2105D7B90061674B /* ACEDrawingTools.m */,
+				ADE6C5F12105D7B90061674B /* ACEDrawingView.h */,
+				ADE6C5EB2105D7B90061674B /* ACEDrawingView.m */,
+				ADE6C5F02105D7B90061674B /* BlazeiceDooleView.h */,
+				ADE6C5EE2105D7B90061674B /* BlazeiceDooleView.m */,
+				ADE6C5ED2105D7B90061674B /* Mark.h */,
+			);
+			path = DrawingBoardView;
 			sourceTree = "<group>";
 		};
 		E251F7914D307428C78A8FFC /* Pods */ = {
@@ -437,25 +487,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD8F525B20F60E0300E765B8 /* WWWBaseNavigationController.m in Sources */,
+				ADE6C6032105E2700061674B /* UIImage-Extensions.m in Sources */,
 				AD8F52BD21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m in Sources */,
 				AD8F526A20F708D500E765B8 /* WWWBaseViewController.m in Sources */,
+				ADE6C5F32105D7B90061674B /* BlazeiceDooleView.m in Sources */,
 				AD8F52AA20FD8AF100E765B8 /* UIButton+AddSelectorForClick.m in Sources */,
 				AD8F524820F6042300E765B8 /* MainViewController.m in Sources */,
 				AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */,
+				ADE6C5F42105D7B90061674B /* ACEDrawingTools.m in Sources */,
 				AD8F52B320FF36D300E765B8 /* WWWBottomPickerView.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
 				AD8F527120F7364300E765B8 /* getgateway.c in Sources */,
+				ADE6C5FD2105E2140061674B /* UIColor+Extend.m in Sources */,
 				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
 				AD8F52A720FD80C300E765B8 /* ASScreenRecorder.m in Sources */,
 				AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 				AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */,
+				ADE6C5FA2105E1CF0061674B /* BlazeicePlist.m in Sources */,
 				AD8F52B020FF36B500E765B8 /* WWWBottomPickerViewManager.m in Sources */,
 				AD8F529A20FC350500E765B8 /* THCapture.m in Sources */,
 				AD8F52A420FC702C00E765B8 /* WWWTools.m in Sources */,
+				ADE6C5F72105E1690061674B /* BlazeiceObject.m in Sources */,
 				ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
+				ADE6C6002105E2400061674B /* UIView+UIImage.m in Sources */,
 				AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
+				ADE6C5F22105D7B90061674B /* ACEDrawingView.m in Sources */,
 				AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */,
 				AD8F529B20FC350500E765B8 /* THCaptureUtilities.m in Sources */,
 			);

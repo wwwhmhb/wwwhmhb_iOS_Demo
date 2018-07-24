@@ -7,9 +7,9 @@
 //
 
 #import "WWWMulti_lineTextAlertView.h"
-#import "WWWKVOObservationManager.h"
+
 @interface WWWMulti_lineTextAlertView () <UITextViewDelegate> {
-    WWWKVOObservationManager *_kvoManager;
+    
 }
 
 @property (nonatomic,strong)UITextView *textView;
@@ -79,15 +79,6 @@
         [sureBtn addTarget:self action:@selector(clickSubmit:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:sureBtn];
         
-        if (!_kvoManager) {
-            _kvoManager = [[WWWKVOObservationManager alloc] init];
-        }
-        __weak __typeof__(self) weakSelf = self;
-        
-        [_kvoManager addObserveObject:_textView andKeyPath:@"hidden" andContext:nil andResultBlock:^(NSDictionary *dict) {
-            __strong __typeof(self) strongSelf = weakSelf;
-            [strongSelf.textView removeFromSuperview];
-        }];
     }
     return self;
 }

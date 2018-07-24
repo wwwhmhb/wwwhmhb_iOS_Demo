@@ -14,8 +14,18 @@
 #import "Masonry.h"
 #import "WWWTools.h"
 
-#define kMainScreenWidth       [[UIScreen mainScreen] applicationFrame].size.width
+#define kMainScreenWidth        [[UIScreen mainScreen] applicationFrame].size.width
 #define kMainScreenHeight       [[UIScreen mainScreen] applicationFrame].size.height
+
+#define GZOBJECT_SINGLETON_BOILERPLATE(_object_name_, _shared_obj_name_) \
++ (id)_shared_obj_name_{ \
+static _object_name_ *z##_shared_obj_name_; \
+static dispatch_once_t done; \
+dispatch_once(&done, ^{ \
+z##_shared_obj_name_ = [[_object_name_ alloc] init]; \
+}); \
+return z##_shared_obj_name_; \
+}
 
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.

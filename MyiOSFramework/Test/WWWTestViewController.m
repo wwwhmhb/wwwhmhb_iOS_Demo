@@ -11,7 +11,11 @@
 #import "WWWMulti_lineTextAlertViewManager.h"
 #import "WWWBottomPickerViewManager.h"
 
-@interface WWWTestViewController ()
+#import "BlazeiceDooleView.h"
+
+@interface WWWTestViewController () {
+    BlazeiceDooleView *doodleView;
+}
 
 @end
 
@@ -22,6 +26,11 @@
     // Do any additional setup after loading the view.
     
     self.title = @"TestViewController";
+    
+    CGRect frame = CGRectMake(0, 100, kMainScreenWidth,kMainScreenHeight-80);
+    doodleView = [[BlazeiceDooleView alloc] initWithFrame:frame];
+    doodleView.drawView.formPush = YES;//标志他是从教师端推送过来的。
+    [self.view addSubview:doodleView];
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [testButton setTitle:@"Test" forState:UIControlStateNormal];
