@@ -13,6 +13,7 @@
 #import "Masonry.h"
 #import "WWWTools.h"
 
+
 //单例
 #define GZOBJECT_SINGLETON_BOILERPLATE(_object_name_, _shared_obj_name_) \
 + (id)_shared_obj_name_{ \
@@ -24,12 +25,41 @@ z##_shared_obj_name_ = [[_object_name_ alloc] init]; \
 return z##_shared_obj_name_; \
 }
 
+
 //只在debug模式下打印
+//下面的代码实际是定义了一个宏，这个宏名称恰好也是NSLog，我们在其他文件中使用的NSLog已经不再是原来的NSLog而是定义的宏NSLog,(此NSLog非彼NSLog---大笑)。
+//#ifndef __OPTIMIZE__
+//#define NSLog(...) NSLog(__VA_ARGS__)
+//#else
+//#define NSLog(...) {}
+//#endif
+
+//#define NSLog(format, ...) do { \
+//fprintf(stderr, " <%s : %d> %s\n", \
+//[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], \
+//__LINE__, __func__); \
+//(NSLog)((format), ##__VA_ARGS__); \
+//fprintf(stderr, "-------\n"); \
+//} while (0)
+
+
+//丰富打印信息，添加类名，所在行数，方法名称
 #ifndef __OPTIMIZE__
-#define NSLog(...) NSLog(__VA_ARGS__)
+#define NSLog(format, ...)  do { \
+fprintf(stderr, " <%s : %d> %s\n", \
+[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], \
+__LINE__, __func__); \
+(NSLog)((format), ##__VA_ARGS__); \
+fprintf(stderr, "-------\n"); \
+} while (0)
 #else
-#define NSLog(...) {}
+#define NSLog(format, ...) {}
 #endif
+
+
+//打印执行前后的时间段
+#define TICK   NSDate *startTime = [NSDate date]
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
 
 
 #define kMainScreenWidth        [[UIScreen mainScreen] applicationFrame].size.width
