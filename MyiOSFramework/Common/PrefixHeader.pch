@@ -10,13 +10,10 @@
 #define PrefixHeader_pch
 
 #import "WWWBaseViewController.h"
-
 #import "Masonry.h"
 #import "WWWTools.h"
 
-#define kMainScreenWidth        [[UIScreen mainScreen] applicationFrame].size.width
-#define kMainScreenHeight       [[UIScreen mainScreen] applicationFrame].size.height
-
+//单例
 #define GZOBJECT_SINGLETON_BOILERPLATE(_object_name_, _shared_obj_name_) \
 + (id)_shared_obj_name_{ \
 static _object_name_ *z##_shared_obj_name_; \
@@ -27,7 +24,18 @@ z##_shared_obj_name_ = [[_object_name_ alloc] init]; \
 return z##_shared_obj_name_; \
 }
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//只在debug模式下打印
+#ifndef __OPTIMIZE__
+#define NSLog(...) NSLog(__VA_ARGS__)
+#else
+#define NSLog(...) {}
+#endif
+
+
+#define kMainScreenWidth        [[UIScreen mainScreen] applicationFrame].size.width
+#define kMainScreenHeight       [[UIScreen mainScreen] applicationFrame].size.height
+
+
+
 
 #endif /* PrefixHeader_pch */
