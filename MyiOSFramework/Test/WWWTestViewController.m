@@ -24,8 +24,8 @@
     
     self.title = @"TestViewController";
     
-
-    
+    NSArray *array = @[@"67"];
+    NSLog(@"Array = %@",array[3]);
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     

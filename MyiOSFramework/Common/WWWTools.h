@@ -109,4 +109,13 @@ typedef NS_ENUM(NSInteger,FilePathType) {
 
 
 
+
+/**
+ 获取当前的视图控制器
+
+ @param rootViewController <#rootViewController description#>
+ @return <#return value description#>
+ */
++ (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController;
+
 @end

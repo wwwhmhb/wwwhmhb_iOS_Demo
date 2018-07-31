@@ -5,4 +5,5 @@ pod 'MQTTClient'
 pod 'Masonry'
 pod 'SDWebImage'
 pod 'SSZipArchive'
+pod 'AFNetworking'
 end
