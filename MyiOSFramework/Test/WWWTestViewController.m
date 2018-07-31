@@ -8,13 +8,10 @@
 
 #import "WWWTestViewController.h"
 
-#import "WWWMulti_lineTextAlertViewManager.h"
-#import "WWWBottomPickerViewManager.h"
-
-#import "BlazeiceDooleView.h"
+#import "NSArray+LXDExtension.h"
 
 @interface WWWTestViewController () {
-    BlazeiceDooleView *doodleView;
+    UITableView *tableView;
 }
 
 @end
@@ -27,33 +24,41 @@
     
     self.title = @"TestViewController";
     
-    CGRect frame = CGRectMake(0, 100, kMainScreenWidth,kMainScreenHeight-80);
-    doodleView = [[BlazeiceDooleView alloc] initWithFrame:frame];
-    doodleView.drawView.formPush = YES;//标志他是从教师端推送过来的。
-    [self.view addSubview:doodleView];
+
+    
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
     [testButton setTitle:@"Test" forState:UIControlStateNormal];
     [testButton setBackgroundColor:[UIColor orangeColor]];
     [testButton addTarget:self action:@selector(testButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testButton];
+    
+    
     [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).offset(80);
         make.left.mas_equalTo(self.view).offset(20);
         make.size.mas_equalTo(CGSizeMake(100, 60));
     }];
     
+    
 }
 
-- (void)testButtonAction:(UIButton *)button {
-    NSLog(@"testButtonAction:");
-    [WWWMulti_lineTextAlertViewManager showMulti_lineTextAlertViewWithRequestDataBlock:^(NSString *text) {
-        NSLog(@"text = %@",text);
-    }];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
     
-//    [WWWBottomPickerViewManager showEditPickerViewWithData:@[@"早晨",@"中午",@"下午"] andBlock:^(NSString *temp) {
-//        NSLog(@"%@",temp);
-//    }];
+}
+
+
+- (void)testButtonAction:(UIButton *)button {
+    
+    NSArray *numbers = @[@10, @15, @99, @66, @25, @28.1, @7.5, @11.2, @66.2];
+
+    
+    NSArray *result = numbers.arrayFileter((WWWItemFilter)^(NSNumber * item){return item.floatValue > 20;}).arrayChange((WWWItemChange)^(NSNumber *item){return [NSString stringWithFormat:@"%@",item];});
+    
+    NSLog(@"result = %@",result);
     
 }
 

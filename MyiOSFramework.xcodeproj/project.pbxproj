@@ -36,6 +36,9 @@
 		AD8F52BD21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52BC21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m */; };
 		AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F52BF21007D7600E765B8 /* WWWMulti_lineTextAlertView.m */; };
 		AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */; };
+		ADAC8718210EF0550093BCE0 /* NSArray+LXDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC8717210EF0550093BCE0 /* NSArray+LXDExtension.m */; };
+		ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */ = {isa = PBXBuildFile; fileRef = ADAC8719210EF6DE0093BCE0 /* DrawingBoardView */; };
+		ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */; };
 		ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */; };
 		ADE6C5D72105B3D00061674B /* KVOObservation in Resources */ = {isa = PBXBuildFile; fileRef = ADE6C5D62105B3D00061674B /* KVOObservation */; };
 		ADE6C5F22105D7B90061674B /* ACEDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5EB2105D7B90061674B /* ACEDrawingView.m */; };
@@ -103,6 +106,11 @@
 		AD8F52BE21007D7600E765B8 /* WWWMulti_lineTextAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWMulti_lineTextAlertView.h; sourceTree = "<group>"; };
 		AD8F52BF21007D7600E765B8 /* WWWMulti_lineTextAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWMulti_lineTextAlertView.m; sourceTree = "<group>"; };
 		AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */ = {isa = PBXFileReference; lastKnownFileType = text; path = Multi_lineTextAlertView; sourceTree = "<group>"; };
+		ADAC8716210EF0550093BCE0 /* NSArray+LXDExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+LXDExtension.h"; sourceTree = "<group>"; };
+		ADAC8717210EF0550093BCE0 /* NSArray+LXDExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LXDExtension.m"; sourceTree = "<group>"; };
+		ADAC8719210EF6DE0093BCE0 /* DrawingBoardView */ = {isa = PBXFileReference; lastKnownFileType = text; path = DrawingBoardView; sourceTree = "<group>"; };
+		ADCA8E06210F1777003296D8 /* WWWStreamOperationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWStreamOperationManager.h; sourceTree = "<group>"; };
+		ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWStreamOperationManager.m; sourceTree = "<group>"; };
 		ADE6C5D321018A270061674B /* WWWKVOObservationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWKVOObservationManager.h; sourceTree = "<group>"; };
 		ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWKVOObservationManager.m; sourceTree = "<group>"; };
 		ADE6C5D62105B3D00061674B /* KVOObservation */ = {isa = PBXFileReference; lastKnownFileType = text; path = KVOObservation; sourceTree = "<group>"; };
@@ -209,6 +217,7 @@
 		AD8F526220F6FD3500E765B8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				ADCA8E05210F16BC003296D8 /* StreamOperationManager */,
 				ADE6C5D22101890B0061674B /* KVOObservation */,
 				ADE6C5D1210188150061674B /* WiFiInfo */,
 				ADE6C5D0210187BD0061674B /* TCPSocket */,
@@ -222,6 +231,8 @@
 			children = (
 				AD8F52A820FD8AF100E765B8 /* UIButton+AddSelectorForClick.h */,
 				AD8F52A920FD8AF100E765B8 /* UIButton+AddSelectorForClick.m */,
+				ADAC8716210EF0550093BCE0 /* NSArray+LXDExtension.h */,
+				ADAC8717210EF0550093BCE0 /* NSArray+LXDExtension.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -287,6 +298,15 @@
 			path = "Multi-lineTextAlertView";
 			sourceTree = "<group>";
 		};
+		ADCA8E05210F16BC003296D8 /* StreamOperationManager */ = {
+			isa = PBXGroup;
+			children = (
+				ADCA8E06210F1777003296D8 /* WWWStreamOperationManager.h */,
+				ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */,
+			);
+			path = StreamOperationManager;
+			sourceTree = "<group>";
+		};
 		ADE6C5D0210187BD0061674B /* TCPSocket */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,6 +362,7 @@
 				ADE6C5F02105D7B90061674B /* BlazeiceDooleView.h */,
 				ADE6C5EE2105D7B90061674B /* BlazeiceDooleView.m */,
 				ADE6C5ED2105D7B90061674B /* Mark.h */,
+				ADAC8719210EF6DE0093BCE0 /* DrawingBoardView */,
 			);
 			path = DrawingBoardView;
 			sourceTree = "<group>";
@@ -430,6 +451,7 @@
 				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
 				AD8F52B52100690800E765B8 /* BottomPickerView in Resources */,
 				AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */,
+				ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,8 +524,10 @@
 				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
 				AD8F52A720FD80C300E765B8 /* ASScreenRecorder.m in Sources */,
 				AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */,
+				ADAC8718210EF0550093BCE0 /* NSArray+LXDExtension.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 				AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */,
+				ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */,
 				ADE6C5FA2105E1CF0061674B /* BlazeicePlist.m in Sources */,
 				AD8F52B020FF36B500E765B8 /* WWWBottomPickerViewManager.m in Sources */,
 				AD8F529A20FC350500E765B8 /* THCapture.m in Sources */,

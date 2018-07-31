@@ -1,38 +1,47 @@
 //
-//  YORTcpSocketManager.m
-//  YOYOMonitoring
+//  WWWStreamOperationManager.m
+//  MyiOSFramework
 //
-//  Created by Yonggui Wang on 2018/7/4.
-//  Copyright © 2018年 youerobot. All rights reserved.
+//  Created by Yonggui Wang on 2018/7/30.
+//  Copyright © 2018年 Weiwei Wang. All rights reserved.
 //
 
-#import "WWWTcpSocketStreamManager.h"
+#import "WWWStreamOperationManager.h"
 
-@interface WWWTcpSocketStreamManager () <NSStreamDelegate> {
+@interface WWWStreamOperationManager () <NSStreamDelegate> {
     NSString *_gateWayId;
     int _port;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
-    
+    NSString *_contentString;
 }
 
 @end
 
-@implementation WWWTcpSocketStreamManager
+@implementation WWWStreamOperationManager
 
+//初始化
 - (instancetype)initWithGateWayId:(NSString *)gateWayId andPort:(int)port {
     self = [super init];
     if (self) {
         _port = port;
         _gateWayId = gateWayId;
+        [self initTcpSocketManager];
     }
     return self;
 }
 
-- (void)startTcpSocket {
-   [self initTcpSocketManager];
+//开始通讯
+- (void)startTcpSocketWithSendMessage:(NSString *)contentString {
+    //发送信息内容
+    _contentString = contentString;
+    
+    //打开流
+    [_inputStream open];
+    [_outputStream open];
 }
 
+//初始化管理者
 - (void)initTcpSocketManager {
     
     /*
@@ -58,92 +67,14 @@
                             forMode:NSDefaultRunLoopMode];
     [_outputStream scheduleInRunLoop:[NSRunLoop currentRunLoop]
                              forMode:NSDefaultRunLoopMode];
-    
-    //打开流
-    [_inputStream open];
-    [_outputStream open];
 }
 
--(void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
-    NSString *event;
-    int flag = 0;
-    switch (streamEvent) {
-        case NSStreamEventNone:
-            event = @"NSStreamEventNone";
-            break;
-        case NSStreamEventOpenCompleted:
-            event = @"NSStreamEventOpenCompleted";
-            break;
-        case NSStreamEventHasBytesAvailable:
-            event = @"NSStreamEventHasBytesAvailable";
-            if (flag ==0 && theStream == _inputStream) {
-                NSMutableData *input = [[NSMutableData alloc] init];
-                uint8_t buffer[1024];
-                NSInteger len;
-                // hasBytesAvailable 检查流中是否还有数据。
-                while([_inputStream hasBytesAvailable])
-                {
-                    //从流中读取数据到 buffer 中，buffer 的 maxLength 不应少于 1024，该接口返回实际读取的数据长度（该长度最大为 len）。
-                    len = [_inputStream read:buffer maxLength:sizeof(buffer)];
-                    if (len > 0)
-                    {
-                        [input appendBytes:buffer length:len];
-                    }
-                }
-                
-                NSString *resultstring = [[NSString alloc] initWithData:input encoding:NSUTF8StringEncoding];
-                [self close];
-                if (resultstring && _delegate && [_delegate respondsToSelector:@selector(receiveFromTcpSocketMessage:andError:)]) {
-                    [_delegate receiveFromTcpSocketMessage:resultstring  andError:nil];
-                }
-            }
-            break;
-        case NSStreamEventHasSpaceAvailable:
-            event = @"NSStreamEventHasSpaceAvailable";
-            if (flag ==0 && theStream == _outputStream) {
-                
-                // hasSpaceAvailable 检查流中是否还有可供写入的空间
-                //输出
-                UInt8 buff[1024];
-                
-                //开辟一个buff空间
-                memcpy(buff, [_contentString cStringUsingEncoding:NSASCIIStringEncoding], 2*[_contentString length]);
-                
-                //将 buffer 中的数据写入流中，返回实际写入的字节数。
-                [_outputStream write:buff maxLength: strlen((const char*)buff)];
-                
-                //必须关闭输出流否则，服务器端一直读取不会停止，
-                [_outputStream close];
-            }
-            break;
-        case NSStreamEventErrorOccurred:
-            event = @"NSStreamEventErrorOccurred";
-            [self close];
-            if ([theStream streamError]) {
-                NSError *error = [theStream streamError];
-                if (error && _delegate && [_delegate respondsToSelector:@selector(receiveFromTcpSocketMessage:andError:)]) {
-                    [_delegate receiveFromTcpSocketMessage:nil andError:error];
-                }
-            }
-            
-            break;
-        case NSStreamEventEndEncountered:
-            event = @"NSStreamEventEndEncountered";
-            [self close];
-            break;
-        default:
-            [self close];
-            event = @"Unknown";
-            break;
-    }
-    
-    NSLog(@"event------%@",event);
-}
-
+//关闭通讯
 -(void)closeTcpSocket {
     [self close];
 }
 
+//关闭管理者
 -(void)close
 {
     [_outputStream close];
@@ -153,6 +84,89 @@
     [_inputStream close];
     [_inputStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
     [_inputStream setDelegate:nil];
+}
+
+#pragma mark -- NSStreamDelegate 代理
+-(void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
+    
+    switch (streamEvent) {
+        case NSStreamEventNone:
+        {
+            
+        }
+            break;
+        case NSStreamEventOpenCompleted:
+        {
+            
+        }
+            break;
+        case NSStreamEventHasBytesAvailable:
+        {
+            if (theStream == _inputStream) {
+                //初始化data和buffer
+                NSMutableData *input = [[NSMutableData alloc] init];
+                uint8_t buffer[1024];
+                NSInteger len;
+                
+                //检查流中是否还有数据。
+                BOOL isAvailable = [_inputStream hasBytesAvailable];
+                while(isAvailable) {
+                    //从流中读取数据到 buffer 中，buffer 的 maxLength 不应少于 1024，该接口返回实际读取的数据长度（该长度最大为 len）。
+                    len = [_inputStream read:buffer maxLength:1024];
+                    if (len > 0)
+                    {
+                        //将buffer中数据合并到data中
+                        [input appendBytes:buffer length:len];
+                    }
+                }
+                
+                //将data转化为NSString
+                NSString *resultstring = [[NSString alloc] initWithData:input encoding:NSUTF8StringEncoding];
+                //代理传递信息
+                if (resultstring && _delegate && [_delegate respondsToSelector:@selector(receiveFromTcpSocketMessage:andError:)]) {
+                    [_delegate receiveFromTcpSocketMessage:resultstring  andError:nil];
+                }
+            }
+        }
+            break;
+        case NSStreamEventHasSpaceAvailable:
+        {
+            if (theStream == _outputStream) {
+                // hasSpaceAvailable 检查流中是否还有可供写入的空间
+                //初始化buff
+                UInt8 buff[1024];
+                //开辟一个buff空间
+                memcpy(buff, [_contentString cStringUsingEncoding:NSASCIIStringEncoding], 2*[_contentString length]);
+                
+                //检查流中是否还有空间可写入。
+                BOOL isAvailable = [_outputStream hasSpaceAvailable];
+                if (isAvailable) {
+                    //将 buffer 中的数据写入流中，返回实际写入的字节数。
+                    [_outputStream write:buff maxLength:1024];
+                }
+                
+                //必须关闭输出流,否则服务器端一直读取不会停止，
+                [_outputStream close];
+            }
+        }
+            break;
+        case NSStreamEventErrorOccurred:
+        {
+            NSError *error = [theStream streamError];
+            if (error) {
+                if (_delegate && [_delegate respondsToSelector:@selector(receiveFromTcpSocketMessage:andError:)]) {
+                    [_delegate receiveFromTcpSocketMessage:nil andError:error];
+                }
+            }
+            [self closeTcpSocket];
+        }
+            break;
+        case NSStreamEventEndEncountered:
+        {
+            [self closeTcpSocket];
+        }
+            break;
+    }
 }
 
 @end

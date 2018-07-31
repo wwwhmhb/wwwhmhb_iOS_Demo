@@ -1,0 +1,7 @@
+
+DrawingBoardView文件主要作用就是展示一个画板视图，主要作用如下：
+
+CGRect frame = CGRectMake(0, 0, 300,500);
+doodleView = [[BlazeiceDooleView alloc] initWithFrame:frame];
+doodleView.drawView.formPush = YES;
+[self.view addSubview:doodleView];

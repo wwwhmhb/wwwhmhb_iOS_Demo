@@ -57,9 +57,14 @@ fprintf(stderr, "-------\n"); \
 #endif
 
 
-//打印执行前后的时间段
+//打印程序执行前后的时间段
 #define TICK   NSDate *startTime = [NSDate date]
 #define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow])
+
+
+//weakSelf 和 strongSelf 的宏定义
+#define WeakSelf(obj)    __weak __typeof__(obj) weakSelf = obj;
+#define StrongSelf(obj)  __strong __typeof__(obj) strongSelf = obj;
 
 
 #define kMainScreenWidth        [[UIScreen mainScreen] applicationFrame].size.width
