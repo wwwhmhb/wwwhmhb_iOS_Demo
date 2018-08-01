@@ -9,6 +9,7 @@
 #import "WWWTestViewController.h"
 
 #import "NSArray+LXDExtension.h"
+#import "BlazeiceDooleView.h"
 
 @interface WWWTestViewController () {
     UITableView *tableView;
@@ -24,8 +25,13 @@
     
     self.title = @"TestViewController";
     
-    NSArray *array = @[@"67"];
-    NSLog(@"Array = %@",array[3]);
+//    NSArray *array = @[@"67"];
+//    NSLog(@"Array = %@",array[3]);
+    
+    CGRect frame = CGRectMake(0, 0, 300,500);
+    BlazeiceDooleView *doodleView = [[BlazeiceDooleView alloc] initWithFrame:frame];
+    doodleView.drawView.formPush = YES;
+    [self.view addSubview:doodleView];
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     

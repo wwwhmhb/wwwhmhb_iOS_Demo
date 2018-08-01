@@ -80,7 +80,7 @@ typedef enum {
 @property (nonatomic, assign) BOOL isRecording;
 @property (nonatomic, assign) BOOL isbox;
 
-+ (id)sharedManager;
+
 -(void)addNote;
 -(void)stopAddNote;
 // erase all

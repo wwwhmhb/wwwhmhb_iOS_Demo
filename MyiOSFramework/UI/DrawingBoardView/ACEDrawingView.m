@@ -62,7 +62,8 @@
 @synthesize isTouch;
 @synthesize formPush;
 
-GZOBJECT_SINGLETON_BOILERPLATE(ACEDrawingView, sharedManager)
+
+
 
 - (id)initWithFrame:(CGRect)frame
 {
