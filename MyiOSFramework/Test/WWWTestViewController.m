@@ -10,6 +10,7 @@
 
 #import "NSArray+LXDExtension.h"
 #import "BlazeiceDooleView.h"
+#import "WWWNetworkingManager.h"
 
 @interface WWWTestViewController () {
     UITableView *tableView;
@@ -25,22 +26,15 @@
     
     self.title = @"TestViewController";
     
-//    NSArray *array = @[@"67"];
-//    NSLog(@"Array = %@",array[3]);
+    NSArray *array = @[@"67"];
+    NVLogInfo(@"Array = %@",array[3]);
     
-    CGRect frame = CGRectMake(0, 0, 300,500);
-    BlazeiceDooleView *doodleView = [[BlazeiceDooleView alloc] initWithFrame:frame];
-    doodleView.drawView.formPush = YES;
-    [self.view addSubview:doodleView];
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     [testButton setTitle:@"Test" forState:UIControlStateNormal];
     [testButton setBackgroundColor:[UIColor orangeColor]];
     [testButton addTarget:self action:@selector(testButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testButton];
-    
-    
     [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).offset(80);
         make.left.mas_equalTo(self.view).offset(20);
@@ -59,12 +53,31 @@
 
 - (void)testButtonAction:(UIButton *)button {
     
-    NSArray *numbers = @[@10, @15, @99, @66, @25, @28.1, @7.5, @11.2, @66.2];
-
-    
-    NSArray *result = numbers.arrayFileter((WWWItemFilter)^(NSNumber * item){return item.floatValue > 20;}).arrayChange((WWWItemChange)^(NSNumber *item){return [NSString stringWithFormat:@"%@",item];});
-    
-    NSLog(@"result = %@",result);
+//    NSString *robotid = @"TWYP5TA6LR5LOVRC";
+//    NSDictionary *dic = @{
+//                          @"robot_id" : robotid,
+//                          @"file_name" : @"Test.txt",
+//                          @"file_type" : @"file/txt"
+//                          };
+//    
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"text"];
+//    WWWNetworkingManager *manager = [WWWNetworkingManager shared];
+//    [manager initNetworkingManager];
+//    [manager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:path andParameters:dic andProgress:^(NSProgress *uploadProgress) {
+//        
+//    } andFinishBlock:^(id responseObject, NSError *error) {
+//        if (error) {
+//            NSLog(@"error = %@",error);
+//        } else {
+//            NSLog(@"提交成功");
+//        }
+//    }];
+//    NSArray *numbers = @[@10, @15, @99, @66, @25, @28.1, @7.5, @11.2, @66.2];
+//
+//
+//    NSArray *result = numbers.arrayFileter((WWWItemFilter)^(NSNumber * item){return item.floatValue > 20;}).arrayChange((WWWItemChange)^(NSNumber *item){return [NSString stringWithFormat:@"%@",item];});
+//
+//    NSLog(@"result = %@",result);
     
 }
 

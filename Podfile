@@ -6,4 +6,5 @@ pod 'Masonry'
 pod 'SDWebImage'
 pod 'SSZipArchive'
 pod 'AFNetworking'
+pod 'CocoaLumberjack'
 end

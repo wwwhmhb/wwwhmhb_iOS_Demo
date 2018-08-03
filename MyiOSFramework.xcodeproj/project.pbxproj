@@ -40,6 +40,10 @@
 		ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */ = {isa = PBXBuildFile; fileRef = ADAC8719210EF6DE0093BCE0 /* DrawingBoardView */; };
 		ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */; };
 		ADE2BB7A21106BE100565CDB /* WWWNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE2BB7921106BE100565CDB /* WWWNetworkingManager.m */; };
+		ADE2BB7C2111837A00565CDB /* Test.text in Resources */ = {isa = PBXBuildFile; fileRef = ADE2BB7B2111837A00565CDB /* Test.text */; };
+		ADE2BB8021118C5500565CDB /* MyCustomFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE2BB7F21118C5400565CDB /* MyCustomFormatter.m */; };
+		ADE2BB8321118C6700565CDB /* NVLogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE2BB8221118C6700565CDB /* NVLogManager.m */; };
+		ADE2BB852114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log in Resources */ = {isa = PBXBuildFile; fileRef = ADE2BB842114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log */; };
 		ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */; };
 		ADE6C5D72105B3D00061674B /* KVOObservation in Resources */ = {isa = PBXBuildFile; fileRef = ADE6C5D62105B3D00061674B /* KVOObservation */; };
 		ADE6C5F22105D7B90061674B /* ACEDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5EB2105D7B90061674B /* ACEDrawingView.m */; };
@@ -114,6 +118,12 @@
 		ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWStreamOperationManager.m; sourceTree = "<group>"; };
 		ADE2BB7821106BE100565CDB /* WWWNetworkingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWNetworkingManager.h; sourceTree = "<group>"; };
 		ADE2BB7921106BE100565CDB /* WWWNetworkingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWNetworkingManager.m; sourceTree = "<group>"; };
+		ADE2BB7B2111837A00565CDB /* Test.text */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Test.text; sourceTree = "<group>"; };
+		ADE2BB7E21118C5400565CDB /* MyCustomFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCustomFormatter.h; sourceTree = "<group>"; };
+		ADE2BB7F21118C5400565CDB /* MyCustomFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCustomFormatter.m; sourceTree = "<group>"; };
+		ADE2BB8121118C6600565CDB /* NVLogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NVLogManager.h; sourceTree = "<group>"; };
+		ADE2BB8221118C6700565CDB /* NVLogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NVLogManager.m; sourceTree = "<group>"; };
+		ADE2BB842114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "com.www.MyiOSFramework 2018-08-03--01-43-23-370.log"; sourceTree = "<group>"; };
 		ADE6C5D321018A270061674B /* WWWKVOObservationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWKVOObservationManager.h; sourceTree = "<group>"; };
 		ADE6C5D421018A270061674B /* WWWKVOObservationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWKVOObservationManager.m; sourceTree = "<group>"; };
 		ADE6C5D62105B3D00061674B /* KVOObservation */ = {isa = PBXFileReference; lastKnownFileType = text; path = KVOObservation; sourceTree = "<group>"; };
@@ -220,6 +230,7 @@
 		AD8F526220F6FD3500E765B8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				ADE2BB7D21118C2700565CDB /* LogManager */,
 				ADE2BB7721106B6800565CDB /* NetworkingManager */,
 				ADCA8E05210F16BC003296D8 /* StreamOperationManager */,
 				ADE6C5D22101890B0061674B /* KVOObservation */,
@@ -246,6 +257,8 @@
 			children = (
 				AD8F526520F6FF4600E765B8 /* WWWTestViewController.h */,
 				AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */,
+				ADE2BB7B2111837A00565CDB /* Test.text */,
+				ADE2BB842114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -318,6 +331,17 @@
 				ADE2BB7921106BE100565CDB /* WWWNetworkingManager.m */,
 			);
 			path = NetworkingManager;
+			sourceTree = "<group>";
+		};
+		ADE2BB7D21118C2700565CDB /* LogManager */ = {
+			isa = PBXGroup;
+			children = (
+				ADE2BB7E21118C5400565CDB /* MyCustomFormatter.h */,
+				ADE2BB7F21118C5400565CDB /* MyCustomFormatter.m */,
+				ADE2BB8121118C6600565CDB /* NVLogManager.h */,
+				ADE2BB8221118C6700565CDB /* NVLogManager.m */,
+			);
+			path = LogManager;
 			sourceTree = "<group>";
 		};
 		ADE6C5D0210187BD0061674B /* TCPSocket */ = {
@@ -460,11 +484,13 @@
 				AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */,
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
 				ADE6C5D72105B3D00061674B /* KVOObservation in Resources */,
+				ADE2BB852114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
 				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
 				AD8F52B52100690800E765B8 /* BottomPickerView in Resources */,
 				AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */,
 				ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */,
+				ADE2BB7C2111837A00565CDB /* Test.text in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +524,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/MQTTClient/MQTTClient.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -506,6 +533,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MQTTClient.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -549,9 +577,11 @@
 				AD8F52A420FC702C00E765B8 /* WWWTools.m in Sources */,
 				ADE6C5F72105E1690061674B /* BlazeiceObject.m in Sources */,
 				ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */,
+				ADE2BB8321118C6700565CDB /* NVLogManager.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
 				ADE6C6002105E2400061674B /* UIView+UIImage.m in Sources */,
 				AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
+				ADE2BB8021118C5500565CDB /* MyCustomFormatter.m in Sources */,
 				ADE6C5F22105D7B90061674B /* ACEDrawingView.m in Sources */,
 				ADE2BB7A21106BE100565CDB /* WWWNetworkingManager.m in Sources */,
 				AD8F527220F7364300E765B8 /* WWWWifiInfoManager.m in Sources */,

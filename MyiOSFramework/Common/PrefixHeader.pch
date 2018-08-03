@@ -12,7 +12,7 @@
 #import "WWWBaseViewController.h"
 #import "Masonry.h"
 #import "WWWTools.h"
-
+#import "NVLogManager.h"
 
 /*======== 单例 ========*/
 //#define GZOBJECT_SINGLETON_BOILERPLATE(_object_name_, _shared_obj_name_) \

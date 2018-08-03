@@ -85,6 +85,113 @@ typedef NS_ENUM(NSInteger,FilePathType) {
 + (NSString*)getCustomPathByFilePathType:(FilePathType)filePathType andFilePathName:(NSString *)filePathName andFilePathExtension:(NSString *)filePathExtension;
 
 
+/**
+ 判断文件是否存在
+
+ @param path 文件路径
+ @return YES存在，NO不存在
+ */
++ (BOOL)fileExists:(NSString *)path;
+
+
+/**
+ 判断是不是文件目录
+
+ @param filePath 文件路径
+ @return 是不是文件目录
+ */
++ (BOOL)isDirectory:(NSString *)filePath;
+
+
+/**
+ 获取文件目录中的内容，浅遍历文件目录
+
+ @param path 文件路径
+ @return 文件目录中的内容列表
+ */
++ (NSArray *)getContentsOfDirectoryWithPath:(NSString *)path;
+
+
+/**
+ 获取文件目录中文件，深度遍历文件目录
+
+ @param path 文件路径
+ @return 文件目录中的文件列表
+ */
++ (NSArray *)getSubpathsOfDirectoryWithPath:(NSString *)path;
+
+/**
+ 创建文件夹
+
+ @param path 文件路径
+ @return 是否创建成功
+ */
++ (BOOL)createDirectoryWithPath:(NSString *)path;
+
+
+/**
+ 创建文件
+
+ @param path 文件路径
+ @param data 文件数据
+ @return 是否创建成功
+ */
++ (BOOL)createFileWithPath:(NSString *)path andContentsData:(NSData *)data;
+
+/**
+ 删除文件
+
+ @param path 文件路径
+ @return 删除文件是否成功
+ */
++ (BOOL)deleteFile:(NSString *)path;
+
+
+/**
+ 计算文件大小
+
+ @param path 文件路径
+ @return 文件大小
+ */
++ (long long)fileSizeForPath:(NSString *)path;
+
+
+/**
+ 计算系统磁盘中空闲空间
+
+ @param path 磁盘路径
+ @return 磁盘闲置空间大小
+ */
++ (long long)freeSpaceWithPath:(NSString *)path;
+
+
+/**
+ 计算系统磁盘中总共空间
+
+ @param path 磁盘路径
+ @return 磁盘空间大小
+ */
++ (long long)totalSpaceWithPath:(NSString *)path;
+
+
+/**
+ 将多个文件压缩
+
+ @param paths 多个文件路径数组
+ @param zipFilePath 压缩文件路径
+ @return 是否压缩成功
+ */
++ (BOOL)zipFileFromSourceFilePaths:(NSArray *)paths toZipFilePath:(NSString *)zipFilePath;
+
+
+/**
+ 将多个文件夹压缩
+
+ @param directoryPath 文件夹路径
+ @param zipFilePath 压缩文件路径
+ @return 是否压缩成功
+ */
++ (BOOL)zipFileFromSourceFileDirectoryPath:(NSString *)directoryPath toZipFilePath:(NSString *)zipFilePath;
 
 /*=============== 隐私权限请求操作部分 =================*/
 /**
@@ -110,11 +217,39 @@ typedef NS_ENUM(NSInteger,FilePathType) {
 
 
 
+
+/**
+ 将字符串存到 Userdefaults 中指定的 key 值名下
+
+ @param value 数据
+ @param key key值
+ @return 是否成功
+ */
++ (BOOL)setUserdefaultsValue:(NSString *)value toKey:(NSString *)key;
+
+/**
+ 获取 Userdefaults 中指定的 key 值名下的字符串
+
+ @param key key值
+ @return 字符串
+ */
++ (NSString *)getUserdefaultsValueFromKey:(NSString *)key;
+
+
+/**
+ 获取当前日期
+
+ @param format 日期格式，默认为：YYYY-MM-dd HH:mm:ss
+ @return 日期字符串
+ */
++ (NSString *)getCurrentDateWithFormat:(NSString *)format;
+
+
 /**
  获取当前的视图控制器
 
- @param rootViewController <#rootViewController description#>
- @return <#return value description#>
+ @param rootViewController 根视图控制器
+ @return 当前视图控制器
  */
 + (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController;
 

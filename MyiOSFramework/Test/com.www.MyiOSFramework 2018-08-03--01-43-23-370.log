@@ -1,0 +1,7 @@
+[ Info     2018/08/03 09:43:24:471 ] 
+-[MainViewController viewDidLoad] 第25行 日志文件地址:
+/var/mobile/Containers/Data/Application/7711B55C-2A4E-44A0-9A96-09547827431F/Library/Caches/Logs/com.www.MyiOSFramework 2018-08-03--01-43-23-370.log
+[ Info     2018/08/03 09:43:24:471 ] 
+1234567890
+[ Info     2018/08/03 09:43:24:714 ] 
+-[AppDelegate uploadExceptionLogWithPath:]_block_invoke_2 第149行 成功

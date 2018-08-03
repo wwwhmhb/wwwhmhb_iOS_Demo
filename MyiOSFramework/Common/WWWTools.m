@@ -12,7 +12,7 @@
 #import <Photos/Photos.h>//相册权限
 #import <CoreLocation/CoreLocation.h>//位置权限
 #import <CoreBluetooth/CoreBluetooth.h>//蓝牙权限
-
+#import "ZipArchive.h"//压缩与解压文件
 
 @implementation WWWTools
 
@@ -121,7 +121,126 @@
 }
 
 
+//判断文件是否存在
++ (BOOL)fileExists:(NSString *)path {
+    return  [[NSFileManager defaultManager] fileExistsAtPath:path];
+}
 
+//判断是不是文件目录
++ (BOOL)isDirectory:(NSString *)filePath {
+//    BOOL isDirectory = NO;
+//    [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory];
+//    return isDirectory;
+    
+    NSNumber *isDirectory;
+    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
+    [fileUrl getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
+    return isDirectory.boolValue;
+    
+}
+
+//获取文件目录中的内容，浅遍历文件目录
++ (NSArray *)getContentsOfDirectoryWithPath:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
+    NSArray *fileList = [fileManager contentsOfDirectoryAtPath:path error:&error];
+    return fileList;
+}
+
+
+//获取文件目录中文件，深度遍历文件目录
++ (NSArray *)getSubpathsOfDirectoryWithPath:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
+    NSArray *fileList = [fileManager subpathsOfDirectoryAtPath:path error:&error];
+    return fileList;
+}
+
+//创建文件夹
++ (BOOL)createDirectoryWithPath:(NSString *)path {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![self fileExists:path]) {
+        return [fileManager createDirectoryAtPath:path
+                      withIntermediateDirectories:YES
+                                       attributes:nil
+                                            error:NULL];
+    }
+    
+    return YES;
+}
+
+//创建文件
++ (BOOL)createFileWithPath:(NSString *)path andContentsData:(NSData *)data {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    [self deleteFile:path];
+    return [fileManager createFileAtPath:path contents:data attributes:nil];
+}
+
+//删除文件
++ (BOOL)deleteFile:(NSString *)path {
+    if ([self fileExists:path]) {
+        NSError *error = nil;
+        NSFileManager* fileManager=[NSFileManager defaultManager];
+        BOOL isSuccess =  [fileManager removeItemAtPath:path error:&error];
+        return isSuccess;
+    }
+    return YES;
+}
+
+//计算文件大小
++ (long long)fileSizeForPath:(NSString *)path {
+    long long fileSize = 0;
+    if([self fileExists:path]){
+        NSError *error = nil;
+        NSDictionary *fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
+        if (!error && fileDict) {
+            fileSize = [fileDict fileSize];
+        }
+    }
+    return fileSize;
+}
+
+//计算系统磁盘中空闲空间
++ (long long)freeSpaceWithPath:(NSString *)path {
+    
+    NSFileManager* fileManager = [[NSFileManager alloc ] init];
+    NSDictionary *fileSysAttributes = [fileManager attributesOfFileSystemForPath:path error:nil];
+    NSNumber *freeSpace = [fileSysAttributes objectForKey:NSFileSystemFreeSize];
+    return [freeSpace longLongValue];
+}
+
+//计算系统磁盘中总共空间
++ (long long)totalSpaceWithPath:(NSString *)path {
+    
+    NSFileManager* fileManager = [[NSFileManager alloc ] init];
+    NSDictionary *fileSysAttributes = [fileManager attributesOfFileSystemForPath:path error:nil];
+    NSNumber *totalSpace = [fileSysAttributes objectForKey:NSFileSystemSize];
+    return [totalSpace longLongValue];
+}
+
+//将多个文件压缩
++ (BOOL)zipFileFromSourceFilePaths:(NSArray *)paths toZipFilePath:(NSString *)zipFilePath {
+
+    //创建不带密码zip压缩包
+    BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:paths];
+    //创建带密码zip压缩包
+    //BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:paths withPassword:@"SSZipArchive.zip"];
+    return isSuccess;
+    
+}
+
+//文件夹压缩
++ (BOOL)zipFileFromSourceFileDirectoryPath:(NSString *)directoryPath toZipFilePath:(NSString *)zipFilePath {
+
+    //创建不带密码zip压缩包
+    BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withContentsOfDirectory:directoryPath];
+    //创建带密码zip压缩包
+    //BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withContentsOfDirectory:directoryPath withPassword:@"SSZipArchive.zip"];
+    return isSuccess;
+    
+}
 
 //获取网络权限
 + (void)requestNetworkPermission {
@@ -182,6 +301,42 @@
     }
 }
 
+//将字符串存到 Userdefaults 中指定的 key 值名下
++ (NSString *)getUserdefaultsValueFromKey:(NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *context = @"";
+    if ([userDefaults valueForKey:key]) {
+        context = [NSString stringWithFormat:@"%@",[userDefaults valueForKey:key]];
+        if (!context) {
+            context = @"";
+        }
+    }
+    return context;
+}
+
+//获取 Userdefaults 中指定的 key 值名下的字符串
++ (BOOL)setUserdefaultsValue:(NSString *)value toKey:(NSString *)key {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    if (!value) {
+        value = @"";
+    }
+    [userDefaults setValue:value forKey:key];
+    BOOL isSuccess = [userDefaults synchronize];
+    return isSuccess;
+}
+
+//获取当前日期
++ (NSString *)getCurrentDateWithFormat:(NSString *)format {
+    if (!format || [format isEqualToString:@""]) {
+        format = @"YYYY-MM-dd HH:mm:ss";
+    }
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    NSString *dateStr = [formatter stringFromDate:[NSDate date]];
+    return dateStr;
+}
+
+//获取当前的视图控制器
 + (UIViewController*)topViewControllerWithRootViewController:(UIViewController*)rootViewController {
     
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {

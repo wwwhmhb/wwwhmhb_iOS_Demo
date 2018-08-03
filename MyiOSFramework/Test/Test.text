@@ -1,0 +1,36 @@
+//
+//    [[NVLogManager shareInstance] uploadFileLogWithBlock:^(NSString *logFilePath) {
+//
+//        NSLog(@"地址: %@", logFilePath); // 拿到地址后上传
+//    }];
+//    [[NVLogManager shareInstance] uploadFileLogWithBlock:^(NSString *logFilePath) {
+//
+//        NSLog(@"地址: %@", logFilePath); // 按指定频率上传
+//    } withFrequency:kNVFrequencyDay];
+//
+//    //[[NVLogManager shareInstance] stopLog];
+//    //[[NVLogManager shareInstance] clearFileLog];
+//
+//    NVLogError(@"Error")
+//    NVlogWarn(@"Warn")
+//    NVLogDebug(@"Debug")
+//    NVLogInfo(@"Info")
+
+
+/
+//    [[NVLogManager shareInstance] uploadFileLogWithBlock:^(NSString *logFilePath) {
+//
+//        NSLog(@"地址: %@", logFilePath); // 拿到地址后上传
+//    }];
+//    [[NVLogManager shareInstance] uploadFileLogWithBlock:^(NSString *logFilePath) {
+//
+//        NSLog(@"地址: %@", logFilePath); // 按指定频率上传
+//    } withFrequency:kNVFrequencyDay];
+//
+//    //[[NVLogManager shareInstance] stopLog];
+//    //[[NVLogManager shareInstance] clearFileLog];
+//
+//    NVLogError(@"Error")
+//    NVlogWarn(@"Warn")
+//    NVLogDebug(@"Debug")
+//    NVLogInfo(@"Info")

@@ -10,8 +10,12 @@
 
 #import "WWWBaseNavigationController.h"
 #import "MainViewController.h"
+#import "WWWNetworkingManager.h"
+#import "ZipArchive.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () {
+    
+}
 
 @end
 
@@ -21,9 +25,39 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //经日志写入文件中
+    [[NVLogManager shareInstance] enableFileLogSystem];
+    
+    //抓住异常问题
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
     
+    //监听设备旋转通知
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+    
+    NVLogError(@"错误信息如上所述")
+    //判断上次退出APP是否有异常问题
+    NSString *isCrash = [WWWTools getUserdefaultsValueFromKey:@"APPSystemCrash"];
+    //异常日志路径
+    NSString *crashFilePath = [[NVLogManager shareInstance] getCurrentLogFilePath];
+    NSString *fileName = [crashFilePath lastPathComponent];
+    NSString *cachePath = [WWWTools getLibraryCachePath];
+    NSString *logFilePath = [cachePath stringByAppendingPathComponent:@"Logs"];
+    NSArray *fileArray = [WWWTools getSubpathsOfDirectoryWithPath:logFilePath];
+    NSString *sourceFilePath = [logFilePath stringByAppendingPathComponent:fileArray[0]];
+    NSString *zipFilePath = [cachePath stringByAppendingPathComponent:@"ZipCrashLogs"];
+    if ([isCrash isEqualToString:@"YES"]) {//有异常问题，进行文件压缩
+        //压缩异常日志
+        [self zipFileFromSourceFilePaths:@[crashFilePath] toZipFilePath:zipFilePath];
+    } else if ([isCrash isEqualToString:@"NO"]) {//没有异常问题，清空日志
+        //清空日志
+        [[NVLogManager shareInstance] clearFileLog];
+        //设置系统崩溃为NO
+        [WWWTools setUserdefaultsValue:@"NO" toKey:@"APPSystemCrash"];
+    }
+    
+    //上传异常日志
+    [self uploadExceptionLogWithPath:zipFilePath];
+//    [self uploadExceptionLogWithPath:@""];
     
     //启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
@@ -68,7 +102,7 @@
 }
 
 
-#pragma mark    收集异常，上传
+#pragma mark  --  收集异常，进行标志
 void UncaughtExceptionHandler(NSException *exception) {
     //异常信息
     NSArray *callStack = [exception callStackSymbols];
@@ -76,47 +110,117 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSString *name = [exception name];
     
     //日期
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-    NSString * dateStr = [formatter stringFromDate:[NSDate date]];
+    NSString * dateStr = [WWWTools getCurrentDateWithFormat:nil];
+    
     //获取崩溃界面
     UIViewController *viewNow = [WWWTools topViewControllerWithRootViewController:[UIApplication sharedApplication].keyWindow.rootViewController];
     //class 转字符串
     NSString * nowview = NSStringFromClass([viewNow class]);
     
-    
     // 用户信息
-    NSDictionary * diceuserport= [[NSUserDefaults standardUserDefaults]objectForKey:@"useruidport" ];
+    NSDictionary * diceuserport= [[NSUserDefaults standardUserDefaults] objectForKey:@"useruidport" ];
     //app版本
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
     NSString *appCurVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"];
-    //iOS系统
+    //iOS系统版本
     NSString * devicetext = [NSString stringWithFormat:@"%f",[[[UIDevice currentDevice] systemVersion] floatValue]];
     
     //综合信息
-    NSString *content = [NSString stringWithFormat:@"\n日期：%@  \nuid:%@  \n端口：%@  \nAPP版本：%@  \n系统版本：%@   \n错误：%@  \n视图控制器：%@  \n错误原因：%@  \n崩溃所在：%@ ",dateStr,diceuserport[@"uid"],diceuserport[@"port"],appCurVersion,devicetext,name,nowview,reason,[callStack componentsJoinedByString:@"\n"]];
-    
-    NSLog(@"content = %@",content);
-    
-//    //同步方法上传服务器 （试了试异步了，还没上传就崩了）
-//    // 创建URL对象
-//    NSURL *url =[NSURL URLWithString:YJFKPresentUrlStr];
-//    NSMutableURLRequest *resuest =[NSMutableURLRequest requestWithURL:url];
-//    [resuest setHTTPMethod:@"post"];
-//    [resuest setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-//    [resuest setValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:@{@"uid":diceuserport[@"uid"],@"type":@"应用崩溃",@"content":content,@"contact_way":@"App-反馈"} options:NSJSONWritingPrettyPrinted error:nil];
-//    NSMutableData *tempJsonData = [NSMutableData dataWithData:jsonData];
-//    resuest.HTTPBody = tempJsonData;
-//    //4 创建响应对象
-//    NSURLResponse *response = nil;
-//    //5 创建连接对象
-//    NSError *error;
-//    NSData *data = [NSURLConnection sendSynchronousRequest:resuest returningResponse:&response error:&error];
-//    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-//    //反馈结果
-//    NSLog(@"%@",dict);
+    NSString *content = [NSString stringWithFormat:@"\n日期：%@  \nuid：%@  \n端口：%@  \nAPP版本：%@  \n系统版本：%@   \n错误名称：%@  \n视图控制器：%@  \n错误原因：%@  \n崩溃所在：%@ ",dateStr,diceuserport[@"uid"],diceuserport[@"port"],appCurVersion,devicetext,name,nowview,reason,[callStack componentsJoinedByString:@"\n"]];
+    NVLogError(@"错误信息 = %@",content)
+    [WWWTools setUserdefaultsValue:@"YES" toKey:@"APPSystemCrash"];
 }
 
+#pragma mark  --  上传异常信息
+- (void)uploadExceptionLogWithPath:(NSString *)path {
+    
+//    NSString *robotid = @"TWYP5TA6LR5LOVRC";
+//    NSDictionary *dic = @{
+//                          @"robot_id" : robotid,
+//                          @"file_name" : @"1234567.zip",
+//                          @"file_type" : @"file/zip"
+//                          };
+//
+//    NSString *cachePath = [WWWTools getLibraryCachePath];
+//    path = [cachePath stringByAppendingPathComponent:@"Logs/com.www.MyiOSFramework 2018-08-03--03-09-16-785.log"];
+//    NSString *zipFilePath = [cachePath stringByAppendingPathComponent:@"ZipCrashLogs/www.zip"];
+//    [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:@[path]];
+//    WWWNetworkingManager *networkingManager = [WWWNetworkingManager shared];
+//    [networkingManager initNetworkingManager];
+//    [networkingManager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:zipFilePath andParameters:dic andProgress:^(NSProgress *uploadProgress) {
+//
+//    } andFinishBlock:^(id responseObject, NSError *error) {
+//        if (error) {
+//            NVLogError(@"error = %@",error);
+//        } else {
+//            NVLogInfo(@"成功");
+//        }
+//    }];
+
+    
+    NSArray *fileArray = [WWWTools getContentsOfDirectoryWithPath:path];
+    if (fileArray.count > 0) {
+        for (NSString *fileName in fileArray) {
+            NSString *robotid = @"TWYP5TA6LR5LOVRC";
+            NSDictionary *dic = @{
+                                  @"robot_id" : robotid,
+                                  @"file_name" : @"MyTest.zip",
+                                  @"file_type" : @"file/zip"
+                                  };
+            
+            NSString *crashLogFilePath = [path stringByAppendingPathComponent:fileName];
+            WWWNetworkingManager *networkingManager = [WWWNetworkingManager shared];
+            [networkingManager initNetworkingManager];
+            [networkingManager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:crashLogFilePath andParameters:dic andProgress:^(NSProgress *uploadProgress) {
+
+            } andFinishBlock:^(id responseObject, NSError *error) {
+                if (error) {
+                    NVLogError(@"error = %@",error);
+                } else {
+                    NVLogInfo(@"上传崩溃日志成功");
+                    //删除文件
+                    [WWWTools deleteFile:crashLogFilePath];
+                }
+            }];
+        }
+    }
+}
+
+#pragma mark  --  压缩文件
+- (void)zipFileFromSourceFilePaths:(NSArray *)paths toZipFilePath:(NSString *)zipFilePath {
+    //创建文件目录
+    BOOL isFile = [WWWTools createDirectoryWithPath:zipFilePath];
+    if (isFile) {
+        //数组里可以放多个源文件，这些文件会被同一打包成压缩包，到 destinationPath 这个路径下,注意目的路径是 zip 格式的后缀。
+        NSString *currentDateStr = [WWWTools getCurrentDateWithFormat:@"YYYYMMddHHmmss"];
+        NSString *componentPath = [NSString stringWithFormat:@"%@.zip",currentDateStr];
+        zipFilePath = [zipFilePath stringByAppendingPathComponent:componentPath];
+        BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:paths];
+        if (isSuccess) {//压缩成功，清空日志
+            NVLogInfo(@"压缩成功");
+            //清空日志
+            [[NVLogManager shareInstance] clearFileLog];
+            //设置系统崩溃为NO
+            [WWWTools setUserdefaultsValue:@"NO" toKey:@"APPSystemCrash"];
+        } else {//压缩失败再次压缩
+            NVLogError(@"压缩失败");
+            BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:paths];
+//            BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withContentsOfDirectory:paths[0]];
+            if (isSuccess) {//压缩成功，清空日志
+                NVLogInfo(@"压缩成功");
+                //清空日志
+                [[NVLogManager shareInstance] clearFileLog];
+                //设置系统崩溃为NO
+                [WWWTools setUserdefaultsValue:@"NO" toKey:@"APPSystemCrash"];
+            } else {
+                NVLogError(@"压缩失败");
+                //设置系统崩溃为YES
+                [WWWTools setUserdefaultsValue:@"YES" toKey:@"APPSystemCrash"];
+            }
+        }
+    } else {
+        NVLogInfo(@"创建文件失败");
+    }
+}
 
 @end
