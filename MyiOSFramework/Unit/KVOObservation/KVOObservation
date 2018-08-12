@@ -8,6 +8,7 @@ _kvoManager = [[WWWKVOObservationManager alloc] init];
 }
 __weak __typeof__(self) weakSelf = self;
 [_kvoManager addObserveObject:_textView andKeyPath:@"hidden" andContext:nil andResultBlock:^(NSDictionary *dict) {
+
 __strong __typeof(self) strongSelf = weakSelf;
 [strongSelf.textView removeFromSuperview];
 }];
