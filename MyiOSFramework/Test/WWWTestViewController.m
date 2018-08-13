@@ -13,7 +13,7 @@
 #import "WWWNetworkingManager.h"
 
 @interface WWWTestViewController () {
-    UITableView *tableView;
+    dispatch_queue_t queue;
 }
 
 @end
@@ -26,9 +26,6 @@
     
     self.title = @"TestViewController";
     
-    NSArray *array = @[@"67"];
-    NVLogInfo(@"Array = %@",array[3]);
-    
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [testButton setTitle:@"Test" forState:UIControlStateNormal];
@@ -40,8 +37,7 @@
         make.left.mas_equalTo(self.view).offset(20);
         make.size.mas_equalTo(CGSizeMake(100, 60));
     }];
-    
-    
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -52,33 +48,114 @@
 
 
 - (void)testButtonAction:(UIButton *)button {
-    
-//    NSString *robotid = @"TWYP5TA6LR5LOVRC";
-//    NSDictionary *dic = @{
-//                          @"robot_id" : robotid,
-//                          @"file_name" : @"Test.txt",
-//                          @"file_type" : @"file/txt"
-//                          };
-//    
+
+
+//    // 全局并发队列的获取方法
+//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+//    queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_CONCURRENT);
+//    const char *queueName = dispatch_queue_get_label(queue);
+//    NSLog(@"queueName = %s",queueName);
+
+
 //    NSString *path = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"text"];
-//    WWWNetworkingManager *manager = [WWWNetworkingManager shared];
-//    [manager initNetworkingManager];
-//    [manager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:path andParameters:dic andProgress:^(NSProgress *uploadProgress) {
-//        
-//    } andFinishBlock:^(id responseObject, NSError *error) {
-//        if (error) {
-//            NSLog(@"error = %@",error);
-//        } else {
-//            NSLog(@"提交成功");
+//    dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
+//    dispatch_io_t pipe_chanel = dispatch_io_create_with_path(DISPATCH_IO_STREAM,[path UTF8String], 0, 0,queue , ^(int error) {
+//
+//    });
+//    size_t water = 1024;
+//    dispatch_io_set_low_water(pipe_chanel, water);
+//    dispatch_io_set_high_water(pipe_chanel, water);
+//    NSMutableData *totalData = [[NSMutableData alloc] init];
+//    dispatch_io_read(pipe_chanel, 0, SIZE_MAX, queue, ^(bool done, dispatch_data_t  _Nullable data, int error) {
+//        if (error == 0) {
+//            size_t len = dispatch_data_get_size(data);
+//            if (len > 0) {
+//                [totalData appendData:(NSData *)data];
+//            }
 //        }
-//    }];
-//    NSArray *numbers = @[@10, @15, @99, @66, @25, @28.1, @7.5, @11.2, @66.2];
-//
-//
-//    NSArray *result = numbers.arrayFileter((WWWItemFilter)^(NSNumber * item){return item.floatValue > 20;}).arrayChange((WWWItemChange)^(NSNumber *item){return [NSString stringWithFormat:@"%@",item];});
-//
-//    NSLog(@"result = %@",result);
+//        if (done) {
+//            NSString *str = [[NSString alloc] initWithData:totalData encoding:NSUTF8StringEncoding];
+//            NSLog(@"%@", str);
+//        }
+//    });
+
+
+    //文件路径
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"text"];
+    //队列创建
+    dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_CONCURRENT);
+    //创建文件描述
+    dispatch_fd_t fd = open(path.UTF8String, O_RDONLY);
+    //创建一个调度I / O通道
+    dispatch_io_t io = dispatch_io_create(DISPATCH_IO_RANDOM, fd, queue, ^(int error) {
+        close(fd);
+    });
+    //目标文件的大小
+    long long fileSize = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil].fileSize;
+    //已读取文件大小
+    off_t currentSize = 0;
+    //每次文件读取的大小
+    size_t offset = 1024*1024;
+    //创建分组
+    dispatch_group_t group = dispatch_group_create();
+    //创建可变data，用于存放读取的文件
+    NSMutableData *totalData = [[NSMutableData alloc] initWithLength:fileSize];
+    //一次一次的读取文件，之至目标文件读取完
+    for (; currentSize <= fileSize ; currentSize += offset) {
+        //队列添加到分组中
+        dispatch_group_enter(group);
+        //在队列中从指定点开始，读取一定的内容的文件
+        dispatch_io_read(io, currentSize, offset, queue, ^(bool done, dispatch_data_t  _Nullable data, int error) {
+            
+            if (error == 0) {//没有错误
+                //读取内容的长度
+                size_t len = dispatch_data_get_size(data);
+                
+                if (len > 0) {//如果有内容
+                    
+                    const void *bytes = NULL;
+                    //内容转化为bytes
+                    (void)dispatch_data_create_map(data, (const void **)&bytes, &len);
+                    //data拼接bytes
+                    [totalData replaceBytesInRange:NSMakeRange(currentSize, len) withBytes:bytes length:len];
+                }
+            }
+            if (done) {//每次读取内容完成后调用
+                dispatch_group_leave(group);
+            }
+        });
+    }
+
+    //目标文件读取完成之后调用
+    dispatch_group_notify(group, queue, ^{
+        
+        NSString *str = [[NSString alloc] initWithData:totalData encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"%@", str);
+        
+    });
     
+//}
+//if (done) {
+//    dispatch_group_leave(group);
+//
+//}
+//
+//});
+//
+//}
+//dispatch_group_notify(group, queue, ^{
+//    NSString *str = [[NSString alloc] initWithData:totalData encoding:NSUTF8StringEncoding];
+//    NSLog(@"%@", str);
+//
+//});
+
+    
+
+    
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {

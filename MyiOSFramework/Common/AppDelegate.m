@@ -25,8 +25,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    
+
     //经日志写入文件中
     [[NVLogManager shareInstance] enableFileLogSystem];
+    NVLogError(@"错误信息如上所述")
     
     //抓住异常问题
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
@@ -34,16 +37,12 @@
     //监听设备旋转通知
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     
-    NVLogError(@"错误信息如上所述")
+    
     //判断上次退出APP是否有异常问题
     NSString *isCrash = [WWWTools getUserdefaultsValueFromKey:@"APPSystemCrash"];
     //异常日志路径
     NSString *crashFilePath = [[NVLogManager shareInstance] getCurrentLogFilePath];
-    NSString *fileName = [crashFilePath lastPathComponent];
     NSString *cachePath = [WWWTools getLibraryCachePath];
-    NSString *logFilePath = [cachePath stringByAppendingPathComponent:@"Logs"];
-    NSArray *fileArray = [WWWTools getSubpathsOfDirectoryWithPath:logFilePath];
-    NSString *sourceFilePath = [logFilePath stringByAppendingPathComponent:fileArray[0]];
     NSString *zipFilePath = [cachePath stringByAppendingPathComponent:@"ZipCrashLogs"];
     if ([isCrash isEqualToString:@"YES"]) {//有异常问题，进行文件压缩
         //压缩异常日志
@@ -57,7 +56,6 @@
     
     //上传异常日志
     [self uploadExceptionLogWithPath:zipFilePath];
-//    [self uploadExceptionLogWithPath:@""];
     
     //启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
@@ -134,30 +132,6 @@ void UncaughtExceptionHandler(NSException *exception) {
 #pragma mark  --  上传异常信息
 - (void)uploadExceptionLogWithPath:(NSString *)path {
     
-//    NSString *robotid = @"TWYP5TA6LR5LOVRC";
-//    NSDictionary *dic = @{
-//                          @"robot_id" : robotid,
-//                          @"file_name" : @"1234567.zip",
-//                          @"file_type" : @"file/zip"
-//                          };
-//
-//    NSString *cachePath = [WWWTools getLibraryCachePath];
-//    path = [cachePath stringByAppendingPathComponent:@"Logs/com.www.MyiOSFramework 2018-08-03--03-09-16-785.log"];
-//    NSString *zipFilePath = [cachePath stringByAppendingPathComponent:@"ZipCrashLogs/www.zip"];
-//    [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:@[path]];
-//    WWWNetworkingManager *networkingManager = [WWWNetworkingManager shared];
-//    [networkingManager initNetworkingManager];
-//    [networkingManager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:zipFilePath andParameters:dic andProgress:^(NSProgress *uploadProgress) {
-//
-//    } andFinishBlock:^(id responseObject, NSError *error) {
-//        if (error) {
-//            NVLogError(@"error = %@",error);
-//        } else {
-//            NVLogInfo(@"成功");
-//        }
-//    }];
-
-    
     NSArray *fileArray = [WWWTools getContentsOfDirectoryWithPath:path];
     if (fileArray.count > 0) {
         for (NSString *fileName in fileArray) {
@@ -205,7 +179,6 @@ void UncaughtExceptionHandler(NSException *exception) {
         } else {//压缩失败再次压缩
             NVLogError(@"压缩失败");
             BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:paths];
-//            BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withContentsOfDirectory:paths[0]];
             if (isSuccess) {//压缩成功，清空日志
                 NVLogInfo(@"压缩成功");
                 //清空日志
