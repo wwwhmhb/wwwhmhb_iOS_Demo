@@ -4,7 +4,9 @@
 //
 //  Created by Yonggui Wang on 2018/7/30.
 //  Copyright © 2018年 Weiwei Wang. All rights reserved.
-//
+/*
+ 为 NSArray 添加链式响应，数据元素筛选和转换
+ */
 
 #import <Foundation/Foundation.h>
 

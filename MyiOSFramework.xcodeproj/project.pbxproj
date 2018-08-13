@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0450DF582120014A00892171 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0450DF572120014A00892171 /* icon.png */; };
-		0450DF5C21200A8500892171 /* WWWChangeIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450DF5B21200A8500892171 /* WWWChangeIcon.m */; };
+		0450DF5C21200A8500892171 /* WWWChangeIconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450DF5B21200A8500892171 /* WWWChangeIconManager.m */; };
 		0450DF6B2120303A00892171 /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */; };
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
@@ -61,8 +61,8 @@
 
 /* Begin PBXFileReference section */
 		0450DF572120014A00892171 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		0450DF5A21200A8500892171 /* WWWChangeIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWChangeIcon.h; sourceTree = "<group>"; };
-		0450DF5B21200A8500892171 /* WWWChangeIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWChangeIcon.m; sourceTree = "<group>"; };
+		0450DF5A21200A8500892171 /* WWWChangeIconManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWChangeIconManager.h; sourceTree = "<group>"; };
+		0450DF5B21200A8500892171 /* WWWChangeIconManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWChangeIconManager.m; sourceTree = "<group>"; };
 		0450DF692120303A00892171 /* UIViewController+MethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MethodSwizzling.h"; sourceTree = "<group>"; };
 		0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodSwizzling.m"; sourceTree = "<group>"; };
 		12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyiOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,8 +170,8 @@
 		0450DF59212009E500892171 /* ChangeIcon */ = {
 			isa = PBXGroup;
 			children = (
-				0450DF5A21200A8500892171 /* WWWChangeIcon.h */,
-				0450DF5B21200A8500892171 /* WWWChangeIcon.m */,
+				0450DF5A21200A8500892171 /* WWWChangeIconManager.h */,
+				0450DF5B21200A8500892171 /* WWWChangeIconManager.m */,
 			);
 			path = ChangeIcon;
 			sourceTree = "<group>";
@@ -592,7 +592,7 @@
 				AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */,
 				ADAC8718210EF0550093BCE0 /* NSArray+LXDExtension.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
-				0450DF5C21200A8500892171 /* WWWChangeIcon.m in Sources */,
+				0450DF5C21200A8500892171 /* WWWChangeIconManager.m in Sources */,
 				AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */,
 				ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */,
 				ADE6C5FA2105E1CF0061674B /* BlazeicePlist.m in Sources */,

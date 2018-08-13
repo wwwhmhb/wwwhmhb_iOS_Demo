@@ -4,7 +4,9 @@
 //
 //  Created by Yonggui Wang on 2018/7/17.
 //  Copyright © 2018年 Weiwei Wang. All rights reserved.
-//
+/*
+ 通过 runtime 对 button 添加方法
+ */
 
 #import <UIKit/UIKit.h>
 

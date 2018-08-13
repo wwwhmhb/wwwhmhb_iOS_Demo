@@ -125,7 +125,6 @@
             }
         });
     }
-
     //目标文件读取完成之后调用
     dispatch_group_notify(group, queue, ^{
         
@@ -134,28 +133,6 @@
         NSLog(@"%@", str);
         
     });
-    
-//}
-//if (done) {
-//    dispatch_group_leave(group);
-//
-//}
-//
-//});
-//
-//}
-//dispatch_group_notify(group, queue, ^{
-//    NSString *str = [[NSString alloc] initWithData:totalData encoding:NSUTF8StringEncoding];
-//    NSLog(@"%@", str);
-//
-//});
-
-    
-
-    
-    
-    
-
 }
 
 - (void)didReceiveMemoryWarning {
