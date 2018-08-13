@@ -1,0 +1,71 @@
+iOS10.3系统增加了更换 icon 的功能,主要 API 方法如下:
+// 如果为NO，表示当前进程不支持替换图标
+@property (readonly, nonatomic) BOOL supportsAlternateIcons NS_EXTENSION_UNAVAILABLE("Extensions may not have alternate icons") API_AVAILABLE(ios(10.3), tvos(10.2));
+// 更换 icon 通过修改 iconName, 传入nil代表使用主图标. 完成后的操作将会在任意的后台队列中异步执行; 如果需要更改UI，请确保在主队列中执行.
+- (void)setAlternateIconName:(nullable NSString *)alternateIconName completionHandler:(nullable void (^)(NSError *_Nullable error))completionHandler NS_EXTENSION_UNAVAILABLE("Extensions may not have alternate icons") API_AVAILABLE(ios(10.3), tvos(10.2));
+// 获取当前 icon 的名称,如果alternateIconName为nil，则代表当前使用的是主图标.
+@property (nullable, readonly, nonatomic) NSString *alternateIconName NS_EXTENSION_UNAVAILABLE("Extensions may not have alternate icons") API_AVAILABLE(ios(10.3), tvos(10.2));
+
+设置 info.plist 文件参数,否则无法正常更换 icon, 具体方法如下(show Raw keys/values):
+1、查看是否有 CFBundleIcons(Icon files (iOS 5)) 字段,如果没有进行创建 value 类型为Dictionary;
+2、接下来,打开 CFBundleIcons,它的下面包括两个配置变量，CFBundlePrimaryIcon(Primary Icon)和 UINewsstandIcon(Newsstand Icon)，其 Value 对应的都是 Dictionary;
+3、此时需要创建 key : CFBundleAlternateIcons,value : Dictionary 的字段,在CFBundleAlternateIcons 下面添加两个字段，分别是 key : icon1、key : icon2(名字随便,也就是代码中改变 icon 时 iconName 的值)，value : Dictionary;
+4、在 icon1 和 icon2 下面分别加入一个 key : CFBundleIconFiles,value : Array 的字段;
+5、在 icon1 和 icon2 中的 CFBundleIconFiles 下面分别加入一个字段：key : item0,value : String（想要改变的icon图片资源的名字,图片资源必须放到 bundle 目录下）
+6、打开 CFBundlePrimaryIcon 字段，里面放一张第一次登录的默认icon图片，比例为1:1,但是一般默认 icon 都是在 Assets.xcassets 中设置,如果直接把 icon 图片资源命名为 icon.png 放到 bundle 目录下也可自动作为 icon.
+
+具体格式如下:
+<key>CFBundleIcons</key>
+    <dict>
+        <key>CFBundleAlternateIcons</key>
+        <dict>
+            <key>icon1</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>iconName1</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+            <key>icon2</key>
+            <dict>
+                <key>CFBundleIconFiles</key>
+                <array>
+                    <string>iconName2</string>
+                </array>
+                <key>UIPrerenderedIcon</key>
+                <false/>
+            </dict>
+        </dict>
+        <key>CFBundlePrimaryIcon</key>
+        <dict>
+            <key>CFBundleIconFiles</key>
+            <array>
+                <string>iconName</string>
+            </array>
+        </dict>
+    </dict>
+
+
+第二部分：[无弹框更换App图标]
+
+什么是弹框
+
+让我们查看弹框的本质
+
+弹框与UIAlertController长的倒是挺像的。让我们来剖析下这个弹框：
+可以看到弹框就是私有类_UIAlertControllerView，让我们再对比下系统的UIAlertController：
+所以更换App时的弹框就是UIAlertController，只不过上面的控件不太一样罢了。（其实我们也能做到在UIAlertController上添加任意控件）
+
+拦截弹框
+
+既然知道了弹框是UIAlertController，那么我们自然而然想到，该弹框是由ViewController通过presentViewController:animated:completion:方法弹出。那么我们就可以通过Method swizzling hook该弹框，不让其进行弹出即可：
+这段代码交换了UIViewController的presentViewController:animated:completion:方法。通过打印UIAlertController的特征，我们可以发现，更换App图标时的弹框是没有title与message的，但是我们一般使用的UIAlertController都是带title、message的，毕竟不会弹个空白的框给用户玩。
+
+所以该方法中通过判断title与message来捕捉更换App图标时的弹框，并直接return即可。
+
+
+尽管目前实现了在用户无感的情况下替换App图标，但是可替换的图标还是必须预先放入工程中，并且要在Info.plist内指定。这很大程度上限制了更换图标的动态性：比如我们某天想要推出一款新主题以及对应的App图标，但是新的App图标并没有预先放入工程的main bundle中，也没有在Info.plist中进行指定，所以我们在不上架新版本的情况下，无法推出该新App图标
+
+
