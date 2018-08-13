@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0450DF582120014A00892171 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0450DF572120014A00892171 /* icon.png */; };
+		0450DF5C21200A8500892171 /* WWWChangeIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450DF5B21200A8500892171 /* WWWChangeIcon.m */; };
+		0450DF6B2120303A00892171 /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */; };
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
 		AD8F524820F6042300E765B8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* MainViewController.m */; };
@@ -57,6 +60,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0450DF572120014A00892171 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		0450DF5A21200A8500892171 /* WWWChangeIcon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWChangeIcon.h; sourceTree = "<group>"; };
+		0450DF5B21200A8500892171 /* WWWChangeIcon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWChangeIcon.m; sourceTree = "<group>"; };
+		0450DF692120303A00892171 /* UIViewController+MethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MethodSwizzling.h"; sourceTree = "<group>"; };
+		0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodSwizzling.m"; sourceTree = "<group>"; };
 		12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyiOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93929609ADD4013021E37057 /* Pods-MyiOSFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.release.xcconfig"; sourceTree = "<group>"; };
 		AD8F524020F6042300E765B8 /* MyiOSFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyiOSFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +167,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0450DF59212009E500892171 /* ChangeIcon */ = {
+			isa = PBXGroup;
+			children = (
+				0450DF5A21200A8500892171 /* WWWChangeIcon.h */,
+				0450DF5B21200A8500892171 /* WWWChangeIcon.m */,
+			);
+			path = ChangeIcon;
+			sourceTree = "<group>";
+		};
 		AD8F523720F6042300E765B8 = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +239,7 @@
 		AD8F525F20F6F6F100E765B8 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0450DF572120014A00892171 /* icon.png */,
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -230,6 +248,7 @@
 		AD8F526220F6FD3500E765B8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				0450DF59212009E500892171 /* ChangeIcon */,
 				ADE2BB7D21118C2700565CDB /* LogManager */,
 				ADE2BB7721106B6800565CDB /* NetworkingManager */,
 				ADCA8E05210F16BC003296D8 /* StreamOperationManager */,
@@ -248,6 +267,8 @@
 				AD8F52A920FD8AF100E765B8 /* UIButton+AddSelectorForClick.m */,
 				ADAC8716210EF0550093BCE0 /* NSArray+LXDExtension.h */,
 				ADAC8717210EF0550093BCE0 /* NSArray+LXDExtension.m */,
+				0450DF692120303A00892171 /* UIViewController+MethodSwizzling.h */,
+				0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -489,6 +510,7 @@
 				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
 				AD8F52B52100690800E765B8 /* BottomPickerView in Resources */,
 				AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */,
+				0450DF582120014A00892171 /* icon.png in Resources */,
 				ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */,
 				ADE2BB7C2111837A00565CDB /* Test.text in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
@@ -557,6 +579,7 @@
 				AD8F526A20F708D500E765B8 /* WWWBaseViewController.m in Sources */,
 				ADE6C5F32105D7B90061674B /* BlazeiceDooleView.m in Sources */,
 				AD8F52AA20FD8AF100E765B8 /* UIButton+AddSelectorForClick.m in Sources */,
+				0450DF6B2120303A00892171 /* UIViewController+MethodSwizzling.m in Sources */,
 				AD8F524820F6042300E765B8 /* MainViewController.m in Sources */,
 				AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */,
 				ADE6C5F42105D7B90061674B /* ACEDrawingTools.m in Sources */,
@@ -569,6 +592,7 @@
 				AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */,
 				ADAC8718210EF0550093BCE0 /* NSArray+LXDExtension.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
+				0450DF5C21200A8500892171 /* WWWChangeIcon.m in Sources */,
 				AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */,
 				ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */,
 				ADE6C5FA2105E1CF0061674B /* BlazeicePlist.m in Sources */,
@@ -719,7 +743,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W33P5S72D3;
+				DEVELOPMENT_TEAM = 49UCR2N8X6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyiOSFramework/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
@@ -740,7 +764,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W33P5S72D3;
+				DEVELOPMENT_TEAM = 49UCR2N8X6;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyiOSFramework/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
