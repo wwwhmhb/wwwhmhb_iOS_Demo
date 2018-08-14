@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Weiwei Wang. All rights reserved.
 //
 
-#import "WWWGCDReadFile.h"
+#import "WWWGCDReadWriteFile.h"
 
-@implementation WWWGCDReadFile
+@implementation WWWGCDReadWriteFile
 
 + (void)readFileWithFilePath:(NSString *)filePath andIsSerial:(BOOL)isSerial andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     
@@ -114,4 +114,46 @@
     });
 }
 
+
++ (void)wrideFileWithContent:(id)object toFilePath:(NSString *)filePath isCoverOlderFile:(BOOL)isCover andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
+    
+    size_t offSize = 20;
+    if (!isCover) {
+        NSData *fileData = [NSData dataWithContentsOfFile:filePath];
+        if (fileData) {
+            const char *ghjk = [fileData bytes];
+            offSize = strlen(ghjk);
+        }
+    }
+    dispatch_fd_t fd = open(filePath.UTF8String, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO | O_APPEND);
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
+    
+    dispatch_io_t pipe_chanel = dispatch_io_create_with_path(DISPATCH_IO_STREAM,[filePath UTF8String], O_RDWR | O_APPEND, 0,queue , ^(int error) {
+        close(fd);
+    });
+    
+    const void *contentChar;
+    if ([object isKindOfClass:[NSString class]]) {
+        NSString *string = (NSString *)object;
+        contentChar = [string UTF8String];
+    }
+    if ([object isKindOfClass:[NSData class]]) {
+        NSData *data = (NSData *)object;
+        contentChar = [data bytes];
+    }
+    size_t size = strlen(contentChar);
+    
+    dispatch_data_t dataT = dispatch_data_create(contentChar, size, queue, NULL);
+    
+    dispatch_io_write(pipe_chanel, offSize, dataT, queue, ^(bool done, dispatch_data_t  _Nullable data, int error) {
+        if (error == 0) {
+            NSData *resultData = (NSData *)data;
+            finshBlock(resultData,nil);
+        } else {
+            NSError *myError = [NSError errorWithDomain:@"写入信息错" code:error userInfo:@{NSLocalizedDescriptionKey : @"写入信息错"}];
+            finshBlock(nil,myError);
+        }
+    });
+}
 @end

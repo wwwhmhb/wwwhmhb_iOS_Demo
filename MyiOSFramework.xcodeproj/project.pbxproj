@@ -12,7 +12,7 @@
 		0450DF6B2120303A00892171 /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */; };
 		0493B7132121D83A00F1230B /* ChangeIcon in Resources */ = {isa = PBXBuildFile; fileRef = 0493B7122121D83A00F1230B /* ChangeIcon */; };
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
-		AD674E90212268C900A03886 /* WWWGCDReadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadFile.m */; };
+		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
 		AD8F524820F6042300E765B8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* MainViewController.m */; };
 		AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524C20F6042500E765B8 /* Assets.xcassets */; };
@@ -70,8 +70,8 @@
 		0493B7122121D83A00F1230B /* ChangeIcon */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeIcon; sourceTree = "<group>"; };
 		12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyiOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93929609ADD4013021E37057 /* Pods-MyiOSFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.release.xcconfig"; sourceTree = "<group>"; };
-		AD674E8E212268C900A03886 /* WWWGCDReadFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadFile.h; sourceTree = "<group>"; };
-		AD674E8F212268C900A03886 /* WWWGCDReadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadFile.m; sourceTree = "<group>"; };
+		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
+		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
 		AD8F524020F6042300E765B8 /* MyiOSFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyiOSFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8F524320F6042300E765B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD8F524420F6042300E765B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 		AD674E8D2122677300A03886 /* GCDReadWriteFile */ = {
 			isa = PBXGroup;
 			children = (
-				AD674E8E212268C900A03886 /* WWWGCDReadFile.h */,
-				AD674E8F212268C900A03886 /* WWWGCDReadFile.m */,
+				AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */,
+				AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */,
 			);
 			path = GCDReadWriteFile;
 			sourceTree = "<group>";
@@ -620,7 +620,7 @@
 				ADE6C5D521018A270061674B /* WWWKVOObservationManager.m in Sources */,
 				ADE2BB8321118C6700565CDB /* NVLogManager.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
-				AD674E90212268C900A03886 /* WWWGCDReadFile.m in Sources */,
+				AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */,
 				ADE6C6002105E2400061674B /* UIView+UIImage.m in Sources */,
 				AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
 				ADE2BB8021118C5500565CDB /* MyCustomFormatter.m in Sources */,
