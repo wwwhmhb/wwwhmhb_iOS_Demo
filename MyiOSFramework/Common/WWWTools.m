@@ -198,7 +198,7 @@
         NSDictionary *fileDict = [fileManager attributesOfItemAtPath:path error:&error];
         if (!error && fileDict) {//属性存在
             if ([fileDict.fileType isEqualToString:NSFileTypeDirectory]) {//是文件夹
-                //获取文件夹下的文件子路径
+                //获取文件夹下的文件子路径，同 getSubpathsOfDirectoryWithPath 方法一样
                 NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:path];
                 if (enumerator) {//存在子文件路径
                     for (NSString *subpath in enumerator) {

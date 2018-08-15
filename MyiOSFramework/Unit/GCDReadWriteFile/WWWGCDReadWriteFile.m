@@ -10,6 +10,8 @@
 
 @implementation WWWGCDReadWriteFile
 
+dispatch_semaphore_t _semaphore;
+
 + (void)readFileWithFilePath:(NSString *)filePath andIsSerial:(BOOL)isSerial andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     
     if (isSerial) {
@@ -23,7 +25,7 @@
 + (void)serialReadFileWithFielPath:(NSString *)filePath andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     //队列创建
     dispatch_queue_t queue =dispatch_queue_create("queue",NULL);//当设置为并行队列时在读取文件时实际还是串行
-    //创建文件描述
+    //创建文件描述，以只读方式打开文件
     dispatch_fd_t fd = open(filePath.UTF8String,O_RDONLY, 0);
     //创建一个调度I / O通道
     dispatch_io_t io =dispatch_io_create(DISPATCH_IO_STREAM, fd, queue, ^(int error) {
@@ -64,7 +66,7 @@
 + (void)concurrentReadFileWithFielPath:(NSString *)filePath andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     //队列创建
     dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_CONCURRENT);
-    //创建文件描述
+    //创建文件描述，以只读方式打开文件
     dispatch_fd_t fd = open(filePath.UTF8String, O_RDONLY);
     //创建一个并发的调度I / O通道
     dispatch_io_t io = dispatch_io_create(DISPATCH_IO_RANDOM, fd, queue, ^(int error) {
@@ -119,6 +121,13 @@
 //写入文件
 + (void)wrideFileWithContent:(id)object toFilePath:(NSString *)filePath isCoverOlderFile:(BOOL)isCover andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     
+    if(!_semaphore){
+        // 初始化信号量，
+        _semaphore = dispatch_semaphore_create(1);
+    }
+    // 等待信号量
+    dispatch_semaphore_wait(_semaphore, DISPATCH_TIME_FOREVER);
+
     dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);//队列
     size_t offSize = 0;//文件偏移大小
     dispatch_fd_t fd;//文件描述
@@ -155,6 +164,9 @@
     
     //内容数据转换为 dispatch_data_t
     dispatch_data_t dataT = dispatch_data_create(contentChar, size, queue, NULL);
+//    dispatch_data_t dataT = dispatch_data_create(contentChar, size, queue, ^{
+//
+//    });
     //内容写入文件
     dispatch_io_write(pipe_chanel, offSize, dataT, queue, ^(bool done, dispatch_data_t  _Nullable data, int error) {
         if (error == 0) {//写入成功

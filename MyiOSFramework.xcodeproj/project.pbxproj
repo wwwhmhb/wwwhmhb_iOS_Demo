@@ -13,6 +13,7 @@
 		0493B7132121D83A00F1230B /* ChangeIcon in Resources */ = {isa = PBXBuildFile; fileRef = 0493B7122121D83A00F1230B /* ChangeIcon */; };
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
+		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
 		AD8F524820F6042300E765B8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* MainViewController.m */; };
 		AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524C20F6042500E765B8 /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		93929609ADD4013021E37057 /* Pods-MyiOSFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.release.xcconfig"; sourceTree = "<group>"; };
 		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
 		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
+		AD674EBC2123DC7600A03886 /* GCDReadWriteFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GCDReadWriteFile; sourceTree = "<group>"; };
 		AD8F524020F6042300E765B8 /* MyiOSFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyiOSFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8F524320F6042300E765B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD8F524420F6042300E765B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 			children = (
 				AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */,
 				AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */,
+				AD674EBC2123DC7600A03886 /* GCDReadWriteFile */,
 			);
 			path = GCDReadWriteFile;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 			files = (
 				AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */,
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
+				AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */,
 				ADE6C5D72105B3D00061674B /* KVOObservation in Resources */,
 				ADE2BB852114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,

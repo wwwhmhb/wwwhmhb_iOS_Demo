@@ -1,0 +1,108 @@
+
+GCD文件读写的基本步骤：
+1, 给gcd准备一条线程,创建线程有好多种方式,这里我们使用带有标志的,便于以后线程出问题调试
+dispatch_queue_t myQueue = dispatch_queue_create("myOnlyQueue", DISPATCH_QUEUE_CONCURRENT);
+
+2, 创建一个调度I / O通道,通常有 3 种方法,常使用的为前两种,具体如下：
+2.1, 创建一个调度I / O通道，并将其与指定的文件描述符关联。
+dispatch_io_t dispatch_io_create( dispatch_io_type_t type, dispatch_fd_t fd, dispatch_queue_t queue, void (^cleanup_handler)(int error));
+2.2, 创建一个具有关联路径名的调度I / O通道。
+dispatch_io_t dispatch_io_create_with_path( dispatch_io_type_t type, const char* path, int oflag, mode_t mode, dispatch_queue_t queue, void (^cleanup_handler)(int error));
+2.3, 从现有的信道创建一个新的调度I / O信道。
+dispatch_io_t dispatch_io_create_with_io( dispatch_io_type_t type, dispatch_io_t io, dispatch_queue_t queue, void (^cleanup_handler)(int error));
+
+解释一下创建调度I / O信道的参数:
+type（dispatch_io_type_t）: 通道类型,有 2 种：
+#define DISPATCH_IO_STREAM 0
+读写操作按顺序依次顺序进行。在读或写开始时，操作总是在文件指针位置读或写数据。读和写操作可以在同一个信道上同时进行。
+#define DISPATCH_IO_RANDOM 1
+随机访问文件。读和写操作可以同时执行这种类型的通道,文件描述符必须是可寻址的。
+fd（dispatch_fd_t）: 文件描述符;
+queue(dispatch_queue_t) : GCD队列;
+cleanup_handler(void (^)(int error)) : 发生错误时用来执行处理的 Block;
+path(const char*) : char类型的文件路径;
+oflag(int) : 文件权限标志;
+mode（mode_t）: 表示如果放弃操作或者打开指定文件失败的错误码,实际上也就是一种无符号整数,可设置为0
+
+3, 文件描述，主要搜描述 GCD 获取文件打开的权限，具体如下：
+dispatch_fd_t fd = open(filePath.UTF8String, O_RDONLY);
+首先解释一下 open 这个方法几个参数，第一个是我们的文件路径，没办法,需要转成的char类型,纯C的东西；后面的是可变长度参数类型,这里填写打开文件的权限,下面是文件权限参数的解释
+/*
+O_RDONLY 以只读方式打开文件
+O_WRONLY 以只写方式打开文件
+O_RDWR 以可读写方式打开文件. 上述三种旗标是互斥的, 也就是不可同时使用, 但可与下列的旗标利用OR(|)运算符组合.
+O_CREAT 若欲打开的文件不存在则自动建立该文件.
+O_EXCL 如果O_CREAT 也被设置, 此指令会去检查文件是否存在. 文件若不存在则建立该文件, 否则将导致打开文件错误. 此外, 若O_CREAT 与O_EXCL 同时设置, 并且欲打开的文件为符号连接, 则会打开文件失败.
+O_NOCTTY 如果欲打开的文件为终端机设备时, 则不会将该终端机当成进程控制终端机.
+O_TRUNC 若文件存在并且以可写的方式打开时, 此旗标会令文件长度清为0, 而原来存于该文件的资料也会消失.
+O_APPEND 当读写文件时会从文件尾开始移动, 也就是所写入的数据会以附加的方式加入到文件后面.
+O_NONBLOCK 以不可阻断的方式打开文件, 也就是无论有无数据读取或等待, 都会立即返回进程之中.
+O_NDELAY 同O_NONBLOCK.
+O_SYNC 以同步的方式打开文件.
+O_NOFOLLOW 如果参数pathname 所指的文件为一符号连接, 则会令打开文件失败.
+O_DIRECTORY 如果参数pathname 所指的文件并非为一目录, 则会令打开文件失败。注：此为Linux2. 2 以后特有的旗标, 以避免一些系统安全问题.
+S_IRWXU00700 权限, 代表该文件所有者具有可读、可写及可执行的权限.
+S_IRUSR 或S_IREAD, 00400 权限, 代表该文件所有者具有可读取的权限.
+S_IWUSR 或S_IWRITE, 00200 权限, 代表该文件所有者具有可写入的权限.
+S_IXUSR 或S_IEXEC, 00100 权限, 代表该文件所有者具有可执行的权限.
+S_IRWXG 00070 权限, 代表该文件用户组具有可读、可写及可执行的权限.
+S_IRGRP 00040 权限, 代表该文件用户组具有可读的权限.
+S_IWGRP 00020 权限, 代表该文件用户组具有可写入的权限.
+S_IXGRP 00010 权限, 代表该文件用户组具有可执行的权限.
+S_IRWXO 00007 权限, 代表其他用户具有可读、可写及可执行的权限.
+S_IROTH 00004 权限, 代表其他用户具有可读的权限
+S_IWOTH 00002 权限, 代表其他用户具有可写入的权限.
+S_IXOTH 00001 权限, 代表其他用户具有可执行的权限.
+*/
+
+4, 文件读取方法
+void dispatch_io_read( dispatch_io_t channel, off_t offset, size_t length, dispatch_queue_t queue, dispatch_io_handler_t io_handler);
+解释一下文件读取方法的参数:
+offset(off_t) : 文件读取时的偏移位置，即文件读取的其实位置，实际上也就是一种无符号整数。对于DISPATCH_IO_RANDOM 类型的通道,此参数指定要读取的信道的偏移量。对于DISPATCH_IO_STREAM 类型的通道,此参数将被忽略，数据从当前位置读取;
+length(size_t) : 文件读取内容长度;
+io_handler(dispatch_io_handler_t) : 文件读取结束后回调block;
+
+4, 文件写入方法
+void dispatch_io_write( dispatch_io_t channel, off_t offset, dispatch_data_t data, dispatch_queue_t queue, dispatch_io_handler_t io_handler);
+解释一下文件写入方法的参数:
+data（dispatch_data_t）: 写入的内容数据.
+
+5, 创建 dispatch_data_t 数据方法
+dispatch_data_t dispatch_data_create(const void *buffer, size_t size, dispatch_queue_t queue, dispatch_block_t destructor);
+解释一下创建 dispatch_data_t 数据方法的参数:
+buffer(const void *) : 写入内容的字节指针。
+
+int intbuffer[] = { 1, 2, 3, 4 };
+dispatch_data_t data = dispatch_data_create(intbuffer, sizeof(intbuffer), queue, NULL);
+
+const char daxiao[] = "Hello  World !";
+dispatch_data_t datas = dispatch_data_create(daxiao, sizeof(daxiao), myQueue, NULL);
+
+6, 设置一次读取的大小
+6.1, 设置一次读取的最大字节
+void dispatch_io_set_high_water( dispatch_io_t channel, size_t high_water);
+
+6.2, 设置一次读取的最小字节
+void dispatch_io_set_low_water( dispatch_io_t channel, size_t low_water);
+
+
+WWWGCDReadWriteFile 的使用方法:
+读：
+NSString *path = [[NSBundle mainBundle] pathForResource:@"Test" ofType:@"text"];
+[WWWGCDReadWriteFile readFileWithFilePath:path andIsSerial:NO andFinishBlock:^(NSData *data, NSError *error) {
+NSString *string = [[ NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+NSLog(@"string = %@",string);
+}];
+
+写：
+NSString *path = [WWWTools getDocumentPath];
+NSString *filePath = [path stringByAppendingPathComponent:@"myTest.text"];
+NSString *string = @"你哪哈就能噶你看儿童与为哦电饭锅和进口量认同与哦";
+NSData* xmlData = [string dataUsingEncoding:NSUTF8StringEncoding];
+[WWWGCDReadWriteFile wrideFileWithContent:xmlData toFilePath:filePath isCoverOlderFile:YES andFinishBlock:^(NSData *data, NSError *error) {
+if (error) {
+NSLog(@"error = %@",error);
+} else {
+NSLog(@"GCD写入文件成功");
+}
+}];
