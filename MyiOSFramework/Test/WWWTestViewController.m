@@ -68,9 +68,9 @@
     
     NSString *path = [WWWTools getDocumentPath];
     NSString *filePath = [path stringByAppendingPathComponent:@"myTest.text"];
-    NSString *string = @"我很好";
+    NSString *string = @"你哪哈就能噶你看儿童与为哦电饭锅和进口量认同与哦";
     NSData* xmlData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    [WWWGCDReadWriteFile wrideFileWithContent:xmlData toFilePath:filePath isCoverOlderFile:NO andFinishBlock:^(NSData *data, NSError *error) {
+    [WWWGCDReadWriteFile wrideFileWithContent:xmlData toFilePath:filePath isCoverOlderFile:YES andFinishBlock:^(NSData *data, NSError *error) {
         if (error) {
             NSLog(@"error = %@",error);
         } else {

@@ -192,11 +192,35 @@
 //计算文件大小
 + (long long)fileSizeForPath:(NSString *)path {
     long long fileSize = 0;
-    if([self fileExists:path]){
+    if([self fileExists:path]){//文件存在
         NSError *error = nil;
-        NSDictionary *fileDict = [[NSFileManager defaultManager] attributesOfItemAtPath:path error:&error];
-        if (!error && fileDict) {
-            fileSize = [fileDict fileSize];
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        NSDictionary *fileDict = [fileManager attributesOfItemAtPath:path error:&error];
+        if (!error && fileDict) {//属性存在
+            if ([fileDict.fileType isEqualToString:NSFileTypeDirectory]) {//是文件夹
+                //获取文件夹下的文件子路径
+                NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:path];
+                if (enumerator) {//存在子文件路径
+                    for (NSString *subpath in enumerator) {
+                        // 合成全路径
+                        NSString *fullSubpath = [path stringByAppendingPathComponent:subpath];
+                        // 累加文件大小
+                        fileSize += [fileManager attributesOfItemAtPath:fullSubpath error:nil].fileSize;
+                    }
+                }
+            } else {//是文件
+                fileSize = fileDict.fileSize;
+//                NSString *sizeText;
+//                if (fileSize >= pow(10, 9)) { // size >= 1GB
+//                    sizeText = [NSString stringWithFormat:@"%.2fGB", fileSize / pow(10, 9)];
+//                } else if (fileSize >= pow(10, 6)) { // 1GB > size >= 1MB
+//                    sizeText = [NSString stringWithFormat:@"%.2fMB", fileSize / pow(10, 6)];
+//                } else if (fileSize >= pow(10, 3)) { // 1MB > size >= 1KB
+//                    sizeText = [NSString stringWithFormat:@"%.2fKB", fileSize / pow(10, 3)];
+//                } else { // 1KB > size
+//                    sizeText = [NSString stringWithFormat:@"%zdB", fileSize];
+//                }
+            }
         }
     }
     return fileSize;

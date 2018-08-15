@@ -25,7 +25,7 @@
 
  @param object 写入内容
  @param filePath 写入路径
- @param isCover 是否覆盖源文件
+ @param isCover 是否覆盖原文件，覆盖原来文件不会清空原文件，
  @param finshBlock 写入结果回调
  */
 + (void)wrideFileWithContent:(id)object toFilePath:(NSString *)filePath isCoverOlderFile:(BOOL)isCover andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock;

@@ -19,6 +19,7 @@
     }
 }
 
+//串行读取文件
 + (void)serialReadFileWithFielPath:(NSString *)filePath andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     //队列创建
     dispatch_queue_t queue =dispatch_queue_create("queue",NULL);//当设置为并行队列时在读取文件时实际还是串行
@@ -59,12 +60,13 @@
     });
 }
 
+//并发读取文件
 + (void)concurrentReadFileWithFielPath:(NSString *)filePath andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     //队列创建
     dispatch_queue_t queue = dispatch_queue_create("queue", DISPATCH_QUEUE_CONCURRENT);
     //创建文件描述
     dispatch_fd_t fd = open(filePath.UTF8String, O_RDONLY);
-    //创建一个调度I / O通道
+    //创建一个并发的调度I / O通道
     dispatch_io_t io = dispatch_io_create(DISPATCH_IO_RANDOM, fd, queue, ^(int error) {
         close(fd);
     });
@@ -114,43 +116,51 @@
     });
 }
 
-
+//写入文件
 + (void)wrideFileWithContent:(id)object toFilePath:(NSString *)filePath isCoverOlderFile:(BOOL)isCover andFinishBlock:(void(^)(NSData *data,NSError *error))finshBlock {
     
-    size_t offSize = 20;
-    if (!isCover) {
-        NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-        if (fileData) {
-            const char *ghjk = [fileData bytes];
-            offSize = strlen(ghjk);
-        }
+    dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);//队列
+    size_t offSize = 0;//文件偏移大小
+    dispatch_fd_t fd;//文件描述
+    dispatch_io_t pipe_chanel;//调度I / O通道
+    
+    if (!isCover) {//是否覆盖原文件
+        //文件写入的偏移位置
+        offSize = [WWWTools fileSizeForPath:filePath];
+        //从尾部开始进行写入
+        fd = open(filePath.UTF8String, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO | O_APPEND);
+        pipe_chanel = dispatch_io_create_with_path(DISPATCH_IO_STREAM,[filePath UTF8String], O_RDWR | O_APPEND, 0,queue , ^(int error) {
+            close(fd);
+        });
+    } else {
+        //从头开始进行写入
+        fd = open(filePath.UTF8String, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+        pipe_chanel = dispatch_io_create_with_path(DISPATCH_IO_STREAM,[filePath UTF8String], O_RDWR, 0,queue , ^(int error) {
+            close(fd);
+        });
     }
-    dispatch_fd_t fd = open(filePath.UTF8String, O_RDWR | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO | O_APPEND);
     
-    dispatch_queue_t queue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
-    
-    dispatch_io_t pipe_chanel = dispatch_io_create_with_path(DISPATCH_IO_STREAM,[filePath UTF8String], O_RDWR | O_APPEND, 0,queue , ^(int error) {
-        close(fd);
-    });
-    
-    const void *contentChar;
-    if ([object isKindOfClass:[NSString class]]) {
+    const void *contentChar;//写入内容指针
+    size_t size = 0;//内容大小
+    if ([object isKindOfClass:[NSString class]]) {//内容为字符串
         NSString *string = (NSString *)object;
         contentChar = [string UTF8String];
+        size = strlen(contentChar);
     }
-    if ([object isKindOfClass:[NSData class]]) {
+    if ([object isKindOfClass:[NSData class]]) {//内容为NSData
         NSData *data = (NSData *)object;
         contentChar = [data bytes];
+        size = data.length;
     }
-    size_t size = strlen(contentChar);
     
+    //内容数据转换为 dispatch_data_t
     dispatch_data_t dataT = dispatch_data_create(contentChar, size, queue, NULL);
-    
+    //内容写入文件
     dispatch_io_write(pipe_chanel, offSize, dataT, queue, ^(bool done, dispatch_data_t  _Nullable data, int error) {
-        if (error == 0) {
+        if (error == 0) {//写入成功
             NSData *resultData = (NSData *)data;
             finshBlock(resultData,nil);
-        } else {
+        } else {//写入失败
             NSError *myError = [NSError errorWithDomain:@"写入信息错" code:error userInfo:@{NSLocalizedDescriptionKey : @"写入信息错"}];
             finshBlock(nil,myError);
         }
