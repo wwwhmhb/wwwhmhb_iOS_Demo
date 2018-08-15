@@ -132,7 +132,7 @@ void UncaughtExceptionHandler(NSException *exception) {
 #pragma mark  --  上传异常信息
 - (void)uploadExceptionLogWithPath:(NSString *)path {
     
-    NSArray *fileArray = [WWWTools getContentsOfDirectoryWithPath:path];
+    NSArray *fileArray = [WWWTools getContentsOfDirectoryFromPath:path isDeep:NO];
     if (fileArray.count > 0) {
         for (NSString *fileName in fileArray) {
             NSString *robotid = @"TWYP5TA6LR5LOVRC";

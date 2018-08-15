@@ -46,17 +46,12 @@
 - (void)testButtonAction:(UIButton *)button {
 
 
-//    // 全局并发队列的获取方法
-//    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-//    queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_CONCURRENT);
-//    const char *queueName = dispatch_queue_get_label(queue);
-//    NSLog(@"queueName = %s",queueName);
-
-    //将myQueue优先级设置为与globalQueue相同
-    dispatch_queue_t myQueue = dispatch_queue_create("com.test.queue", NULL);
-    dispatch_queue_t globalQueue = dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0);
-    dispatch_set_target_queue(myQueue, globalQueue);
-
+    // 全局并发队列的获取方法
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    queue = dispatch_queue_create("net.bujige.testQueue", DISPATCH_QUEUE_CONCURRENT);
+    const char *queueName = dispatch_queue_get_label(queue);
+    NSLog(@"queueName = %s",queueName);
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -122,52 +122,48 @@
 
 
 //判断文件是否存在
-+ (BOOL)fileExists:(NSString *)path {
++ (BOOL)isFileExists:(NSString *)path {
     return  [[NSFileManager defaultManager] fileExistsAtPath:path];
 }
 
 //判断是不是文件目录
-+ (BOOL)isDirectory:(NSString *)filePath {
-//    BOOL isDirectory = NO;
-//    [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory];
-//    return isDirectory;
++ (BOOL)isFileDirectory:(NSString *)filePath {
     
-    NSNumber *isDirectory;
-    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
-    [fileUrl getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
-    return isDirectory.boolValue;
+    BOOL isDirectory = NO;
+    [[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDirectory];
+    return isDirectory;
+    
+//    NSNumber *isDirectory;
+//    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
+//    [fileUrl getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
+//    return isDirectory.boolValue;
     
 }
 
-//获取文件目录中的内容，浅遍历文件目录
-+ (NSArray *)getContentsOfDirectoryWithPath:(NSString *)path {
+//获取文件目录中的子路径
++ (NSArray *)getContentsOfDirectoryFromPath:(NSString *)path isDeep:(BOOL)isDeep {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSError *error = nil;
-    //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
-    NSArray *fileList = [fileManager contentsOfDirectoryAtPath:path error:&error];
-    return fileList;
-}
-
-
-//获取文件目录中文件，深度遍历文件目录
-+ (NSArray *)getSubpathsOfDirectoryWithPath:(NSString *)path {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSError *error = nil;
-    //fileList便是包含有该文件夹下所有文件的文件名及文件夹名的数组
-    NSArray *fileList = [fileManager subpathsOfDirectoryAtPath:path error:&error];
+    NSArray *fileList;
+    if (isDeep) {//深度遍历文件目录
+        
+        fileList = [fileManager subpathsOfDirectoryAtPath:path error:&error];
+    } else {//浅度遍历文件目录
+        
+        fileList = [fileManager contentsOfDirectoryAtPath:path error:&error];
+    }
     return fileList;
 }
 
 //创建文件夹
 + (BOOL)createDirectoryWithPath:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![self fileExists:path]) {
+    if (![self isFileExists:path]) {
         return [fileManager createDirectoryAtPath:path
                       withIntermediateDirectories:YES
                                        attributes:nil
                                             error:NULL];
     }
-    
     return YES;
 }
 
@@ -178,9 +174,29 @@
     return [fileManager createFileAtPath:path contents:data attributes:nil];
 }
 
+//复制文件从路径A到路径B
++ (BOOL)copyFileFromPath:(NSString *)fromPath toPath:(NSString *)toPath isKeepOldFile:(BOOL)isKeep {
+    
+    BOOL isSuccess = NO;
+    if (![self isFileExists:fromPath]) {//文件不存在
+        return isSuccess;
+    }
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error = nil;
+    if (isKeep) {//保留旧文件
+        [fileManager copyItemAtPath:fromPath toPath:toPath error:&error];
+    } else {//删除旧文件
+        [fileManager moveItemAtPath:fromPath toPath:toPath error:&error];
+    }
+    if (!error) {
+        isSuccess = YES;
+    }
+    return isSuccess;
+}
+
 //删除文件
 + (BOOL)deleteFile:(NSString *)path {
-    if ([self fileExists:path]) {
+    if ([self isFileExists:path]) {
         NSError *error = nil;
         NSFileManager* fileManager=[NSFileManager defaultManager];
         BOOL isSuccess =  [fileManager removeItemAtPath:path error:&error];
@@ -189,16 +205,28 @@
     return YES;
 }
 
+//获取文件属性
++ (NSDictionary *)getAttributesOfFileFromPath:(NSString *)path {
+    NSDictionary *dict = nil;
+    NSError *error = nil;
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    dict = [fileManager attributesOfItemAtPath:path error:&error];
+    if (error) {
+        dict = nil;
+    }
+    return dict;
+}
+
 //计算文件大小
 + (long long)fileSizeForPath:(NSString *)path {
     long long fileSize = 0;
-    if([self fileExists:path]){//文件存在
+    if([self isFileExists:path]){//文件存在
         NSError *error = nil;
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSDictionary *fileDict = [fileManager attributesOfItemAtPath:path error:&error];
         if (!error && fileDict) {//属性存在
             if ([fileDict.fileType isEqualToString:NSFileTypeDirectory]) {//是文件夹
-                //获取文件夹下的文件子路径，同 getSubpathsOfDirectoryWithPath 方法一样
+                //获取文件夹下的文件子路径，同 subpathsOfDirectoryAtPath 方法一样
                 NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtPath:path];
                 if (enumerator) {//存在子文件路径
                     for (NSString *subpath in enumerator) {
@@ -242,6 +270,56 @@
     NSDictionary *fileSysAttributes = [fileManager attributesOfFileSystemForPath:path error:nil];
     NSNumber *totalSpace = [fileSysAttributes objectForKey:NSFileSystemSize];
     return [totalSpace longLongValue];
+}
+
+//添加内容到文件最后
++ (void)addContent:(NSData *)data toPath:(NSString *)path {
+    
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    [fileHandle seekToEndOfFile];
+    [fileHandle writeData:data];
+    [fileHandle closeFile];
+}
+
+//读取文件从指定位置开始一定长度的内容
++ (NSData *)readFilePath:(NSString *)path offsetSize:(size_t)offsetSize dataLength:(size_t)length {
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    [fileHandle seekToFileOffset:offsetSize];
+    NSData *data = [fileHandle readDataOfLength:length];
+    [fileHandle closeFile];
+    return data;
+}
+
+//读取文件从指定位置到最后的内容
++ (NSData *)readFilePath:(NSString *)path offsetSize:(size_t)offsetSize {
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    [fileHandle seekToFileOffset:offsetSize];
+    NSData *data = [fileHandle readDataToEndOfFile];
+    [fileHandle closeFile];
+    return data;
+}
+
+//读取文件全部的内容
++ (NSData *)readAllFilePath:(NSString *)path {
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    NSData *data = [fileHandle availableData];
+    [fileHandle closeFile];
+    return data;
+}
+
+//删除文件从指定位置到最后的内容
++ (void)removeFilePath:(NSString *)path offsetSize:(size_t)offsetSize {
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    [fileHandle truncateFileAtOffset:offsetSize];
+    [fileHandle closeFile];
+}
+
+//删除文件从当前读取位置到最后的内容
++ (void)removeCurrentOffsetFilePath:(NSString *)path {
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    long long currentOffset = [fileHandle offsetInFile];
+    [fileHandle truncateFileAtOffset:currentOffset];
+    [fileHandle closeFile];
 }
 
 //将多个文件压缩

@@ -19,6 +19,12 @@ typedef NS_ENUM(NSInteger,FilePathType) {
     TmpPath
 };
 
+typedef NS_ENUM(NSInteger,FileHandleType) {
+    OnlyWritingType = 0,
+    OnlyReadingType,
+    ReadingAndWritingType
+};
+
 @interface WWWTools : NSObject
 
 /*=============== 文件操作部分 =================*/
@@ -91,7 +97,7 @@ typedef NS_ENUM(NSInteger,FilePathType) {
  @param path 文件路径
  @return YES存在，NO不存在
  */
-+ (BOOL)fileExists:(NSString *)path;
++ (BOOL)isFileExists:(NSString *)path;
 
 
 /**
@@ -100,25 +106,19 @@ typedef NS_ENUM(NSInteger,FilePathType) {
  @param filePath 文件路径
  @return 是不是文件目录
  */
-+ (BOOL)isDirectory:(NSString *)filePath;
++ (BOOL)isFileDirectory:(NSString *)filePath;
 
 
 /**
- 获取文件目录中的内容，浅遍历文件目录
+ 获取文件目录中的内容
 
  @param path 文件路径
- @return 文件目录中的内容列表
+ @param isDeep 是否深度遍历文件
+ @return 获取目录子路径的列表
+
  */
-+ (NSArray *)getContentsOfDirectoryWithPath:(NSString *)path;
++ (NSArray *)getContentsOfDirectoryFromPath:(NSString *)path isDeep:(BOOL)isDeep;
 
-
-/**
- 获取文件目录中文件，深度遍历文件目录
-
- @param path 文件路径
- @return 文件目录中的文件列表
- */
-+ (NSArray *)getSubpathsOfDirectoryWithPath:(NSString *)path;
 
 /**
  创建文件夹
@@ -138,6 +138,18 @@ typedef NS_ENUM(NSInteger,FilePathType) {
  */
 + (BOOL)createFileWithPath:(NSString *)path andContentsData:(NSData *)data;
 
+
+/**
+ 复制文件/目录从路径A到路径B
+
+ @param fromPath 路径A
+ @param toPath 路径B
+ @param isKeep 是否保存原文件
+ @return 操作是否成功
+ */
++ (BOOL)copyFileFromPath:(NSString *)fromPath toPath:(NSString *)toPath isKeepOldFile:(BOOL)isKeep;
+
+
 /**
  删除文件
 
@@ -145,6 +157,15 @@ typedef NS_ENUM(NSInteger,FilePathType) {
  @return 删除文件是否成功
  */
 + (BOOL)deleteFile:(NSString *)path;
+
+
+/**
+ 获取文件属性
+
+ @param path 文件路径
+ @return 文件属性
+ */
++ (NSDictionary *)getAttributesOfFileFromPath:(NSString *)path;
 
 
 /**
