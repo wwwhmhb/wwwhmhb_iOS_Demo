@@ -21,7 +21,24 @@
 
 @implementation AppDelegate
 
-
+static NSUncaughtExceptionHandler *g_vaildUncaughtExceptionHandler;
+static void (*ori_NSSetUncaughtExceptionHandler)( NSUncaughtExceptionHandler * );
+/*
+ 如果同时有多方通过NSSetUncaughtExceptionHandler注册异常处理程序，和平的作法是：后注册者通过NSGetUncaughtExceptionHandler将先前别人注册的handler取出并备份，在自己handler处理完后自觉把别人的handler注册回去，规规矩矩的传递
+ */
+void my_NSSetUncaughtExceptionHandler( NSUncaughtExceptionHandler *handler)
+{
+    g_vaildUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
+    if (g_vaildUncaughtExceptionHandler != NULL) {
+        NSLog(@"UncaughtExceptionHandler=%p",g_vaildUncaughtExceptionHandler);
+    }
+    
+    ori_NSSetUncaughtExceptionHandler(handler);
+    NSLog(@"%@",[NSThread callStackSymbols]);
+    
+    g_vaildUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
+    NSLog(@"UncaughtExceptionHandler=%p",g_vaildUncaughtExceptionHandler);
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
@@ -33,6 +50,7 @@
     
     //抓住异常问题
     NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
+//    NSSetUncaughtExceptionHandler(&my_NSSetUncaughtExceptionHandler);
     
     //监听设备旋转通知
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
