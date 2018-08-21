@@ -137,7 +137,6 @@
 //    NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
 //    [fileUrl getResourceValue:&isDirectory forKey:NSURLIsDirectoryKey error:nil];
 //    return isDirectory.boolValue;
-    
 }
 
 //获取文件目录中的子路径
@@ -274,51 +273,72 @@
 
 //添加内容到文件最后
 + (void)addContent:(NSData *)data toPath:(NSString *)path {
-    
+    //创建可读写的文件句柄类
     NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    //跳到文件末尾位置
     [fileHandle seekToEndOfFile];
+    //写入数据
     [fileHandle writeData:data];
+    //关闭文件
     [fileHandle closeFile];
 }
 
 //读取文件从指定位置开始一定长度的内容
 + (NSData *)readFilePath:(NSString *)path offsetSize:(size_t)offsetSize dataLength:(size_t)length {
+    //创建只读的文件句柄类
     NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    //跳到指定文件的偏移量位置
     [fileHandle seekToFileOffset:offsetSize];
+    //从当前的节点读取到文件的末尾
     NSData *data = [fileHandle readDataOfLength:length];
+    //关闭文件
     [fileHandle closeFile];
     return data;
 }
 
 //读取文件从指定位置到最后的内容
 + (NSData *)readFilePath:(NSString *)path offsetSize:(size_t)offsetSize {
+    //创建只读的文件句柄类
     NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    //跳到指定文件的偏移量
     [fileHandle seekToFileOffset:offsetSize];
+    //从当前的节点读取到文件的末尾
     NSData *data = [fileHandle readDataToEndOfFile];
+    //关闭文件
     [fileHandle closeFile];
     return data;
 }
 
 //读取文件全部的内容
 + (NSData *)readAllFilePath:(NSString *)path {
+    //创建只读的文件句柄类
     NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    //从设备或通道返回可用的数据
     NSData *data = [fileHandle availableData];
+    //关闭文件
     [fileHandle closeFile];
     return data;
 }
 
 //删除文件从指定位置到最后的内容
 + (void)removeFilePath:(NSString *)path offsetSize:(size_t)offsetSize {
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    //创建可读写的文件句柄类
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    //将文件的长度设为offset字节
     [fileHandle truncateFileAtOffset:offsetSize];
+    //关闭文件
     [fileHandle closeFile];
 }
 
 //删除文件从当前读取位置到最后的内容
 + (void)removeCurrentOffsetFilePath:(NSString *)path {
-    NSFileHandle *fileHandle = [NSFileHandle fileHandleForReadingAtPath:path];
+    //创建可读写的文件句柄类
+    NSFileHandle *fileHandle = [NSFileHandle fileHandleForUpdatingAtPath:path];
+    //获取当前文件的偏移量
     long long currentOffset = [fileHandle offsetInFile];
+    //将文件的长度设为offset字节
     [fileHandle truncateFileAtOffset:currentOffset];
+    //关闭文件
     [fileHandle closeFile];
 }
 
@@ -330,7 +350,6 @@
     //创建带密码zip压缩包
     //BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withFilesAtPaths:paths withPassword:@"SSZipArchive.zip"];
     return isSuccess;
-    
 }
 
 //文件夹压缩
@@ -341,7 +360,6 @@
     //创建带密码zip压缩包
     //BOOL isSuccess = [SSZipArchive createZipFileAtPath:zipFilePath withContentsOfDirectory:directoryPath withPassword:@"SSZipArchive.zip"];
     return isSuccess;
-    
 }
 
 //获取网络权限
@@ -356,6 +374,7 @@
         [self simpleNetworkRequest];
     }
 }
+
 //简单的网络请求，获取网络权限
 + (void)simpleNetworkRequest {
     
@@ -444,26 +463,34 @@
     if ([rootViewController isKindOfClass:[UITabBarController class]]) {
         
         UITabBarController *tabBarController = (UITabBarController *)rootViewController;
-        
         return [self topViewControllerWithRootViewController:tabBarController.selectedViewController];
-        
     } else if ([rootViewController isKindOfClass:[UINavigationController class]]) {
         
         UINavigationController* navigationController = (UINavigationController*)rootViewController;
-        
         return [self topViewControllerWithRootViewController:navigationController.visibleViewController];
-        
     } else if (rootViewController.presentedViewController) {
         
         UIViewController* presentedViewController = rootViewController.presentedViewController;
-        
         return [self topViewControllerWithRootViewController: presentedViewController];
-        
     } else {
         
         return rootViewController;
-
     }
+}
+
+
+//C语言计算文件大小
+long getFileSizeFromPath(char * path) {
+    FILE * file;
+    long fileSizeBytes = 0;
+    file = fopen(path,"r");
+    if(file>0){
+        fseek(file, 0, SEEK_END);
+        fileSizeBytes = ftell(file);
+        fseek(file, 0, SEEK_SET);
+        fclose(file);
+    }
+    return fileSizeBytes;
 }
 
 @end

@@ -20,7 +20,6 @@ self.clientSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:
 
 
 4.连接指定主机的对应端口.
-
 NSError *error = nil;
 self.connected = [self.clientSocket connectToHost:self.addressTF.text onPort:[self.portTF.text integerValue] viaInterface:nil withTimeout:-1 error:&error];
 

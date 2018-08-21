@@ -196,6 +196,62 @@ typedef NS_ENUM(NSInteger,FileHandleType) {
 
 
 /**
+ 添加内容到文件最后
+
+ @param data 添加的文件内容
+ @param path 文件路径
+ */
++ (void)addContent:(NSData *)data toPath:(NSString *)path;
+
+
+/**
+ 读取文件从指定位置开始一定长度的内容
+
+ @param path 文件路径
+ @param offsetSize 读取文件开始位置
+ @param length 读取文件内容长度
+ @return 读取内容
+ */
++ (NSData *)readFilePath:(NSString *)path offsetSize:(size_t)offsetSize dataLength:(size_t)length;
+
+
+/**
+ 读取文件从指定位置到最后的内容
+
+ @param path 文件路径
+ @param offsetSize 读取文件位置
+ @return 读取内容
+ */
++ (NSData *)readFilePath:(NSString *)path offsetSize:(size_t)offsetSize;
+
+
+/**
+ 读取文件全部的内容
+
+ @param path 文件路径
+ @return 读取内容
+ */
++ (NSData *)readAllFilePath:(NSString *)path;
+
+
+/**
+ 删除文件从指定位置到最后的内容
+
+ @param path 文件路径
+ @param offsetSize 删除文件起始位置
+ */
++ (void)removeFilePath:(NSString *)path offsetSize:(size_t)offsetSize;
+
+
+/**
+ 删除文件从当前读取位置到最后的内容
+
+ @param path 文件路径
+ */
++ (void)removeCurrentOffsetFilePath:(NSString *)path;
+
+
+/**
  将多个文件压缩
 
  @param paths 多个文件路径数组

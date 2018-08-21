@@ -1,0 +1,212 @@
+[{
+    "type": "left_ear",
+    "message0": "左耳 %1",
+    "args0": [
+              {
+              "type": "field_dropdown",
+              "name": "VALUE",
+              "options": [
+                          ["红",
+                           "redColor"],
+                          ["橙",
+                           "orangeColor"],
+                          ["黄",
+                           "yeelowColor"],
+                          ["绿",
+                           "greenColor"],
+                          ["青",
+                           "cyanColor"],
+                          ["蓝",
+                           "blueColor"],
+                          ["紫",
+                           "purpleColor"],
+                          ["白",
+                           "whiteColor"],
+                          ["关",
+                           "close"]
+                          ]
+              }
+              ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": "#9ccc65",
+    "tooltip": "",
+    "helpUrl": "https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#nwzsuj"
+},
+ {
+ "type": "right_ear",
+ "message0": "右耳 %1",
+ "args0": [
+           {
+           "type": "field_dropdown",
+           "name": "VALUE",
+           "options": [
+                       ["橙",
+                        "orangeColor"],
+                       ["红",
+                        "redColor"],
+                       ["黄",
+                        "yeelowColor"],
+                       ["绿",
+                        "greenColor"],
+                       ["青",
+                        "cyanColor"],
+                       ["蓝",
+                        "blueColor"],
+                       ["紫",
+                        "purpleColor"],
+                       ["白",
+                        "whiteColor"],
+                       ["关",
+                        "close"]
+                       ]
+           }
+           ],
+ "previousStatement": null,
+ "nextStatement": null,
+ "colour": "#9ccc65",
+ "tooltip": "",
+ "helpUrl": "https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#nwzsuj"
+ },
+ {
+ "type": "abdomenLight_1",
+ "message0": "胸灯1 %1",
+ "args0": [
+           {
+           "type": "field_dropdown",
+           "name": "VALUE",
+           "options": [
+                       ["黄",
+                        "yeelowColor"],
+                       ["红",
+                        "redColor"],
+                       ["橙",
+                        "orangeColor"],
+                       ["绿",
+                        "greenColor"],
+                       ["青",
+                        "cyanColor"],
+                       ["蓝",
+                        "blueColor"],
+                       ["紫",
+                        "purpleColor"],
+                       ["白",
+                        "whiteColor"],
+                       ["关",
+                        "close"]
+                       ]
+           }
+           ],
+ "previousStatement": null,
+ "nextStatement": null,
+ "colour": "#9ccc65",
+ "tooltip": "",
+ "helpUrl": "https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#nwzsuj"
+ },
+ {
+ "type": "abdomenLight_2",
+ "message0": "胸灯2 %1",
+ "args0": [
+           {
+           "type": "field_dropdown",
+           "name": "VALUE",
+           "options": [
+                       
+                       ["绿",
+                        "greenColor"],
+                       ["红",
+                        "redColor"],
+                       ["橙",
+                        "orangeColor"],
+                       ["黄",
+                        "yeelowColor"],
+                       ["青",
+                        "cyanColor"],
+                       ["蓝",
+                        "blueColor"],
+                       ["紫",
+                        "purpleColor"],
+                       ["白",
+                        "whiteColor"],
+                       ["关",
+                        "close"]
+                       ]
+           }
+           ],
+ "previousStatement": null,
+ "nextStatement": null,
+ "colour": "#9ccc65",
+ "tooltip": "",
+ "helpUrl": "https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#nwzsuj"
+ },
+ {
+ "type": "abdomenLight_3",
+ "message0": "胸灯3 %1",
+ "args0": [
+           {
+           "type": "field_dropdown",
+           "name": "VALUE",
+           "options": [
+                       ["青",
+                        "cyanColor"],
+                       ["蓝",
+                        "blueColor"],
+                       ["红",
+                        "redColor"],
+                       ["橙",
+                        "orangeColor"],
+                       ["黄",
+                        "yeelowColor"],
+                       ["绿",
+                        "greenColor"],
+                       ["紫",
+                        "purpleColor"],
+                       ["白",
+                        "whiteColor"],
+                       ["关",
+                        "close"]
+                       ]
+           }
+           ],
+ "previousStatement": null,
+ "nextStatement": null,
+ "colour": "#9ccc65",
+ "tooltip": "",
+ "helpUrl": "https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#nwzsuj"
+ },
+ {
+ "type": "allLight",
+ "message0": "所有灯 %1",
+ "args0": [
+           {
+           "type": "field_dropdown",
+           "name": "VALUE",
+           "options": [
+                       ["蓝",
+                        "blueColor"],
+                       ["紫",
+                        "purpleColor"],
+                       ["红",
+                        "redColor"],
+                       ["橙",
+                        "orangeColor"],
+                       ["黄",
+                        "yeelowColor"],
+                       ["绿",
+                        "greenColor"],
+                       ["青",
+                        "cyanColor"],
+                       ["白",
+                        "whiteColor"],
+                       ["关",
+                        "close"]
+                       ]
+           }
+           ],
+ "previousStatement": null,
+ "nextStatement": null,
+ "colour": "#9ccc65",
+ "tooltip": "",
+ "helpUrl": "https://blockly-demo.appspot.com/static/demos/blockfactory/index.html#nwzsuj"
+ }
+]

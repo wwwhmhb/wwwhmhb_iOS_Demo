@@ -23,6 +23,7 @@ singleton_implementation(WWWNetworkingManager)
     self.requestSerializer.timeoutInterval = 45.f;
     [self.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     self.requestSerializer.HTTPShouldHandleCookies = YES;
+    [self.requestSerializer setValue:@"YOYO" forHTTPHeaderField:@"Robot-Role"];
 }
 
 //网络请求

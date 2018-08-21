@@ -176,6 +176,7 @@ dispatch_semaphore_t _semaphore;
             NSError *myError = [NSError errorWithDomain:@"写入信息错" code:error userInfo:@{NSLocalizedDescriptionKey : @"写入信息错"}];
             finshBlock(nil,myError);
         }
+        dispatch_semaphore_signal(_semaphore);
     });
 }
 @end

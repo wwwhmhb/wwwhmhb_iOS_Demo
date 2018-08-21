@@ -14,6 +14,7 @@
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
+		AD674EBF21254E2000A03886 /* Light.json in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBE21254E1F00A03886 /* Light.json */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
 		AD8F524820F6042300E765B8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* MainViewController.m */; };
 		AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524C20F6042500E765B8 /* Assets.xcassets */; };
@@ -74,6 +75,7 @@
 		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
 		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
 		AD674EBC2123DC7600A03886 /* GCDReadWriteFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GCDReadWriteFile; sourceTree = "<group>"; };
+		AD674EBE21254E1F00A03886 /* Light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Light.json; sourceTree = "<group>"; };
 		AD8F524020F6042300E765B8 /* MyiOSFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyiOSFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8F524320F6042300E765B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD8F524420F6042300E765B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			children = (
 				AD8F526520F6FF4600E765B8 /* WWWTestViewController.h */,
 				AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */,
+				AD674EBE21254E1F00A03886 /* Light.json */,
 				ADE2BB7B2111837A00565CDB /* Test.text */,
 				ADE2BB842114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log */,
 			);
@@ -535,6 +538,7 @@
 				ADE2BB7C2111837A00565CDB /* Test.text in Resources */,
 				0493B7132121D83A00F1230B /* ChangeIcon in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
+				AD674EBF21254E2000A03886 /* Light.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
