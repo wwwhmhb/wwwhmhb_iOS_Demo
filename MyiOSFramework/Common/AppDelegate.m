@@ -20,25 +20,12 @@
 @end
 
 @implementation AppDelegate
-
+//异常处理指针
 static NSUncaughtExceptionHandler *g_vaildUncaughtExceptionHandler;
-static void (*ori_NSSetUncaughtExceptionHandler)( NSUncaughtExceptionHandler * );
-/*
- 如果同时有多方通过NSSetUncaughtExceptionHandler注册异常处理程序，和平的作法是：后注册者通过NSGetUncaughtExceptionHandler将先前别人注册的handler取出并备份，在自己handler处理完后自觉把别人的handler注册回去，规规矩矩的传递
- */
-void my_NSSetUncaughtExceptionHandler( NSUncaughtExceptionHandler *handler)
-{
-    g_vaildUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
-    if (g_vaildUncaughtExceptionHandler != NULL) {
-        NSLog(@"UncaughtExceptionHandler=%p",g_vaildUncaughtExceptionHandler);
-    }
-    
-    ori_NSSetUncaughtExceptionHandler(handler);
-    NSLog(@"%@",[NSThread callStackSymbols]);
-    
-    g_vaildUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
-    NSLog(@"UncaughtExceptionHandler=%p",g_vaildUncaughtExceptionHandler);
-}
+//重定义异常处理方法指针
+static void (*ori_NSSetUncaughtExceptionHandler)(NSUncaughtExceptionHandler *);
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
@@ -49,8 +36,7 @@ void my_NSSetUncaughtExceptionHandler( NSUncaughtExceptionHandler *handler)
     NVLogError(@"错误信息如上所述")
     
     //抓住异常问题
-    NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
-//    NSSetUncaughtExceptionHandler(&my_NSSetUncaughtExceptionHandler);
+    my_NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
     
     //监听设备旋转通知
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -119,6 +105,22 @@ void my_NSSetUncaughtExceptionHandler( NSUncaughtExceptionHandler *handler)
 
 
 #pragma mark  --  收集异常，进行标志
+/*
+ 如果同时有多方通过NSSetUncaughtExceptionHandler注册异常处理程序，和平的作法是：后注册者通过NSGetUncaughtExceptionHandler将先前别人注册的handler取出并备份，在自己handler处理完后自觉把别人的handler注册回去，规规矩矩的传递
+ */
+void my_NSSetUncaughtExceptionHandler(NSUncaughtExceptionHandler *handler)
+{
+    //定义的异常处理 handler 进行赋值，并用来保存先前别人注册的 handler
+    g_vaildUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
+    
+    //定义的函数指针进行赋值，并指向 NSSetUncaughtExceptionHandler 函数
+    ori_NSSetUncaughtExceptionHandler = NSSetUncaughtExceptionHandler;
+    
+    //注册自己的异常处理方法
+    ori_NSSetUncaughtExceptionHandler(handler);
+    
+}
+//自己的异常处理方法
 void UncaughtExceptionHandler(NSException *exception) {
     //异常信息
     NSArray *callStack = [exception callStackSymbols];
@@ -145,6 +147,9 @@ void UncaughtExceptionHandler(NSException *exception) {
     NSString *content = [NSString stringWithFormat:@"\n日期：%@  \nuid：%@  \n端口：%@  \nAPP版本：%@  \n系统版本：%@   \n错误名称：%@  \n视图控制器：%@  \n错误原因：%@  \n崩溃所在：%@ ",dateStr,diceuserport[@"uid"],diceuserport[@"port"],appCurVersion,devicetext,name,nowview,reason,[callStack componentsJoinedByString:@"\n"]];
     NVLogError(@"错误信息 = %@",content)
     [WWWTools setUserdefaultsValue:@"YES" toKey:@"APPSystemCrash"];
+    
+    //将保存的先前的异常处理重新注册回去
+    ori_NSSetUncaughtExceptionHandler(g_vaildUncaughtExceptionHandler);
 }
 
 #pragma mark  --  上传异常信息
