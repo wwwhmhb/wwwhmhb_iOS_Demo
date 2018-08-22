@@ -61,6 +61,9 @@ static void (*ori_NSSetUncaughtExceptionHandler)(NSUncaughtExceptionHandler *);
     //上传异常日志
     [self uploadExceptionLogWithPath:zipFilePath];
     
+    //添加 ShortcutItems
+    [self addShortcutItems];
+    
     //启动图片延时: 1秒
     [NSThread sleepForTimeInterval:1];
     
@@ -220,6 +223,32 @@ void UncaughtExceptionHandler(NSException *exception) {
     } else {
         NVLogInfo(@"创建文件失败");
     }
+}
+
+#pragma mark -- 添加 3D Touch Shortcut Item
+- (void)addShortcutItems {
+    if ([UIApplication sharedApplication].shortcutItems.count >= 4) {
+        //ShortcutItem 超过4项就不需要再添加
+        return;
+    }
+    
+    //获取原始 shortcutItems 的数组
+    NSArray *shortcutItemArray = [UIApplication sharedApplication].shortcutItems;
+    NSMutableArray *arrShortcutItem = [shortcutItemArray mutableCopy];
+    
+    //创建 shoreItem1
+    UIApplicationShortcutItem *shoreItem1 = [[UIApplicationShortcutItem alloc] initWithType:@"com.www.MyiOSFramework.QRCode" localizedTitle:@"我的二维码" localizedSubtitle:@"可以扫描添加好友" icon:[UIApplicationShortcutIcon iconWithTemplateImageName:@"QRCode"] userInfo:nil];
+    //shoreItem1添加到数组中
+    [arrShortcutItem addObject:shoreItem1];
+    
+    //创建 shoreItem2
+    UIMutableApplicationShortcutItem *shoreItem2 = [[UIMutableApplicationShortcutItem alloc] initWithType:@"com.www.MyiOSFramework.message" localizedTitle:@"新消息" localizedSubtitle:@"" icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeCompose] userInfo:nil];
+    //shoreItem2 添加到数组中
+    [arrShortcutItem addObject:shoreItem2];
+    
+    //将数组赋值给 shortcutItems
+    [UIApplication sharedApplication].shortcutItems = arrShortcutItem;
+    
 }
 
 @end

@@ -12,8 +12,8 @@
 		0450DF6B2120303A00892171 /* UIViewController+MethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */; };
 		0493B7132121D83A00F1230B /* ChangeIcon in Resources */ = {isa = PBXBuildFile; fileRef = 0493B7122121D83A00F1230B /* ChangeIcon */; };
 		0493B717212D9DEA00F1230B /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B714212D9DE900F1230B /* microphone.png */; };
-		0493B718212D9DEA00F1230B /* favorite.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B715212D9DE900F1230B /* favorite.png */; };
 		0493B719212D9DEA00F1230B /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B716212D9DE900F1230B /* setting.png */; };
+		0493B71B212DA9F400F1230B /* QRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B71A212DA9F400F1230B /* QRCode.png */; };
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
@@ -74,8 +74,8 @@
 		0450DF6A2120303A00892171 /* UIViewController+MethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MethodSwizzling.m"; sourceTree = "<group>"; };
 		0493B7122121D83A00F1230B /* ChangeIcon */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChangeIcon; sourceTree = "<group>"; };
 		0493B714212D9DE900F1230B /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
-		0493B715212D9DE900F1230B /* favorite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = favorite.png; sourceTree = "<group>"; };
 		0493B716212D9DE900F1230B /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		0493B71A212DA9F400F1230B /* QRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRCode.png; sourceTree = "<group>"; };
 		12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyiOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93929609ADD4013021E37057 /* Pods-MyiOSFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.release.xcconfig"; sourceTree = "<group>"; };
 		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 		AD8F525F20F6F6F100E765B8 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				0493B715212D9DE900F1230B /* favorite.png */,
+				0493B71A212DA9F400F1230B /* QRCode.png */,
 				0493B714212D9DE900F1230B /* microphone.png */,
 				0493B716212D9DE900F1230B /* setting.png */,
 				0450DF572120014A00892171 /* icon.png */,
@@ -546,10 +546,10 @@
 				0450DF582120014A00892171 /* icon.png in Resources */,
 				ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */,
 				ADE2BB7C2111837A00565CDB /* Test.text in Resources */,
-				0493B718212D9DEA00F1230B /* favorite.png in Resources */,
 				0493B719212D9DEA00F1230B /* setting.png in Resources */,
 				0493B7132121D83A00F1230B /* ChangeIcon in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
+				0493B71B212DA9F400F1230B /* QRCode.png in Resources */,
 				AD674EBF21254E2000A03886 /* Light.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

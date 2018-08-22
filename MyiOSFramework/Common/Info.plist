@@ -56,7 +56,7 @@
 			<key>UIApplicationShortcutItemIconFile</key>
 			<string>microphone</string>
 			<key>UIApplicationShortcutItemTitle</key>
-			<string>我的 icon</string>
+			<string>麦克风</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>com.www.MyiOSFramework.icon</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
