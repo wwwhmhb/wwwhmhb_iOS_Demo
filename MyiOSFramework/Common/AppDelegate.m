@@ -114,6 +114,9 @@ void my_NSSetUncaughtExceptionHandler(NSUncaughtExceptionHandler *handler)
     g_vaildUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
     
     //定义的函数指针进行赋值，并指向 NSSetUncaughtExceptionHandler 函数
+    /*
+      NSSetUncaughtExceptionHandler 不足的地方是，并不是所有的程序崩溃都是由于发生可以捕捉的异常的，有些时候是因为内存等一些其他的错误导致程序的崩溃，这样的信息是不在这里体现的。
+     */
     ori_NSSetUncaughtExceptionHandler = NSSetUncaughtExceptionHandler;
     
     //注册自己的异常处理方法
