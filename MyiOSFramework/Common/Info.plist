@@ -50,5 +50,34 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>microphone</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>我的 icon</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.www.MyiOSFramework.icon</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>key1</key>
+				<string>value1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeShare</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>分享我的 iOS 框架</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.www.MyiOSFramework.share</string>
+			<key>UIApplicationShortcutItemUserInfo</key>
+			<dict>
+				<key>key1</key>
+				<string>value1</string>
+			</dict>
+		</dict>
+	</array>
 </dict>
 </plist>
