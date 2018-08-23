@@ -25,8 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.title = @"TestViewController";
+    
+    NSString *testStr = @"myImage.png";
+    NSString *png = [testStr pathExtension];
+    NSString *name = [testStr stringByDeletingPathExtension];
+    NSLog(@"png = %@;name = %@",png,name);
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [testButton setTitle:@"Test" forState:UIControlStateNormal];

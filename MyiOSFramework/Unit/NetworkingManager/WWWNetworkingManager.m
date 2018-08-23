@@ -100,35 +100,29 @@ singleton_implementation(WWWNetworkingManager)
                 NSLog(@"responses.statusCode = %ld",(long)responses.statusCode);
                 finishBlock(nil,error);
             }];
-            
         }
     }
 }
 
 //上传文件
-- (void)uploadFileToUrlStr:(NSString *)urlStr andFilePath:(NSString *)filePath andParameters:(NSDictionary *)parameters andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
+- (void)uploadFileToUrlStr:(NSString *)urlStr andFilePath:(NSString *)filePath andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
+    //文件类型参数
+    if (!extDict) {
+        extDict = @{
+                    @"name" : @"file",
+                    @"fileName" : @"myFile.zip",
+                    @"mimeType" : @"file/zip"
+                    };
+    }
     
-    NSString *fileName = parameters[@"file_name"];
-    NSString *fileType = parameters[@"file_type"];
+    //文件数据
     NSData *fileData = [NSData dataWithContentsOfFile:filePath];
     
-    parameters = [self resetDictionary:parameters];
-    
-    [self POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-        [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:fileType];
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        if (progressBlock) {
-            progressBlock(uploadProgress);
-        }
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        finishBlock(responseObject,nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        finishBlock(nil,error);
-    }];
+    //上传数据
+    [self uploadFileToUrlStr:urlStr andFileData:fileData andParameters:parameters andExtDict:extDict andProgress:progressBlock andFinishBlock:finishBlock];
 }
 
-//上传文件
+//上传文件基础api
 - (void)uploadFileToUrlStr:(NSString *)urlStr andFileData:(NSData *)fileData andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
     
     //文件数据参数
@@ -142,6 +136,7 @@ singleton_implementation(WWWNetworkingManager)
     //合并上传参数
     parameters = [self resetDictionary:parameters];
     
+    //上传文件数据
     [self POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         [formData appendPartWithFileData:fileData name:name fileName:fileName mimeType:mimeType];

@@ -49,9 +49,13 @@ singleton_interface(WWWNetworkingManager);
  @param urlStr 文件上传地址
  @param filePath 文件来源路径
  @param parameters 上传参数
+ @param extDict 文件类型参数
  @param progressBlock 上传速度回调block
  @param finishBlock 上传结果回调block
  */
-- (void)uploadFileToUrlStr:(NSString *)urlStr andFilePath:(NSString *)filePath andParameters:(NSDictionary *)parameters andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
+- (void)uploadFileToUrlStr:(NSString *)urlStr andFilePath:(NSString *)filePath andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
+
+
+
 
 @end

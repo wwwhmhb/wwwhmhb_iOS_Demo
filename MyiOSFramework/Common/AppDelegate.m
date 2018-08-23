@@ -166,17 +166,13 @@ void UncaughtExceptionHandler(NSException *exception) {
         for (NSString *fileName in fileArray) {
             NSString *robotid = @"TWYP5TA6LR5LOVRC";
             NSDictionary *dic = @{
-                                  @"robot_id" : robotid,
-                                  @"file_name" : @"MyTest.zip",
-                                  @"file_type" : @"file/zip"
+                                  @"robot_id" : robotid
                                   };
             
             NSString *crashLogFilePath = [path stringByAppendingPathComponent:fileName];
             WWWNetworkingManager *networkingManager = [WWWNetworkingManager shared];
             [networkingManager initNetworkingManager];
-            [networkingManager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:crashLogFilePath andParameters:dic andProgress:^(NSProgress *uploadProgress) {
-
-            } andFinishBlock:^(id responseObject, NSError *error) {
+            [networkingManager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:crashLogFilePath andParameters:dic andExtDict:nil andProgress:nil andFinishBlock:^(id responseObject, NSError *error) {
                 if (error) {
                     NVLogError(@"error = %@",error);
                 } else {
