@@ -118,8 +118,9 @@ singleton_implementation(WWWNetworkingManager)
         
         [formData appendPartWithFileData:fileData name:@"file" fileName:fileName mimeType:fileType];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-        progressBlock(uploadProgress);
+        if (progressBlock) {
+            progressBlock(uploadProgress);
+        }
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         finishBlock(responseObject,nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -127,6 +128,36 @@ singleton_implementation(WWWNetworkingManager)
     }];
 }
 
+//上传文件
+- (void)uploadFileToUrlStr:(NSString *)urlStr andFileData:(NSData *)fileData andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
+    
+    //文件数据参数
+    NSString *name, *fileName, *mimeType;
+    if (extDict) {
+        name = extDict[@"name"];
+        fileName = extDict[@"fileName"];
+        mimeType = extDict[@"mimeType"];
+    }
+    
+    //合并上传参数
+    parameters = [self resetDictionary:parameters];
+    
+    [self POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        [formData appendPartWithFileData:fileData name:name fileName:fileName mimeType:mimeType];
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        if (progressBlock) {
+            progressBlock(uploadProgress);
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        finishBlock(responseObject,nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        finishBlock(nil,error);
+    }];
+}
 
 //网络请求参数扩展
 - (NSDictionary*)resetDictionary:(NSDictionary*)dict{
