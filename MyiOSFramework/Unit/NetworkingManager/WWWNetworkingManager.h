@@ -94,4 +94,15 @@ singleton_interface(WWWNetworkingManager);
  */
 - (void)uploadVideoToUrlStr:(NSString*)urlStr andVideoPath:(NSString*)videoPath andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
 
+
+/**
+ 下载文件
+
+ @param urlStr 下载文件的url地址
+ @param filePath 保存下载文件的路径
+ @param progressBlock 下载速度回调block
+ @param finishBlock 下载结果回调block
+ */
+- (void)downloadFileFromUrlStr:(NSString *)urlStr toFilePath:(NSString *)filePath andProgress:(void (^)(NSProgress *downloadProgress))progressBlock andFinishBlock:(void (^)(NSURLResponse *responseObject , NSError *error))finishBlock;
+
 @end

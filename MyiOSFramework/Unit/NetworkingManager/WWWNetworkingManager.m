@@ -56,8 +56,8 @@ singleton_implementation(WWWNetworkingManager)
                 
                 //失败回调
                 NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
-                [self showErrorContent:error withURL:urlString];
                 NSLog(@"responses.statusCode = %ld",(long)responses.statusCode);
+                [self showErrorContent:error withURL:urlString];
                 finishBlock(nil,error);
             }];
         }
@@ -183,6 +183,9 @@ singleton_implementation(WWWNetworkingManager)
         finishBlock(responseObject,nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        NSLog(@"responses.statusCode = %ld",(long)responses.statusCode);
+        [self showErrorContent:error withURL:urlStr];
         finishBlock(nil,error);
     }];
 }
@@ -229,8 +232,41 @@ singleton_implementation(WWWNetworkingManager)
         finishBlock(responseObject,nil);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
+        NSHTTPURLResponse * responses = (NSHTTPURLResponse *)task.response;
+        NSLog(@"responses.statusCode = %ld",(long)responses.statusCode);
+        [self showErrorContent:error withURL:urlStr];
         finishBlock(nil,error);
     }];
+}
+
+//文件下载
+- (void)downloadFileFromUrlStr:(NSString *)urlStr toFilePath:(NSString *)filePath andProgress:(void (^)(NSProgress *downloadProgress))progressBlock andFinishBlock:(void (^)(NSURLResponse *responseObject , NSError *error))finishBlock {
+    //下载url地址
+    NSURL *url = [NSURL URLWithString:urlStr];
+    //请求头
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    //创建下载任务
+    NSURLSessionDownloadTask *downloadTask = [self downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+        if (progressBlock) {
+            progressBlock(downloadProgress);
+        }
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        /*
+         服务器的文件名:[response suggestedFilename]
+         */
+        /* 设定下载到的位置 */
+        return [NSURL fileURLWithPath:filePath];
+        
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        if (finishBlock) {
+            finishBlock(response,error);
+        }
+    }];
+    
+    //开始请求下载
+    [downloadTask resume];
 }
 
 //网络请求参数扩展
