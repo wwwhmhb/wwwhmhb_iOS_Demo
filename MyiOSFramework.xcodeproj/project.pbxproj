@@ -48,6 +48,7 @@
 		AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */ = {isa = PBXBuildFile; fileRef = AD8F52C1210083B600E765B8 /* Multi_lineTextAlertView */; };
 		ADAC8718210EF0550093BCE0 /* NSArray+LXDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAC8717210EF0550093BCE0 /* NSArray+LXDExtension.m */; };
 		ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */ = {isa = PBXBuildFile; fileRef = ADAC8719210EF6DE0093BCE0 /* DrawingBoardView */; };
+		ADB10804212EAD280084735F /* AFNetworking in Resources */ = {isa = PBXBuildFile; fileRef = ADB10803212EAD280084735F /* AFNetworking */; };
 		ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */; };
 		ADE2BB7A21106BE100565CDB /* WWWNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE2BB7921106BE100565CDB /* WWWNetworkingManager.m */; };
 		ADE2BB7C2111837A00565CDB /* Test.text in Resources */ = {isa = PBXBuildFile; fileRef = ADE2BB7B2111837A00565CDB /* Test.text */; };
@@ -137,6 +138,7 @@
 		ADAC8716210EF0550093BCE0 /* NSArray+LXDExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+LXDExtension.h"; sourceTree = "<group>"; };
 		ADAC8717210EF0550093BCE0 /* NSArray+LXDExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LXDExtension.m"; sourceTree = "<group>"; };
 		ADAC8719210EF6DE0093BCE0 /* DrawingBoardView */ = {isa = PBXFileReference; lastKnownFileType = text; path = DrawingBoardView; sourceTree = "<group>"; };
+		ADB10803212EAD280084735F /* AFNetworking */ = {isa = PBXFileReference; lastKnownFileType = text; path = AFNetworking; sourceTree = "<group>"; };
 		ADCA8E06210F1777003296D8 /* WWWStreamOperationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWStreamOperationManager.h; sourceTree = "<group>"; };
 		ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWStreamOperationManager.m; sourceTree = "<group>"; };
 		ADE2BB7821106BE100565CDB /* WWWNetworkingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWNetworkingManager.h; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			children = (
 				ADE2BB7821106BE100565CDB /* WWWNetworkingManager.h */,
 				ADE2BB7921106BE100565CDB /* WWWNetworkingManager.m */,
+				ADB10803212EAD280084735F /* AFNetworking */,
 			);
 			path = NetworkingManager;
 			sourceTree = "<group>";
@@ -549,6 +552,7 @@
 				0493B719212D9DEA00F1230B /* setting.png in Resources */,
 				0493B7132121D83A00F1230B /* ChangeIcon in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
+				ADB10804212EAD280084735F /* AFNetworking in Resources */,
 				0493B71B212DA9F400F1230B /* QRCode.png in Resources */,
 				AD674EBF21254E2000A03886 /* Light.json in Resources */,
 			);
