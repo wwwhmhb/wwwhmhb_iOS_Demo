@@ -29,7 +29,7 @@ singleton_interface(WWWNetworkingManager);
 
 
 //设置请求头
-
+- (void)setHTTPHeaderValue:(NSString *)value forField:(NSString *)field;
 
 
 /**
@@ -56,6 +56,30 @@ singleton_interface(WWWNetworkingManager);
 - (void)uploadFileToUrlStr:(NSString *)urlStr andFilePath:(NSString *)filePath andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
 
 
+/**
+ 上传图片
+ 
+ @param urlStr 图片上传URL地址
+ @param image 图片
+ @param parameters 上传参数
+ @param extDict 文件类型参数
+ @param progressBlock 上传速度回调block
+ @param finishBlock 上传结果回调block
+ */
+- (void)uploadImageToUrlStr:(NSString*)urlStr andImage:(UIImage*)image andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
+
+
+/**
+ 上传图片数组
+ 
+ @param urlStr 图片数组上传URL地址
+ @param imageModelArr 图片数组
+ @param parameters 上传参数
+ @param extDict 文件类型参数
+ @param progressBlock 上传速度回调block
+ @param finishBlock 上传结果回调block
+ */
+- (void)uploadImageArrayToUrlStr:(NSString*)urlStr andImageArray:(NSArray*)imageModelArr  andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
 
 
 @end

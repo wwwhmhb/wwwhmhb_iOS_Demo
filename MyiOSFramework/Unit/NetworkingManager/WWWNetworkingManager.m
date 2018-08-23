@@ -23,7 +23,15 @@ singleton_implementation(WWWNetworkingManager)
     self.requestSerializer.timeoutInterval = 45.f;
     [self.requestSerializer didChangeValueForKey:@"timeoutInterval"];
     self.requestSerializer.HTTPShouldHandleCookies = YES;
-    [self.requestSerializer setValue:@"YOYO" forHTTPHeaderField:@"Robot-Role"];
+    
+    //根据项目需要添加
+    [self setHTTPHeaderValue:@"YOYO" forField:@"Robot-Role"];
+}
+
+//设置请求头
+- (void)setHTTPHeaderValue:(NSString *)value forField:(NSString *)field {
+    
+    [self.requestSerializer setValue:value forHTTPHeaderField:field];
 }
 
 //网络请求
@@ -104,16 +112,65 @@ singleton_implementation(WWWNetworkingManager)
     }
 }
 
-//上传文件
-- (void)uploadFileToUrlStr:(NSString *)urlStr andFilePath:(NSString *)filePath andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
+
+//上传单张图片
+- (void)uploadImageToUrlStr:(NSString*)urlStr andImage:(UIImage*)image andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
+    
+    NSArray *imageArray = @[image];
+    [self uploadImageArrayToUrlStr:urlStr andImageArray:imageArray andParameters:parameters andExtDict:extDict andProgress:progressBlock andFinishBlock:finishBlock];
+}
+
+//上传图片数组
+- (void)uploadImageArrayToUrlStr:(NSString*)urlStr andImageArray:(NSArray*)imageArray  andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
     //文件类型参数
     if (!extDict) {
         extDict = @{
-                    @"name" : @"file",
-                    @"fileName" : @"myFile.zip",
-                    @"mimeType" : @"file/zip"
+                    @"name" : @"image",
+                    @"fileName" : @"myImage.png",
+                    @"mimeType" : @"image/png"
                     };
     }
+    NSString *name = extDict[@"name"];
+    NSString *fileName = extDict[@"fileName"];
+    NSString *mimeType = extDict[@"mimeType"];
+    NSString *imageExtension = [fileName pathExtension];
+    NSString *deletingImageExtension = [fileName stringByDeletingPathExtension];
+    
+    //合并上传参数
+    parameters = [self resetDictionary:parameters];
+    
+    [self POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+        for (int i = 0; i < imageArray.count; i++) {
+            NSString *type = [NSString stringWithFormat:@"%@%d",name,i];
+            NSString *imageName = [NSString stringWithFormat:@"%@%d",deletingImageExtension,i];
+            
+            UIImage *image = [imageArray objectAtIndex:i];
+            NSData *imageData;
+            if ([imageExtension isEqualToString:@"png"]) {
+                imageData = UIImagePNGRepresentation(image);//png
+            } else {
+                imageData = UIImageJPEGRepresentation(image, 0.8);//jpeg,其他格式
+            }
+            //拼接数据
+            [formData appendPartWithFileData:imageData name:type fileName:imageName mimeType:mimeType];
+        }
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+        if (progressBlock) {
+            progressBlock(uploadProgress);
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        finishBlock(responseObject,nil);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        finishBlock(nil,error);
+    }];
+}
+
+//上传文件
+- (void)uploadFileToUrlStr:(NSString *)urlStr andFilePath:(NSString *)filePath andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
     
     //文件数据
     NSData *fileData = [NSData dataWithContentsOfFile:filePath];
@@ -126,12 +183,16 @@ singleton_implementation(WWWNetworkingManager)
 - (void)uploadFileToUrlStr:(NSString *)urlStr andFileData:(NSData *)fileData andParameters:(NSDictionary *)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
     
     //文件数据参数
-    NSString *name, *fileName, *mimeType;
-    if (extDict) {
-        name = extDict[@"name"];
-        fileName = extDict[@"fileName"];
-        mimeType = extDict[@"mimeType"];
+    if (!extDict) {
+        extDict = @{
+                    @"name" : @"file",
+                    @"fileName" : @"myFile.zip",
+                    @"mimeType" : @"file/zip"
+                    };
     }
+    NSString *name = extDict[@"name"];
+    NSString *fileName = extDict[@"fileName"];
+    NSString *mimeType = extDict[@"mimeType"];
     
     //合并上传参数
     parameters = [self resetDictionary:parameters];
