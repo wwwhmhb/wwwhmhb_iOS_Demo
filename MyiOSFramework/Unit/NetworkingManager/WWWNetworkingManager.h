@@ -82,4 +82,16 @@ singleton_interface(WWWNetworkingManager);
 - (void)uploadImageArrayToUrlStr:(NSString*)urlStr andImageArray:(NSArray*)imageModelArr  andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
 
 
+/**
+ 上传视频
+
+ @param urlStr 视频上传URL地址
+ @param videoPath 视频路径
+ @param parameters 上传参数
+ @param extDict 文件类型参数
+ @param progressBlock 上传速度回调block
+ @param finishBlock 上传结果回调block
+ */
+- (void)uploadVideoToUrlStr:(NSString*)urlStr andVideoPath:(NSString*)videoPath andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock;
+
 @end

@@ -27,10 +27,12 @@
     // Do any additional setup after loading the view.
     self.title = @"TestViewController";
     
-    NSString *testStr = @"myImage.png";
+    NSString *testStr = @"business/upload_log_file/myImage.png";
     NSString *png = [testStr pathExtension];
     NSString *name = [testStr stringByDeletingPathExtension];
-    NSLog(@"png = %@;name = %@",png,name);
+    NSArray *array = testStr.pathComponents;
+    NSLog(@"array = %@",array);
+    NSLog(@"png = %@;name = %@;lastPathComponent = %@",png,name,testStr.lastPathComponent);
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [testButton setTitle:@"Test" forState:UIControlStateNormal];

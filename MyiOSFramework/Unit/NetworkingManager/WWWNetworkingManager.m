@@ -16,9 +16,10 @@ singleton_implementation(WWWNetworkingManager)
 //初始化网络请求信息
 - (void)initNetworkingManager {
     
-    self.responseSerializer = [AFJSONResponseSerializer serializer];
-    self.requestSerializer = [AFJSONRequestSerializer serializer];
+    self.responseSerializer = [AFJSONResponseSerializer serializer];// 设置接收数据为 JSON 数据
+    self.requestSerializer = [AFJSONRequestSerializer serializer];// 设置请求数据为 JSON 数据
     self.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"application/json",@"text/json",@"text/plain",nil];
+    
     [self.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     self.requestSerializer.timeoutInterval = 45.f;
     [self.requestSerializer didChangeValueForKey:@"timeoutInterval"];
@@ -112,6 +113,23 @@ singleton_implementation(WWWNetworkingManager)
     }
 }
 
+//上传视频
+- (void)uploadVideoToUrlStr:(NSString*)urlStr andVideoPath:(NSString*)videoPath andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
+    //文件类型参数
+    if (!extDict) {
+        extDict = @{
+                    @"name" : @"video",
+                    @"fileName" : videoPath.lastPathComponent,
+                    @"mimeType" : [NSString stringWithFormat:@"video/%@",videoPath.pathExtension]
+                    };
+    }
+    
+    //视频数据
+    NSData *videoData = [NSData dataWithContentsOfFile:videoPath];
+    
+    //上传视频数据
+    [self uploadFileToUrlStr:urlStr andFileData:videoData andParameters:parameters andExtDict:extDict andProgress:progressBlock andFinishBlock:finishBlock];
+}
 
 //上传单张图片
 - (void)uploadImageToUrlStr:(NSString*)urlStr andImage:(UIImage*)image andParameters:(NSDictionary*)parameters andExtDict:(NSDictionary *)extDict andProgress:(void (^)(NSProgress *uploadProgress))progressBlock andFinishBlock:(void (^)(id responseObject , NSError *error))finishBlock {
