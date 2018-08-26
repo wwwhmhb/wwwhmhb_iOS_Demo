@@ -51,31 +51,8 @@
     imgview.backgroundColor = [UIColor colorWithRed:160/255.0 green:176/255.0 blue:213/255.0 alpha:1.0];
     imgview.layer.cornerRadius = 20;
     [self.view addSubview:imgview];
+
     
-    UILabel *temptext  = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
-    temptext.text = @"好";
-    temptext.textColor = [UIColor whiteColor];
-    temptext.textAlignment = NSTextAlignmentCenter;
-    UIImage *image  = [self imageForView:temptext];
-    imgview.image = image;
-    
-    /*
-     NSString *string = @"字";
-     NSMutableParagraphStyle* paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-     [paragraphStyle setAlignment:NSTextAlignmentCenter];
-     [paragraphStyle setLineBreakMode:NSLineBreakByCharWrapping];
-     [paragraphStyle setLineSpacing:15.f];  //行间距
-     [paragraphStyle setParagraphSpacing:2.f];//字符间距
-     
-     NSDictionary *attributes = @{NSFontAttributeName            : [UIFont systemFontOfSize:12],
-     NSForegroundColorAttributeName : [UIColor blueColor],
-     NSBackgroundColorAttributeName : [UIColor clearColor],
-     NSParagraphStyleAttributeName : paragraphStyle, };
-     
-     
-     UIImage *image1  = [self imageFromString:string attributes:attributes size:imgview.bounds.size];
-     imgview.image = image1;
-     */
 }
 
 
@@ -91,32 +68,26 @@
     
 }
 
-//文字转化为图片
-- (UIImage *)imageFromString:(NSString *)string attributes:(NSDictionary *)attributes size:(CGSize)size
-{
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    [string drawInRect:CGRectMake(0, 0, size.width, size.height) withAttributes:attributes];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
+
+//3D Touch 预览该视图控制器时,生成快捷功能菜单
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
     
-    return image;
+    UIPreviewAction *previewAction0 = [UIPreviewAction actionWithTitle:@"取消" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        
+        NSLog(@"取消");
+    }];
+    
+    UIPreviewAction *previewAction1 = [UIPreviewAction actionWithTitle:@"替换该元素" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"替换该元素");
+    }];
+    UIPreviewAction *previewAction2 = [UIPreviewAction actionWithTitle:@"随意" style:UIPreviewActionStyleSelected handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        
+        NSLog(@"随意");
+    }];
+  
+  return @[previewAction0 ,previewAction1,previewAction2];
 }
 
-//视图转化为图片
-- (UIImage *)imageForView:(UIView *)view
-{
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0);
-    
-    if ([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)])
-        [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
-    else
-        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
 
 
 - (void)didReceiveMemoryWarning {

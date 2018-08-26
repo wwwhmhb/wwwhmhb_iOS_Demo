@@ -29,8 +29,6 @@ static void (*ori_NSSetUncaughtExceptionHandler)(NSUncaughtExceptionHandler *);
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
-
     //经日志写入文件中
     [[NVLogManager shareInstance] enableFileLogSystem];
     NVLogError(@"错误信息如上所述")
@@ -78,6 +76,30 @@ static void (*ori_NSSetUncaughtExceptionHandler)(NSUncaughtExceptionHandler *);
     
     return YES;
 }
+
+//从 3DTouch 选项进入程序,不管APP在后台还是进程被杀死，只要通过主屏快捷操作进来的，都会调用这个方法
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL))completionHandler {
+    //我们可以通过shortcutItem.type 获取到唯一标识符，只需要判断标识符就可以处理我们的逻辑任务了
+    if (shortcutItem) {
+        //判断设置的快捷选项标签唯一标识，根据不同标识执行不同操作,通过根视图控制器跳转到其他视图控制器
+        if([shortcutItem.type isEqualToString:@"com.www.MyiOSFramework.icon"]){
+            //进入 one 页面
+            
+        } else if ([shortcutItem.type isEqualToString:@"com.www.MyiOSFramework.share"]) {
+            //进入搜索界面
+        } else if ([shortcutItem.type isEqualToString:@"com.www.MyiOSFramework.QRCode"]) {
+            //进入分享界面
+        }else if ([shortcutItem.type isEqualToString:@"com.www.MyiOSFramework.message"]) {
+            //进入分享页面
+        }
+    }
+    
+    if (completionHandler) {
+        completionHandler(YES);
+    }
+    
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
