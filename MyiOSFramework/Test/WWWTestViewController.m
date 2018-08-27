@@ -54,11 +54,10 @@
     imgview.backgroundColor = [UIColor colorWithRed:160.0/255.0 green:176.0/255.0 blue:213.0/255.0 alpha:1.0];
     imgview.layer.cornerRadius = 20;
     [self.view addSubview:imgview];
-    
+
     NSProcessInfo *processInfo = [NSProcessInfo processInfo];
     NSString *hostname = processInfo.hostName;
     NSLog(@"hostname = %@",processInfo.environment);
-    
 }
 
 
@@ -73,6 +72,26 @@
     NSLog(@"queueName = %s",queueName);
     
 }
+
+//3D Touch 预览该视图控制器时,生成快捷功能菜单
+- (NSArray<id<UIPreviewActionItem>> *)previewActionItems {
+    
+    UIPreviewAction *previewAction0 = [UIPreviewAction actionWithTitle:@"取消" style:UIPreviewActionStyleDestructive handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        
+        NSLog(@"取消");
+    }];
+    
+    UIPreviewAction *previewAction1 = [UIPreviewAction actionWithTitle:@"替换该元素" style:UIPreviewActionStyleDefault handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        NSLog(@"替换该元素");
+    }];
+    UIPreviewAction *previewAction2 = [UIPreviewAction actionWithTitle:@"随意" style:UIPreviewActionStyleSelected handler:^(UIPreviewAction * _Nonnull action, UIViewController * _Nonnull previewViewController) {
+        
+        NSLog(@"随意");
+    }];
+  
+  return @[previewAction0 ,previewAction1,previewAction2];
+}
+
 
 
 

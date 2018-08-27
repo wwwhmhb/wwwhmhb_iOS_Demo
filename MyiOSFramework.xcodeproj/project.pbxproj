@@ -14,6 +14,10 @@
 		0493B717212D9DEA00F1230B /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B714212D9DE900F1230B /* microphone.png */; };
 		0493B719212D9DEA00F1230B /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B716212D9DE900F1230B /* setting.png */; };
 		0493B71B212DA9F400F1230B /* QRCode.png in Resources */ = {isa = PBXBuildFile; fileRef = 0493B71A212DA9F400F1230B /* QRCode.png */; };
+		0493B7392132B3CF00F1230B /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0493B7382132B3CF00F1230B /* NotificationCenter.framework */; };
+		0493B73D2132B3CF00F1230B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B73C2132B3CF00F1230B /* TodayViewController.m */; };
+		0493B7402132B3CF00F1230B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0493B73E2132B3CF00F1230B /* MainInterface.storyboard */; };
+		0493B7442132B3CF00F1230B /* WWWWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0493B7372132B3CF00F1230B /* WWWWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
@@ -67,6 +71,30 @@
 		ADE6C6032105E2700061674B /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C6012105E2700061674B /* UIImage-Extensions.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0493B7422132B3CF00F1230B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AD8F523820F6042300E765B8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0493B7362132B3CF00F1230B;
+			remoteInfo = WWWWidget;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0493B7482132B3CF00F1230B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0493B7442132B3CF00F1230B /* WWWWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0450DF572120014A00892171 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		0450DF5A21200A8500892171 /* WWWChangeIconManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWChangeIconManager.h; sourceTree = "<group>"; };
@@ -77,6 +105,12 @@
 		0493B714212D9DE900F1230B /* microphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = microphone.png; sourceTree = "<group>"; };
 		0493B716212D9DE900F1230B /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		0493B71A212DA9F400F1230B /* QRCode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = QRCode.png; sourceTree = "<group>"; };
+		0493B7372132B3CF00F1230B /* WWWWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WWWWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0493B7382132B3CF00F1230B /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		0493B73B2132B3CF00F1230B /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		0493B73C2132B3CF00F1230B /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		0493B73F2132B3CF00F1230B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		0493B7412132B3CF00F1230B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyiOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93929609ADD4013021E37057 /* Pods-MyiOSFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.release.xcconfig"; sourceTree = "<group>"; };
 		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
@@ -173,6 +207,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0493B7342132B3CF00F1230B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0493B7392132B3CF00F1230B /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD8F523D20F6042300E765B8 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -194,6 +236,17 @@
 			path = ChangeIcon;
 			sourceTree = "<group>";
 		};
+		0493B73A2132B3CF00F1230B /* WWWWidget */ = {
+			isa = PBXGroup;
+			children = (
+				0493B73B2132B3CF00F1230B /* TodayViewController.h */,
+				0493B73C2132B3CF00F1230B /* TodayViewController.m */,
+				0493B73E2132B3CF00F1230B /* MainInterface.storyboard */,
+				0493B7412132B3CF00F1230B /* Info.plist */,
+			);
+			path = WWWWidget;
+			sourceTree = "<group>";
+		};
 		AD674E8D2122677300A03886 /* GCDReadWriteFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				AD8F524220F6042300E765B8 /* MyiOSFramework */,
+				0493B73A2132B3CF00F1230B /* WWWWidget */,
 				AD8F524120F6042300E765B8 /* Products */,
 				E251F7914D307428C78A8FFC /* Pods */,
 				F6E2239E5B4B4C4700F5749E /* Frameworks */,
@@ -218,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				AD8F524020F6042300E765B8 /* MyiOSFramework.app */,
+				0493B7372132B3CF00F1230B /* WWWWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -472,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */,
+				0493B7382132B3CF00F1230B /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -479,6 +535,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0493B7362132B3CF00F1230B /* WWWWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0493B7472132B3CF00F1230B /* Build configuration list for PBXNativeTarget "WWWWidget" */;
+			buildPhases = (
+				0493B7332132B3CF00F1230B /* Sources */,
+				0493B7342132B3CF00F1230B /* Frameworks */,
+				0493B7352132B3CF00F1230B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WWWWidget;
+			productName = WWWWidget;
+			productReference = 0493B7372132B3CF00F1230B /* WWWWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		AD8F523F20F6042300E765B8 /* MyiOSFramework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = AD8F525620F6042500E765B8 /* Build configuration list for PBXNativeTarget "MyiOSFramework" */;
@@ -488,10 +561,12 @@
 				AD8F523D20F6042300E765B8 /* Frameworks */,
 				AD8F523E20F6042300E765B8 /* Resources */,
 				EF0B9BDE6D5B2AABF88509AA /* [CP] Embed Pods Frameworks */,
+				0493B7482132B3CF00F1230B /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0493B7432132B3CF00F1230B /* PBXTargetDependency */,
 			);
 			name = MyiOSFramework;
 			productName = MyiOSFramework;
@@ -508,6 +583,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Weiwei Wang";
 				TargetAttributes = {
+					0493B7362132B3CF00F1230B = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
 					AD8F523F20F6042300E765B8 = {
 						CreatedOnToolsVersion = 9.3;
 					};
@@ -527,11 +605,20 @@
 			projectRoot = "";
 			targets = (
 				AD8F523F20F6042300E765B8 /* MyiOSFramework */,
+				0493B7362132B3CF00F1230B /* WWWWidget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0493B7352132B3CF00F1230B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0493B7402132B3CF00F1230B /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD8F523E20F6042300E765B8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -610,6 +697,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0493B7332132B3CF00F1230B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0493B73D2132B3CF00F1230B /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		AD8F523C20F6042300E765B8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -657,7 +752,23 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0493B7432132B3CF00F1230B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0493B7362132B3CF00F1230B /* WWWWidget */;
+			targetProxy = 0493B7422132B3CF00F1230B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		0493B73E2132B3CF00F1230B /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0493B73F2132B3CF00F1230B /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
 		AD8F524E20F6042500E765B8 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -669,6 +780,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0493B7452132B3CF00F1230B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W33P5S72D3;
+				INFOPLIST_FILE = WWWWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.www.MyiOSFramework.WWWWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0493B7462132B3CF00F1230B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = W33P5S72D3;
+				INFOPLIST_FILE = WWWWidget/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.www.MyiOSFramework.WWWWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		AD8F525420F6042500E765B8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -824,6 +973,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0493B7472132B3CF00F1230B /* Build configuration list for PBXNativeTarget "WWWWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0493B7452132B3CF00F1230B /* Debug */,
+				0493B7462132B3CF00F1230B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		AD8F523B20F6042300E765B8 /* Build configuration list for PBXProject "MyiOSFramework" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
