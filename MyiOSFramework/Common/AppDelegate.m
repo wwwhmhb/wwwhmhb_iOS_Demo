@@ -170,7 +170,7 @@ void UncaughtExceptionHandler(NSException *exception) {
                                   };
             
             NSString *crashLogFilePath = [path stringByAppendingPathComponent:fileName];
-            WWWNetworkingManager *networkingManager = [WWWNetworkingManager shared];
+            WWWNetworkingManager *networkingManager = [WWWNetworkingManager sharedWWWNetworkingManager];
             [networkingManager initNetworkingManager];
             [networkingManager uploadFileToUrlStr:@"http://yoby-dispatch.test.youerobot.com/business/upload_log_file/" andFilePath:crashLogFilePath andParameters:dic andExtDict:nil andProgress:nil andFinishBlock:^(id responseObject, NSError *error) {
                 if (error) {

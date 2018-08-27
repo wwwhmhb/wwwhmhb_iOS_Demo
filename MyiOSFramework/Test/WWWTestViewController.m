@@ -27,6 +27,8 @@
     // Do any additional setup after loading the view.
     self.title = @"TestViewController";
     
+    
+    
     NSString *testStr = @"business/upload_log_file/myImage.png";
     NSString *png = [testStr pathExtension];
     NSString *name = [testStr stringByDeletingPathExtension];
@@ -34,9 +36,10 @@
     NSLog(@"array = %@",array);
     NSLog(@"png = %@;name = %@;lastPathComponent = %@",png,name,testStr.lastPathComponent);
     
+    
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [testButton setTitle:@"Test" forState:UIControlStateNormal];
-    [testButton setBackgroundColor:[UIColor orangeColor]];
+    [testButton setBackgroundColor:WWWRGBColor(160.0, 176.0, 213.0)];
     [testButton addTarget:self action:@selector(testButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:testButton];
     [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -47,35 +50,15 @@
 
     
     //视图或者文字转化为图片
-    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(20, 100, 40, 40)];
-    imgview.backgroundColor = [UIColor colorWithRed:160/255.0 green:176/255.0 blue:213/255.0 alpha:1.0];
+    UIImageView *imgview = [[UIImageView alloc] initWithFrame:CGRectMake(20, 200, 40, 40)];
+    imgview.backgroundColor = [UIColor colorWithRed:160.0/255.0 green:176.0/255.0 blue:213.0/255.0 alpha:1.0];
     imgview.layer.cornerRadius = 20;
     [self.view addSubview:imgview];
     
-    UILabel *temptext  = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 40, 40)];
-    temptext.text = @"好";
-    temptext.textColor = [UIColor whiteColor];
-    temptext.textAlignment = NSTextAlignmentCenter;
-    UIImage *image  = [self imageForView:temptext];
-    imgview.image = image;
+    NSProcessInfo *processInfo = [NSProcessInfo processInfo];
+    NSString *hostname = processInfo.hostName;
+    NSLog(@"hostname = %@",processInfo.environment);
     
-    /*
-     NSString *string = @"字";
-     NSMutableParagraphStyle* paragraphStyle = [[NSMutableParagraphStyle alloc]init];
-     [paragraphStyle setAlignment:NSTextAlignmentCenter];
-     [paragraphStyle setLineBreakMode:NSLineBreakByCharWrapping];
-     [paragraphStyle setLineSpacing:15.f];  //行间距
-     [paragraphStyle setParagraphSpacing:2.f];//字符间距
-     
-     NSDictionary *attributes = @{NSFontAttributeName            : [UIFont systemFontOfSize:12],
-     NSForegroundColorAttributeName : [UIColor blueColor],
-     NSBackgroundColorAttributeName : [UIColor clearColor],
-     NSParagraphStyleAttributeName : paragraphStyle, };
-     
-     
-     UIImage *image1  = [self imageFromString:string attributes:attributes size:imgview.bounds.size];
-     imgview.image = image1;
-     */
 }
 
 
@@ -91,32 +74,6 @@
     
 }
 
-//文字转化为图片
-- (UIImage *)imageFromString:(NSString *)string attributes:(NSDictionary *)attributes size:(CGSize)size
-{
-    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
-    [string drawInRect:CGRectMake(0, 0, size.width, size.height) withAttributes:attributes];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
-
-//视图转化为图片
-- (UIImage *)imageForView:(UIView *)view
-{
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0);
-    
-    if ([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)])
-        [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
-    else
-        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    return image;
-}
 
 
 - (void)didReceiveMemoryWarning {

@@ -27,7 +27,7 @@
 
 // @interface
 #define singleton_interface(className) \
-+ (className *)shared;
++ (className *)shared##className;
 
 // @implementation
 #define singleton_implementation(className) \
@@ -40,7 +40,7 @@ _instance = [super allocWithZone:zone]; \
 }); \
 return _instance; \
 } \
-+ (className *)shared \
++ (className *)shared##className \
 { \
 static dispatch_once_t onceToken; \
 dispatch_once(&onceToken, ^{ \
@@ -85,14 +85,72 @@ fprintf(stderr, "-------\n"); \
 
 
 //weakSelf 和 strongSelf 的宏定义
-#define WeakSelf(obj)    __weak __typeof__(obj) weakSelf = obj;
-#define StrongSelf(obj)  __strong __typeof__(obj) strongSelf = obj;
+#define WeakObject(object)    __weak __typeof__(object) weak##object = object;
+#define StrongObject(object)  __strong __typeof__(object) strong##object = weak##object;
 
-
+//屏幕尺寸
 #define kMainScreenWidth        [[UIScreen mainScreen] applicationFrame].size.width
 #define kMainScreenHeight       [[UIScreen mainScreen] applicationFrame].size.height
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 // 当前Xcode支持iOS8及以上
 
+#define SCREEN_WIDTH ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.width)
+#define SCREENH_HEIGHT ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale:[UIScreen mainScreen].bounds.size.height)
+#define SCREEN_SIZE ([[UIScreen mainScreen] respondsToSelector:@selector(nativeBounds)]?CGSizeMake([UIScreen mainScreen].nativeBounds.size.width/[UIScreen mainScreen].nativeScale,[UIScreen mainScreen].nativeBounds.size.height/[UIScreen mainScreen].nativeScale):[UIScreen mainScreen].bounds.size)
+#else
+
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define SCREEN_SIZE [UIScreen mainScreen].bounds.size
+#endif
+
+
+//角度与弧度之间转化
+#define WWWDegreesToRadian(degrees) (M_PI * (degrees) / 180.0)
+#define WWWRadianToDegrees(radian) (radian * 180.0)/(M_PI)
+
+//RGB/RGBA/随机 颜色
+#define WWWRGBAColor(r, g, b, a) [UIColor colorWithRed:((r)/255.0) green:((g)/255.0) blue:((b)/255.0) alpha:(a)]
+#define WWWRGBColor(r, g, b) WWWRGBAColor(r, g, b, 1.0)
+#define WWWRandomColor WWWRGBAColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1.0)
+
+
+
+/*============设备与系统===========*/
+//#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE ([[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
+
+//判断是否为iPad
+//#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPAD ([[[UIDevice currentDevice] model] isEqualToString:@"iPad"])
+
+//判断是否为ipod
+#define IS_IPOD ([[[UIDevice currentDevice] model] isEqualToString:@"iPod touch"])
+
+//判断是否为iPhone X
+#define UI_IS_PhoneX ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1125, 2436), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// 判断是否为iPhone 5/SE
+#define iPhone5SE ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// 判断是否为iPhone/iPhones
+#define iPhone ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size) : NO)
+
+// 判断是否为iPhone Plus
+#define iPhonePlus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242, 2208), [[UIScreen mainScreen] currentMode].size) : NO)
+
+
+#if __has_feature(objc_arc)
+// ARC
+#else
+// MRC
+#endif
+
+#ifdef DEBUG
+//debug
+#else
+//release
+#endif
 
 
 #endif /* PrefixHeader_pch */
