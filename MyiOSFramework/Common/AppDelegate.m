@@ -100,6 +100,21 @@ static void (*ori_NSSetUncaughtExceptionHandler)(NSUncaughtExceptionHandler *);
     
 }
 
+//通过 APP 白名单跳转到应用内部时,走此方法
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    NSLog(@"options = %@",options);
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([[url absoluteString] hasPrefix:@"WidgetDemo"])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:[NSString stringWithFormat:@"你点击了%@按钮",[url host]] delegate:nil cancelButtonTitle:@"好的👌" otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    return  YES;
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
