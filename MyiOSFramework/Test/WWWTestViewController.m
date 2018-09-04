@@ -29,7 +29,7 @@
     
     
     
-    NSString *testStr = @"business/upload_log_file/myImage.png";
+    NSString *testStr = @"mobile/80224c1717d39a0f341560f01bb36af8d923e372/addRobotFriend";
     NSString *png = [testStr pathExtension];
     NSString *name = [testStr stringByDeletingPathExtension];
     NSArray *array = testStr.pathComponents;
@@ -93,6 +93,12 @@
 }
 
 
+#pragma mark - 希尔排序(升序)
+- (void)shellAscendingOrderSort:(NSMutableArray *)ascendingArr {
+    for (NSInteger gap = ascendingArr.count / 2; gap > 0; gap /= 2) {
+        
+    }
+}
 
 
 - (void)didReceiveMemoryWarning {
