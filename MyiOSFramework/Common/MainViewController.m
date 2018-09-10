@@ -32,7 +32,7 @@
 
 #pragma mark -- actions （点击事件）
 
-#pragma mark -- IBActions （点击事件xib）
+#pragma mark -- IBActions （响应事件）
 
 #pragma mark -- networkRequest (网络请求)
 
