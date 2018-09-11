@@ -18,6 +18,7 @@
 		0493B73D2132B3CF00F1230B /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493B73C2132B3CF00F1230B /* TodayViewController.m */; };
 		0493B7442132B3CF00F1230B /* WWWWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 0493B7372132B3CF00F1230B /* WWWWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
+		AD3C8B55214660B20035E145 /* WWWTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3C8B54214660B20035E145 /* WWWTestObject.m */; };
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
 		AD674EBF21254E2000A03886 /* Light.json in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBE21254E1F00A03886 /* Light.json */; };
@@ -111,6 +112,8 @@
 		0493B7412132B3CF00F1230B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyiOSFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93929609ADD4013021E37057 /* Pods-MyiOSFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.release.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.release.xcconfig"; sourceTree = "<group>"; };
+		AD3C8B53214660B20035E145 /* WWWTestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWTestObject.h; sourceTree = "<group>"; };
+		AD3C8B54214660B20035E145 /* WWWTestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWTestObject.m; sourceTree = "<group>"; };
 		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
 		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
 		AD674EBC2123DC7600A03886 /* GCDReadWriteFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GCDReadWriteFile; sourceTree = "<group>"; };
@@ -362,6 +365,8 @@
 			children = (
 				AD8F526520F6FF4600E765B8 /* WWWTestViewController.h */,
 				AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */,
+				AD3C8B53214660B20035E145 /* WWWTestObject.h */,
+				AD3C8B54214660B20035E145 /* WWWTestObject.m */,
 				AD674EBE21254E1F00A03886 /* Light.json */,
 				ADE2BB7B2111837A00565CDB /* Test.text */,
 				ADE2BB842114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log */,
@@ -736,6 +741,7 @@
 				ADE2BB8321118C6700565CDB /* NVLogManager.m in Sources */,
 				AD8F526720F6FF4600E765B8 /* WWWTestViewController.m in Sources */,
 				AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */,
+				AD3C8B55214660B20035E145 /* WWWTestObject.m in Sources */,
 				ADE6C6002105E2400061674B /* UIView+UIImage.m in Sources */,
 				AD8F529D20FC350500E765B8 /* BlazeiceAudioRecordAndTransCoding.m in Sources */,
 				ADE2BB8021118C5500565CDB /* MyCustomFormatter.m in Sources */,
