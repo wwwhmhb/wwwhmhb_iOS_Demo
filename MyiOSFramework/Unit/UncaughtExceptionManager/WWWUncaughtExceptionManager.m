@@ -12,18 +12,18 @@
        针对NSException这种错误，可以直接调用NSSetUncaughtExceptionHandler函数来捕获;而针对EXC_BAD_ACCESS错误则需通过自定义注册SIGNAL来捕获。一般产生一个NSException异常的时候，同时也会抛出一个SIGNAL的信号(当然这只是一般情况，有时可能只是会单独出现)。
  */
 
-#import "YORUncaughtExceptionManager.h"
+#import "WWWUncaughtExceptionManager.h"
 #import <libkern/OSAtomic.h>//OSAtomicIncrement32函数
 #include <execinfo.h>//backtrace函数
 
-@interface YORUncaughtExceptionManager () {
+@interface WWWUncaughtExceptionManager () {
     BOOL _dismissed;
 }
 
 @end
 
 
-@implementation YORUncaughtExceptionManager
+@implementation WWWUncaughtExceptionManager
 
 #pragma mark -- self declare （本类声明）
 //异常处理指针
@@ -260,14 +260,14 @@ void my_NSSetUncaughtExceptionHandler(NSUncaughtExceptionHandler *handler) {
 void UncaughtExceptionHandler(NSException *exception) {
     
     //构建 OC 错误信息
-    NSArray *callStack = [YORUncaughtExceptionManager backtrace];
+    NSArray *callStack = [WWWUncaughtExceptionManager backtrace];
     NSMutableDictionary *userInfo =
     [NSMutableDictionary dictionaryWithDictionary:[exception userInfo]];
     [userInfo setObject:callStack forKey:UncaughtExceptionHandlerAddressesKey];
     [userInfo setObject:@"OCCrash" forKey:UncaughtExceptionHandlerTypeKey];
     
     //将错误信息传递给方法 handleException:
-    [[[YORUncaughtExceptionManager alloc] init] performSelectorOnMainThread:@selector(handleException:)
+    [[[WWWUncaughtExceptionManager alloc] init] performSelectorOnMainThread:@selector(handleException:)
                                                                  withObject:[NSException exceptionWithName:[exception name]
                                                                                                     reason:[exception reason]
                                                                                                   userInfo:userInfo]
@@ -278,12 +278,12 @@ void UncaughtExceptionHandler(NSException *exception) {
 void SignalHandler(int signal) {
     //构建 signal 错误信息
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:signal] forKey:UncaughtExceptionHandlerSignalKey];
-    NSArray *callStack = [YORUncaughtExceptionManager backtrace];
+    NSArray *callStack = [WWWUncaughtExceptionManager backtrace];
     [userInfo setObject:callStack forKey:UncaughtExceptionHandlerAddressesKey];
     [userInfo setObject:@"SignalCrash" forKey:UncaughtExceptionHandlerTypeKey];
     
     //将错误信息传递给方法 handleException:
-    [[[YORUncaughtExceptionManager alloc] init] performSelectorOnMainThread:@selector(handleException:)
+    [[[WWWUncaughtExceptionManager alloc] init] performSelectorOnMainThread:@selector(handleException:)
                                                                  withObject: [NSException exceptionWithName:UncaughtExceptionHandlerSignalExceptionName
                                                                                                      reason: [NSString stringWithFormat:NSLocalizedString(@"Signal %d was raised.\n", nil),signal]
                                                                                                    userInfo:userInfo]

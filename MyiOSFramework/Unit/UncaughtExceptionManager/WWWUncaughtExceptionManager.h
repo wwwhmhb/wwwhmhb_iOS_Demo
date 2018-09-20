@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface YORUncaughtExceptionManager : NSObject
+@interface WWWUncaughtExceptionManager : NSObject
 //安装抓取异常信息的管理者
 - (void)installYORUncaughtExceptionManager;
 

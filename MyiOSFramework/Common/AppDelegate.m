@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "YORUncaughtExceptionManager.h"
+#import "WWWUncaughtExceptionManager.h"
 #import "WWWBaseNavigationController.h"
 #import "MainViewController.h"
 #import "WWWNetworkingManager.h"
@@ -35,7 +35,7 @@
     
     //抓住异常问题
 //    my_NSSetUncaughtExceptionHandler(&UncaughtExceptionHandler);
-    YORUncaughtExceptionManager *uncaughtExceptionManager = [[YORUncaughtExceptionManager alloc] init];
+    WWWUncaughtExceptionManager *uncaughtExceptionManager = [[WWWUncaughtExceptionManager alloc] init];
     [uncaughtExceptionManager installYORUncaughtExceptionManager];
     
     //监听设备旋转通知
