@@ -21,6 +21,8 @@
 		AD01076521539D7C004AC0DA /* WWWUncaughtExceptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD01076421539D7C004AC0DA /* WWWUncaughtExceptionManager.m */; };
 		AD3C8B55214660B20035E145 /* WWWTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3C8B54214660B20035E145 /* WWWTestObject.m */; };
 		AD4C43242154BEF400F0B695 /* UncaughtExceptionManager in Resources */ = {isa = PBXBuildFile; fileRef = AD4C43232154BEF400F0B695 /* UncaughtExceptionManager */; };
+		AD4C43282154C29300F0B695 /* WWWQRCodeScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4C43272154C29300F0B695 /* WWWQRCodeScanViewController.m */; };
+		AD4C432B2154C36400F0B695 /* WWWQRCodeCreate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD4C432A2154C36400F0B695 /* WWWQRCodeCreate.m */; };
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
 		AD674EBF21254E2000A03886 /* Light.json in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBE21254E1F00A03886 /* Light.json */; };
@@ -119,6 +121,10 @@
 		AD3C8B53214660B20035E145 /* WWWTestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWTestObject.h; sourceTree = "<group>"; };
 		AD3C8B54214660B20035E145 /* WWWTestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWTestObject.m; sourceTree = "<group>"; };
 		AD4C43232154BEF400F0B695 /* UncaughtExceptionManager */ = {isa = PBXFileReference; lastKnownFileType = text; path = UncaughtExceptionManager; sourceTree = "<group>"; };
+		AD4C43262154C29300F0B695 /* WWWQRCodeScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWQRCodeScanViewController.h; sourceTree = "<group>"; };
+		AD4C43272154C29300F0B695 /* WWWQRCodeScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWQRCodeScanViewController.m; sourceTree = "<group>"; };
+		AD4C43292154C36400F0B695 /* WWWQRCodeCreate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWQRCodeCreate.h; sourceTree = "<group>"; };
+		AD4C432A2154C36400F0B695 /* WWWQRCodeCreate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWQRCodeCreate.m; sourceTree = "<group>"; };
 		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
 		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
 		AD674EBC2123DC7600A03886 /* GCDReadWriteFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GCDReadWriteFile; sourceTree = "<group>"; };
@@ -262,6 +268,17 @@
 			path = UncaughtExceptionManager;
 			sourceTree = "<group>";
 		};
+		AD4C43252154C01C00F0B695 /* QRCodeManager */ = {
+			isa = PBXGroup;
+			children = (
+				AD4C43262154C29300F0B695 /* WWWQRCodeScanViewController.h */,
+				AD4C43272154C29300F0B695 /* WWWQRCodeScanViewController.m */,
+				AD4C43292154C36400F0B695 /* WWWQRCodeCreate.h */,
+				AD4C432A2154C36400F0B695 /* WWWQRCodeCreate.m */,
+			);
+			path = QRCodeManager;
+			sourceTree = "<group>";
+		};
 		AD674E8D2122677300A03886 /* GCDReadWriteFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -349,6 +366,7 @@
 		AD8F526220F6FD3500E765B8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				AD4C43252154C01C00F0B695 /* QRCodeManager */,
 				AD01076221539D4C004AC0DA /* UncaughtExceptionManager */,
 				AD674E8D2122677300A03886 /* GCDReadWriteFile */,
 				0450DF59212009E500892171 /* ChangeIcon */,
@@ -740,6 +758,7 @@
 				AD8F52B320FF36D300E765B8 /* WWWBottomPickerView.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
 				AD8F527120F7364300E765B8 /* getgateway.c in Sources */,
+				AD4C432B2154C36400F0B695 /* WWWQRCodeCreate.m in Sources */,
 				ADE6C5FD2105E2140061674B /* UIColor+Extend.m in Sources */,
 				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
 				AD8F52A720FD80C300E765B8 /* ASScreenRecorder.m in Sources */,
@@ -747,6 +766,7 @@
 				ADAC8718210EF0550093BCE0 /* NSArray+LXDExtension.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 				AD01076521539D7C004AC0DA /* WWWUncaughtExceptionManager.m in Sources */,
+				AD4C43282154C29300F0B695 /* WWWQRCodeScanViewController.m in Sources */,
 				0450DF5C21200A8500892171 /* WWWChangeIconManager.m in Sources */,
 				AD8F52C021007D7600E765B8 /* WWWMulti_lineTextAlertView.m in Sources */,
 				ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */,
