@@ -20,6 +20,7 @@
 		6ADED9B2433D97911356B904 /* Pods_MyiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12010724F366FDA5BA160581 /* Pods_MyiOSFramework.framework */; };
 		AD01076521539D7C004AC0DA /* WWWUncaughtExceptionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AD01076421539D7C004AC0DA /* WWWUncaughtExceptionManager.m */; };
 		AD3C8B55214660B20035E145 /* WWWTestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = AD3C8B54214660B20035E145 /* WWWTestObject.m */; };
+		AD4C43242154BEF400F0B695 /* UncaughtExceptionManager in Resources */ = {isa = PBXBuildFile; fileRef = AD4C43232154BEF400F0B695 /* UncaughtExceptionManager */; };
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
 		AD674EBF21254E2000A03886 /* Light.json in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBE21254E1F00A03886 /* Light.json */; };
@@ -117,6 +118,7 @@
 		AD01076421539D7C004AC0DA /* WWWUncaughtExceptionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWUncaughtExceptionManager.m; sourceTree = "<group>"; };
 		AD3C8B53214660B20035E145 /* WWWTestObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWTestObject.h; sourceTree = "<group>"; };
 		AD3C8B54214660B20035E145 /* WWWTestObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWTestObject.m; sourceTree = "<group>"; };
+		AD4C43232154BEF400F0B695 /* UncaughtExceptionManager */ = {isa = PBXFileReference; lastKnownFileType = text; path = UncaughtExceptionManager; sourceTree = "<group>"; };
 		AD674E8E212268C900A03886 /* WWWGCDReadWriteFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWGCDReadWriteFile.h; sourceTree = "<group>"; };
 		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
 		AD674EBC2123DC7600A03886 /* GCDReadWriteFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GCDReadWriteFile; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			children = (
 				AD01076321539D7C004AC0DA /* WWWUncaughtExceptionManager.h */,
 				AD01076421539D7C004AC0DA /* WWWUncaughtExceptionManager.m */,
+				AD4C43232154BEF400F0B695 /* UncaughtExceptionManager */,
 			);
 			path = UncaughtExceptionManager;
 			sourceTree = "<group>";
@@ -654,6 +657,7 @@
 				0493B7132121D83A00F1230B /* ChangeIcon in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
 				ADB10804212EAD280084735F /* AFNetworking in Resources */,
+				AD4C43242154BEF400F0B695 /* UncaughtExceptionManager in Resources */,
 				0493B71B212DA9F400F1230B /* QRCode.png in Resources */,
 				AD674EBF21254E2000A03886 /* Light.json in Resources */,
 			);
