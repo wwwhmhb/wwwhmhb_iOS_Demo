@@ -10,4 +10,8 @@
 
 @interface WWWQRCodeCreate : NSObject
 
+@property (nonatomic,strong,readonly) UIImage *QRCodeImage;
+
+- (instancetype)initWithQRCodeContent:(NSDictionary *)dict;
+
 @end
