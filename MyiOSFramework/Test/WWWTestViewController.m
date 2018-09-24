@@ -13,7 +13,9 @@
 #import "WWWNetworkingManager.h"
 #import "WWWGCDReadWriteFile.h"
 
-#import "WWWTestObject.h"
+//#import "WWWTestObject.h"
+//#import "WWWTestObject+TestAddProperty.h"
+
 
 @interface WWWTestViewController () {
     dispatch_queue_t queue;
@@ -29,6 +31,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"TestViewController";
+    
+//    WWWTestObject *testObject1 = [[WWWTestObject alloc] init];
+//    NSLog(@"testObject1.age = %@",testObject1.age);
+//    testObject1.age = @"33";
+//    NSLog(@"testObject1.age = %@",testObject1.age);
+//    
+//    WWWTestObject *testObject2 = [[WWWTestObject alloc] init];
+//    NSLog(@"testObject2.age = %@",testObject2.age);
     
     NSString *testStr = @"mobile/80224c1717d39a0f341560f01bb36af8d923e372/addRobotFriend";
     NSString *png = [testStr pathExtension];
@@ -52,7 +62,7 @@
         make.left.mas_equalTo(self.view).offset(20);
         make.size.mas_equalTo(CGSizeMake(100, 60));
     }];
-    
+    //改版 button 中文字和图片的位置
     [self.view layoutIfNeeded];
     testButton.imageEdgeInsets = UIEdgeInsetsMake(0,testButton.titleLabel.frame.size.width, 0, -testButton.titleLabel.frame.size.width);
     testButton.titleEdgeInsets = UIEdgeInsetsMake(0, -testButton.imageView.frame.size.width, 0, testButton.imageView.frame.size.width);
