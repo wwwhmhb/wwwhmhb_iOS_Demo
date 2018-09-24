@@ -10,7 +10,10 @@
 
 @interface WWWTestObject (TestAddProperty)
 
-//为分类添加属性
+//为分类添加 NSString 属性
 @property (nonatomic,copy) NSString *age;
+
+//为分类添加 UIButton 属性
+@property (nonatomic, strong) UIButton *button;
 
 @end
