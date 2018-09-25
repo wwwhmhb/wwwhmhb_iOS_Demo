@@ -12,6 +12,9 @@
 #import "BlazeiceDooleView.h"
 #import "WWWNetworkingManager.h"
 #import "WWWGCDReadWriteFile.h"
+
+//#import "WWWTestObject.h"
+//#import "WWWTestObject+TestAddProperty.h"
 #import "WWWTestObject.h"
 #import "WWWQRCodeCreate.h"
 
@@ -29,6 +32,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"TestViewController";
+    
+//    WWWTestObject *testObject1 = [[WWWTestObject alloc] init];
+//    NSLog(@"testObject1.age = %@",testObject1.age);
+//    testObject1.age = @"33";
+//    NSLog(@"testObject1.age = %@",testObject1.age);
+//    
+//    WWWTestObject *testObject2 = [[WWWTestObject alloc] init];
+//    NSLog(@"testObject2.age = %@",testObject2.age);
     
     NSString *testStr = @"mobile/80224c1717d39a0f341560f01bb36af8d923e372/addRobotFriend";
     NSString *png = [testStr pathExtension];
@@ -82,6 +93,7 @@
         tapGesture.numberOfTouchesRequired = 2;
         [view addGestureRecognizer:tapGesture];
     }
+
 }
 
 - (void)gestureAction:(UITapGestureRecognizer *)gesture {
