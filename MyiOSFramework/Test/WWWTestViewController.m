@@ -37,32 +37,57 @@
     NSLog(@"array = %@",array);
     NSLog(@"png = %@;name = %@;lastPathComponent = %@",png,name,testStr.lastPathComponent);
     
-    WWWQRCodeCreate *QRCodeImage = [[WWWQRCodeCreate alloc] initWithQRCodeContent:@{@"key" : @"value"}];
+    //二维码
+//    WWWQRCodeCreate *QRCodeImage = [[WWWQRCodeCreate alloc] initWithQRCodeContent:@{@"key" : @"value"}];
     
-    UIImage *image = [UIImage imageNamed:@"icon"];
-    image = [self changeColorWithQRCodeImg:image red:255 green:225 blue:60];
+    //改变图片颜色
+//    UIImage *image = [UIImage imageNamed:@"icon"];
+//    image = [self changeColorWithQRCodeImg:image red:255 green:225 blue:60];
     
-    UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [testButton setTitle:@"Test" forState:UIControlStateNormal];
+//    UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
+////    [testButton setTitle:@"Test" forState:UIControlStateNormal];
 //    [testButton setImage:[UIImage imageNamed:@"normalLightImage"] forState:UIControlStateNormal];
-    [testButton setImage:image forState:UIControlStateNormal];
-//    [testButton setBackgroundColor:[UIColor orangeColor]];
-    [testButton addTarget:self action:@selector(testButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-//    testButton.imageView.backgroundColor = [UIColor redColor];
-//    testButton.titleLabel.backgroundColor = [UIColor greenColor];
+////    [testButton setImage:image forState:UIControlStateNormal];
+////    [testButton setBackgroundColor:[UIColor orangeColor]];
+//    [testButton addTarget:self action:@selector(testButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+////    testButton.imageView.backgroundColor = [UIColor redColor];
+////    testButton.titleLabel.backgroundColor = [UIColor greenColor];
+//    [self.view addSubview:testButton];
+//    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.view).offset(80);
+//        make.left.mas_equalTo(self.view).offset(20);
+//        make.size.mas_equalTo(CGSizeMake(400, 400));
+//    }];
     
-    [self.view addSubview:testButton];
-    [testButton mas_makeConstraints:^(MASConstraintMaker *make) {
+    //button图片和文字的布局
+//    [self.view layoutIfNeeded];
+//    testButton.imageEdgeInsets = UIEdgeInsetsMake(0,testButton.titleLabel.frame.size.width, 0, -testButton.titleLabel.frame.size.width);
+//    testButton.titleEdgeInsets = UIEdgeInsetsMake(0, -testButton.imageView.frame.size.width, 0, testButton.imageView.frame.size.width);
+    
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor redColor];
+    [self.view addSubview:view];
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).offset(80);
         make.left.mas_equalTo(self.view).offset(20);
-        make.size.mas_equalTo(CGSizeMake(400, 400));
+        make.size.mas_equalTo(CGSizeMake(200, 200));
     }];
     
-    [self.view layoutIfNeeded];
-    testButton.imageEdgeInsets = UIEdgeInsetsMake(0,testButton.titleLabel.frame.size.width, 0, -testButton.titleLabel.frame.size.width);
-    testButton.titleEdgeInsets = UIEdgeInsetsMake(0, -testButton.imageView.frame.size.width, 0, testButton.imageView.frame.size.width);
+    view.userInteractionEnabled = YES;
+    view.multipleTouchEnabled = YES;
+    for (int i = 0; i < 6; i++) {
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction:)];
+        
+        tapGesture.numberOfTapsRequired = i;
+        tapGesture.numberOfTouchesRequired = 2;
+        [view addGestureRecognizer:tapGesture];
+    }
 }
 
+- (void)gestureAction:(UITapGestureRecognizer *)gesture {
+    NSLog(@"Gesture.numberOfTouches = %lu",(unsigned long)gesture.numberOfTouches);//手指个数qidao
+    NSLog(@"Gesture.numberOfTapsRequired = %lu",(unsigned long)gesture.numberOfTapsRequired);//单击手势才具有的属性，点击次数
+}
 
 - (void)testButtonAction:(UIButton *)button {
     // 全局并发队列的获取方法
