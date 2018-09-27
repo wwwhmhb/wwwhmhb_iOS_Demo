@@ -17,6 +17,8 @@
 //#import "WWWTestObject+TestAddProperty.h"
 #import "WWWTestObject.h"
 #import "WWWQRCodeCreate.h"
+#import "WWWTestView.h"
+
 
 @interface WWWTestViewController () {
     dispatch_queue_t queue;
@@ -40,6 +42,8 @@
 //    
 //    WWWTestObject *testObject2 = [[WWWTestObject alloc] init];
 //    NSLog(@"testObject2.age = %@",testObject2.age);
+    
+    
     
     NSString *testStr = @"mobile/80224c1717d39a0f341560f01bb36af8d923e372/addRobotFriend";
     NSString *png = [testStr pathExtension];
@@ -75,25 +79,85 @@
 //    testButton.imageEdgeInsets = UIEdgeInsetsMake(0,testButton.titleLabel.frame.size.width, 0, -testButton.titleLabel.frame.size.width);
 //    testButton.titleEdgeInsets = UIEdgeInsetsMake(0, -testButton.imageView.frame.size.width, 0, testButton.imageView.frame.size.width);
     
-    UIView *view = [[UIView alloc] init];
-    view.backgroundColor = [UIColor redColor];
-    [self.view addSubview:view];
-    [view mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view).offset(80);
-        make.left.mas_equalTo(self.view).offset(20);
-        make.size.mas_equalTo(CGSizeMake(200, 200));
+    
+    
+//    UIView *view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:view];
+//    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.view).offset(80);
+//        make.left.mas_equalTo(self.view).offset(20);
+//        make.size.mas_equalTo(CGSizeMake(100, 100));
+//    }];
+//
+//    view.userInteractionEnabled = YES;
+//    view.multipleTouchEnabled = YES;
+//    UIPanGestureRecognizer *pan=[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
+//    [view addGestureRecognizer:pan];
+    
+    
+    
+//    for (int i = 0; i < 6; i++) {
+//        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction:)];
+//
+//        tapGesture.numberOfTapsRequired = i;
+//        tapGesture.numberOfTouchesRequired = 2;
+//        [view addGestureRecognizer:tapGesture];
+//    }
+
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map"]];
+    [self.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self.view);
+        make.left.mas_equalTo(self.view);
     }];
     
-    view.userInteractionEnabled = YES;
-    view.multipleTouchEnabled = YES;
-    for (int i = 0; i < 6; i++) {
-        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(gestureAction:)];
-        
-        tapGesture.numberOfTapsRequired = i;
-        tapGesture.numberOfTouchesRequired = 2;
-        [view addGestureRecognizer:tapGesture];
-    }
+//    WWWTestView *testView = [[WWWTestView alloc] init];
+////    testView.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:testView];
+//    [testView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.edges.mas_equalTo(self.view);
+////        make.top.mas_equalTo(self.view).offset(80);
+////        make.left.mas_equalTo(self.view).offset(20);
+////        make.size.mas_equalTo(CGSizeMake(100, 100));
+//    }];
+}
 
+#pragma mark - 手势执行的方法
+-(void)handlePan:(UIPanGestureRecognizer *)rec{
+//    CGFloat KWidth = [UIScreen mainScreen].bounds.size.width;
+//    CGFloat KHeight = [UIScreen mainScreen].bounds.size.height;
+    
+    //返回在横坐标上、纵坐标上拖动了多少像素
+    CGPoint point=[rec translationInView:self.view];
+    
+//    CGFloat centerX = rec.view.center.x+point.x;
+//    CGFloat centerY = rec.view.center.y+point.y;
+//
+//    CGFloat viewHalfH = rec.view.frame.size.height/2;
+//    CGFloat viewhalfW = rec.view.frame.size.width/2;
+//
+//    //确定特殊的centerY
+//    if (centerY - viewHalfH < 0 ) {
+//        centerY = viewHalfH;
+//    }
+//    if (centerY + viewHalfH > KHeight ) {
+//        centerY = KHeight - viewHalfH;
+//    }
+//
+//    //确定特殊的centerX
+//    if (centerX - viewhalfW < 0){
+//        centerX = viewhalfW;
+//
+//    }
+//    if (centerX + viewhalfW > KWidth){
+//        centerX = KWidth - viewhalfW;
+//    }
+    
+    rec.view.center = CGPointMake(rec.view.center.x+point.x, rec.view.center.y+point.y);
+    //拖动完之后，每次都要用setTranslation:方法制0这样才不至于不受控制般滑动出视图
+    [rec setTranslation:CGPointMake(0, 0) inView:self.view];
 }
 
 - (void)gestureAction:(UITapGestureRecognizer *)gesture {

@@ -29,6 +29,7 @@
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
 		AD674EBF21254E2000A03886 /* Light.json in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBE21254E1F00A03886 /* Light.json */; };
+		AD8BC564215A24D4007A64E9 /* WWWTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8BC563215A24D4007A64E9 /* WWWTestView.m */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
 		AD8F524820F6042300E765B8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* MainViewController.m */; };
 		AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AD8F524C20F6042500E765B8 /* Assets.xcassets */; };
@@ -138,6 +139,8 @@
 		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
 		AD674EBC2123DC7600A03886 /* GCDReadWriteFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GCDReadWriteFile; sourceTree = "<group>"; };
 		AD674EBE21254E1F00A03886 /* Light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Light.json; sourceTree = "<group>"; };
+		AD8BC562215A24D4007A64E9 /* WWWTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWTestView.h; sourceTree = "<group>"; };
+		AD8BC563215A24D4007A64E9 /* WWWTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWTestView.m; sourceTree = "<group>"; };
 		AD8F524020F6042300E765B8 /* MyiOSFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyiOSFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD8F524320F6042300E765B8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		AD8F524420F6042300E765B8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -410,6 +413,8 @@
 			children = (
 				AD8F526520F6FF4600E765B8 /* WWWTestViewController.h */,
 				AD8F526620F6FF4600E765B8 /* WWWTestViewController.m */,
+				AD8BC562215A24D4007A64E9 /* WWWTestView.h */,
+				AD8BC563215A24D4007A64E9 /* WWWTestView.m */,
 				AD3C8B53214660B20035E145 /* WWWTestObject.h */,
 				AD3C8B54214660B20035E145 /* WWWTestObject.m */,
 				04644FBD214A9A7B00DBFE58 /* WWWSuperClass.h */,
@@ -780,6 +785,7 @@
 				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
 				AD8F52A720FD80C300E765B8 /* ASScreenRecorder.m in Sources */,
 				AD8F52A120FC4E1900E765B8 /* WWWRecordScreenManager.m in Sources */,
+				AD8BC564215A24D4007A64E9 /* WWWTestView.m in Sources */,
 				ADAC8718210EF0550093BCE0 /* NSArray+LXDExtension.m in Sources */,
 				AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */,
 				AD01076521539D7C004AC0DA /* WWWUncaughtExceptionManager.m in Sources */,
@@ -834,7 +840,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 49UCR2N8X6;
+				DEVELOPMENT_TEAM = W33P5S72D3;
 				INFOPLIST_FILE = WWWWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -853,7 +859,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 49UCR2N8X6;
+				DEVELOPMENT_TEAM = W33P5S72D3;
 				INFOPLIST_FILE = WWWWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -984,7 +990,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 49UCR2N8X6;
+				DEVELOPMENT_TEAM = W33P5S72D3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyiOSFramework/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
@@ -1005,7 +1011,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 49UCR2N8X6;
+				DEVELOPMENT_TEAM = W33P5S72D3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/MyiOSFramework/Common/PrefixHeader.pch";
 				INFOPLIST_FILE = MyiOSFramework/Common/Info.plist;
