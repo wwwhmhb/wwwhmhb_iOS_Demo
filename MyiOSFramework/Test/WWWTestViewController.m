@@ -123,16 +123,57 @@
 ////        make.size.mas_equalTo(CGSizeMake(100, 100));
 //    }];
     
-    WWWImageViewAnimationView *animationView = [[WWWImageViewAnimationView alloc] initWithImageFileName:@"storySmallPassImage" andImageCount:50 andIsCricle:YES];
-    animationView.backgroundColor = [UIColor redColor];
-//    animationView.imageFileName = @"storySmallPassImage";
-    animationView.delegate = self;
-    [self.view addSubview:animationView];
-    [animationView mas_makeConstraints:^(MASConstraintMaker *make) {
+//    WWWImageViewAnimationView *animationView = [[WWWImageViewAnimationView alloc] initWithImageFileName:@"storySmallPassImage" andImageCount:50 andIsCricle:YES];
+//    animationView.backgroundColor = [UIColor redColor];
+////    animationView.imageFileName = @"storySmallPassImage";
+//    animationView.delegate = self;
+//    [self.view addSubview:animationView];
+//    [animationView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.mas_equalTo(self.view);
+//        make.size.mas_equalTo(CGSizeMake(100, 100));
+//    }];
+//    [animationView startAnimation];
+    UIImage *imageL = [UIImage imageNamed:@"mapLableLeftImage"];
+    UIImage *imageM = [UIImage imageNamed:@"mapLableMiddleImage"];
+    UIImage *imageR = [UIImage imageNamed:@"mapLableRightImage"];
+    UIImage *image = [self combineWithLeftImg:imageL middleImg:imageM rightImg:imageR withMargin:100];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [self.view addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);
-        make.size.mas_equalTo(CGSizeMake(100, 100));
+        make.size.mas_equalTo(CGSizeMake(image.size.width, image.size.height));
     }];
-    [animationView startAnimation];
+    
+}
+
+//leftImage:左侧图片 rightImage:右侧图片 margin:两者间隔
+- (UIImage *)combineWithLeftImg:(UIImage*)leftImage middleImg:(UIImage *)middleImage rightImg:(UIImage*)rightImage withMargin:(NSInteger)margin {
+    if (rightImage == nil) {
+        return leftImage;
+    }
+    CGFloat width = leftImage.size.width + rightImage.size.width + margin - 2;
+    CGFloat height = leftImage.size.height;
+    CGSize offScreenSize = CGSizeMake(width, height);
+    
+    // UIGraphicsBeginImageContext(offScreenSize);用这个重绘图片会模糊
+    UIGraphicsBeginImageContextWithOptions(offScreenSize, NO, [UIScreen mainScreen].scale);
+    
+    CGRect rectL = CGRectMake(0, 0, leftImage.size.width, height);
+    
+    
+    CGRect rectM = CGRectMake(rectL.origin.x + leftImage.size.width - 1, 0, margin, height);
+    
+    CGRect rectR = CGRectMake(rectM.origin.x + margin - 1, 0, rightImage.size.width, height);
+    
+    [leftImage drawInRect:rectL];
+    [rightImage drawInRect:rectR];
+    [middleImage drawInRect:rectM];
+    
+    UIImage* imagez = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return imagez;
 }
 
 #pragma mark -- 代理方法
