@@ -62,6 +62,57 @@
 		ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */ = {isa = PBXBuildFile; fileRef = ADAC8719210EF6DE0093BCE0 /* DrawingBoardView */; };
 		ADB10804212EAD280084735F /* AFNetworking in Resources */ = {isa = PBXBuildFile; fileRef = ADB10803212EAD280084735F /* AFNetworking */; };
 		ADCA8E08210F1777003296D8 /* WWWStreamOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */; };
+		ADD8E969215CE4F10078140E /* WWWImageViewAnimationView.m in Sources */ = {isa = PBXBuildFile; fileRef = ADD8E968215CE4F10078140E /* WWWImageViewAnimationView.m */; };
+		ADD8E99D215CE7550078140E /* storySmallPassImage_005.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E96B215CE7550078140E /* storySmallPassImage_005.png */; };
+		ADD8E99E215CE7550078140E /* storySmallPassImage_011.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E96C215CE7550078140E /* storySmallPassImage_011.png */; };
+		ADD8E99F215CE7550078140E /* storySmallPassImage_039.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E96D215CE7550078140E /* storySmallPassImage_039.png */; };
+		ADD8E9A0215CE7550078140E /* storySmallPassImage_038.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E96E215CE7550078140E /* storySmallPassImage_038.png */; };
+		ADD8E9A1215CE7550078140E /* storySmallPassImage_010.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E96F215CE7550078140E /* storySmallPassImage_010.png */; };
+		ADD8E9A2215CE7550078140E /* storySmallPassImage_004.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E970215CE7550078140E /* storySmallPassImage_004.png */; };
+		ADD8E9A3215CE7550078140E /* storySmallPassImage_012.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E971215CE7550078140E /* storySmallPassImage_012.png */; };
+		ADD8E9A4215CE7550078140E /* storySmallPassImage_006.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E972215CE7550078140E /* storySmallPassImage_006.png */; };
+		ADD8E9A5215CE7550078140E /* storySmallPassImage_007.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E973215CE7550078140E /* storySmallPassImage_007.png */; };
+		ADD8E9A6215CE7550078140E /* storySmallPassImage_013.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E974215CE7550078140E /* storySmallPassImage_013.png */; };
+		ADD8E9A7215CE7550078140E /* storySmallPassImage_017.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E975215CE7550078140E /* storySmallPassImage_017.png */; };
+		ADD8E9A8215CE7550078140E /* storySmallPassImage_003.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E976215CE7550078140E /* storySmallPassImage_003.png */; };
+		ADD8E9A9215CE7550078140E /* storySmallPassImage_002.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E977215CE7550078140E /* storySmallPassImage_002.png */; };
+		ADD8E9AA215CE7550078140E /* storySmallPassImage_016.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E978215CE7550078140E /* storySmallPassImage_016.png */; };
+		ADD8E9AB215CE7550078140E /* storySmallPassImage_028.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E979215CE7550078140E /* storySmallPassImage_028.png */; };
+		ADD8E9AC215CE7550078140E /* storySmallPassImage_000.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E97A215CE7550078140E /* storySmallPassImage_000.png */; };
+		ADD8E9AD215CE7550078140E /* storySmallPassImage_014.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E97B215CE7550078140E /* storySmallPassImage_014.png */; };
+		ADD8E9AE215CE7550078140E /* storySmallPassImage_015.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E97C215CE7550078140E /* storySmallPassImage_015.png */; };
+		ADD8E9AF215CE7550078140E /* storySmallPassImage_001.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E97D215CE7550078140E /* storySmallPassImage_001.png */; };
+		ADD8E9B0215CE7550078140E /* storySmallPassImage_029.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E97E215CE7550078140E /* storySmallPassImage_029.png */; };
+		ADD8E9B1215CE7550078140E /* storySmallPassImage_048.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E97F215CE7550078140E /* storySmallPassImage_048.png */; };
+		ADD8E9B2215CE7550078140E /* storySmallPassImage_049.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E980215CE7550078140E /* storySmallPassImage_049.png */; };
+		ADD8E9B3215CE7550078140E /* storySmallPassImage_047.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E981215CE7550078140E /* storySmallPassImage_047.png */; };
+		ADD8E9B4215CE7550078140E /* storySmallPassImage_046.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E982215CE7550078140E /* storySmallPassImage_046.png */; };
+		ADD8E9B5215CE7550078140E /* storySmallPassImage_044.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E983215CE7550078140E /* storySmallPassImage_044.png */; };
+		ADD8E9B6215CE7550078140E /* storySmallPassImage_045.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E984215CE7550078140E /* storySmallPassImage_045.png */; };
+		ADD8E9B7215CE7550078140E /* storySmallPassImage_041.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E985215CE7550078140E /* storySmallPassImage_041.png */; };
+		ADD8E9B8215CE7550078140E /* storySmallPassImage_040.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E986215CE7550078140E /* storySmallPassImage_040.png */; };
+		ADD8E9B9215CE7550078140E /* storySmallPassImage_042.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E987215CE7550078140E /* storySmallPassImage_042.png */; };
+		ADD8E9BA215CE7550078140E /* storySmallPassImage_043.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E988215CE7550078140E /* storySmallPassImage_043.png */; };
+		ADD8E9BB215CE7550078140E /* storySmallPassImage_024.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E989215CE7550078140E /* storySmallPassImage_024.png */; };
+		ADD8E9BC215CE7550078140E /* storySmallPassImage_030.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E98A215CE7550078140E /* storySmallPassImage_030.png */; };
+		ADD8E9BD215CE7550078140E /* storySmallPassImage_018.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E98B215CE7550078140E /* storySmallPassImage_018.png */; };
+		ADD8E9BE215CE7550078140E /* storySmallPassImage_019.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E98C215CE7550078140E /* storySmallPassImage_019.png */; };
+		ADD8E9BF215CE7550078140E /* storySmallPassImage_031.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E98D215CE7550078140E /* storySmallPassImage_031.png */; };
+		ADD8E9C0215CE7550078140E /* storySmallPassImage_025.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E98E215CE7550078140E /* storySmallPassImage_025.png */; };
+		ADD8E9C1215CE7550078140E /* storySmallPassImage_033.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E98F215CE7550078140E /* storySmallPassImage_033.png */; };
+		ADD8E9C2215CE7550078140E /* storySmallPassImage_027.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E990215CE7550078140E /* storySmallPassImage_027.png */; };
+		ADD8E9C3215CE7550078140E /* storySmallPassImage_026.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E991215CE7550078140E /* storySmallPassImage_026.png */; };
+		ADD8E9C4215CE7550078140E /* storySmallPassImage_032.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E992215CE7550078140E /* storySmallPassImage_032.png */; };
+		ADD8E9C5215CE7550078140E /* storySmallPassImage_036.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E993215CE7550078140E /* storySmallPassImage_036.png */; };
+		ADD8E9C6215CE7550078140E /* storySmallPassImage_022.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E994215CE7550078140E /* storySmallPassImage_022.png */; };
+		ADD8E9C7215CE7550078140E /* storySmallPassImage_023.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E995215CE7550078140E /* storySmallPassImage_023.png */; };
+		ADD8E9C8215CE7550078140E /* storySmallPassImage_037.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E996215CE7550078140E /* storySmallPassImage_037.png */; };
+		ADD8E9C9215CE7550078140E /* storySmallPassImage_009.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E997215CE7550078140E /* storySmallPassImage_009.png */; };
+		ADD8E9CA215CE7550078140E /* storySmallPassImage_021.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E998215CE7550078140E /* storySmallPassImage_021.png */; };
+		ADD8E9CB215CE7550078140E /* storySmallPassImage_035.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E999215CE7550078140E /* storySmallPassImage_035.png */; };
+		ADD8E9CC215CE7550078140E /* storySmallPassImage_034.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E99A215CE7550078140E /* storySmallPassImage_034.png */; };
+		ADD8E9CD215CE7550078140E /* storySmallPassImage_020.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E99B215CE7550078140E /* storySmallPassImage_020.png */; };
+		ADD8E9CE215CE7550078140E /* storySmallPassImage_008.png in Resources */ = {isa = PBXBuildFile; fileRef = ADD8E99C215CE7550078140E /* storySmallPassImage_008.png */; };
 		ADE2BB7A21106BE100565CDB /* WWWNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE2BB7921106BE100565CDB /* WWWNetworkingManager.m */; };
 		ADE2BB7C2111837A00565CDB /* Test.text in Resources */ = {isa = PBXBuildFile; fileRef = ADE2BB7B2111837A00565CDB /* Test.text */; };
 		ADE2BB8021118C5500565CDB /* MyCustomFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE2BB7F21118C5400565CDB /* MyCustomFormatter.m */; };
@@ -199,6 +250,58 @@
 		ADB10803212EAD280084735F /* AFNetworking */ = {isa = PBXFileReference; lastKnownFileType = text; path = AFNetworking; sourceTree = "<group>"; };
 		ADCA8E06210F1777003296D8 /* WWWStreamOperationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWStreamOperationManager.h; sourceTree = "<group>"; };
 		ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWStreamOperationManager.m; sourceTree = "<group>"; };
+		ADD8E967215CE4F10078140E /* WWWImageViewAnimationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WWWImageViewAnimationView.h; sourceTree = "<group>"; };
+		ADD8E968215CE4F10078140E /* WWWImageViewAnimationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWImageViewAnimationView.m; sourceTree = "<group>"; };
+		ADD8E96B215CE7550078140E /* storySmallPassImage_005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_005.png; sourceTree = "<group>"; };
+		ADD8E96C215CE7550078140E /* storySmallPassImage_011.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_011.png; sourceTree = "<group>"; };
+		ADD8E96D215CE7550078140E /* storySmallPassImage_039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_039.png; sourceTree = "<group>"; };
+		ADD8E96E215CE7550078140E /* storySmallPassImage_038.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_038.png; sourceTree = "<group>"; };
+		ADD8E96F215CE7550078140E /* storySmallPassImage_010.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_010.png; sourceTree = "<group>"; };
+		ADD8E970215CE7550078140E /* storySmallPassImage_004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_004.png; sourceTree = "<group>"; };
+		ADD8E971215CE7550078140E /* storySmallPassImage_012.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_012.png; sourceTree = "<group>"; };
+		ADD8E972215CE7550078140E /* storySmallPassImage_006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_006.png; sourceTree = "<group>"; };
+		ADD8E973215CE7550078140E /* storySmallPassImage_007.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_007.png; sourceTree = "<group>"; };
+		ADD8E974215CE7550078140E /* storySmallPassImage_013.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_013.png; sourceTree = "<group>"; };
+		ADD8E975215CE7550078140E /* storySmallPassImage_017.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_017.png; sourceTree = "<group>"; };
+		ADD8E976215CE7550078140E /* storySmallPassImage_003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_003.png; sourceTree = "<group>"; };
+		ADD8E977215CE7550078140E /* storySmallPassImage_002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_002.png; sourceTree = "<group>"; };
+		ADD8E978215CE7550078140E /* storySmallPassImage_016.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_016.png; sourceTree = "<group>"; };
+		ADD8E979215CE7550078140E /* storySmallPassImage_028.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_028.png; sourceTree = "<group>"; };
+		ADD8E97A215CE7550078140E /* storySmallPassImage_000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_000.png; sourceTree = "<group>"; };
+		ADD8E97B215CE7550078140E /* storySmallPassImage_014.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_014.png; sourceTree = "<group>"; };
+		ADD8E97C215CE7550078140E /* storySmallPassImage_015.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_015.png; sourceTree = "<group>"; };
+		ADD8E97D215CE7550078140E /* storySmallPassImage_001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_001.png; sourceTree = "<group>"; };
+		ADD8E97E215CE7550078140E /* storySmallPassImage_029.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_029.png; sourceTree = "<group>"; };
+		ADD8E97F215CE7550078140E /* storySmallPassImage_048.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_048.png; sourceTree = "<group>"; };
+		ADD8E980215CE7550078140E /* storySmallPassImage_049.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_049.png; sourceTree = "<group>"; };
+		ADD8E981215CE7550078140E /* storySmallPassImage_047.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_047.png; sourceTree = "<group>"; };
+		ADD8E982215CE7550078140E /* storySmallPassImage_046.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_046.png; sourceTree = "<group>"; };
+		ADD8E983215CE7550078140E /* storySmallPassImage_044.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_044.png; sourceTree = "<group>"; };
+		ADD8E984215CE7550078140E /* storySmallPassImage_045.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_045.png; sourceTree = "<group>"; };
+		ADD8E985215CE7550078140E /* storySmallPassImage_041.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_041.png; sourceTree = "<group>"; };
+		ADD8E986215CE7550078140E /* storySmallPassImage_040.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_040.png; sourceTree = "<group>"; };
+		ADD8E987215CE7550078140E /* storySmallPassImage_042.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_042.png; sourceTree = "<group>"; };
+		ADD8E988215CE7550078140E /* storySmallPassImage_043.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_043.png; sourceTree = "<group>"; };
+		ADD8E989215CE7550078140E /* storySmallPassImage_024.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_024.png; sourceTree = "<group>"; };
+		ADD8E98A215CE7550078140E /* storySmallPassImage_030.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_030.png; sourceTree = "<group>"; };
+		ADD8E98B215CE7550078140E /* storySmallPassImage_018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_018.png; sourceTree = "<group>"; };
+		ADD8E98C215CE7550078140E /* storySmallPassImage_019.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_019.png; sourceTree = "<group>"; };
+		ADD8E98D215CE7550078140E /* storySmallPassImage_031.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_031.png; sourceTree = "<group>"; };
+		ADD8E98E215CE7550078140E /* storySmallPassImage_025.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_025.png; sourceTree = "<group>"; };
+		ADD8E98F215CE7550078140E /* storySmallPassImage_033.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_033.png; sourceTree = "<group>"; };
+		ADD8E990215CE7550078140E /* storySmallPassImage_027.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_027.png; sourceTree = "<group>"; };
+		ADD8E991215CE7550078140E /* storySmallPassImage_026.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_026.png; sourceTree = "<group>"; };
+		ADD8E992215CE7550078140E /* storySmallPassImage_032.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_032.png; sourceTree = "<group>"; };
+		ADD8E993215CE7550078140E /* storySmallPassImage_036.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_036.png; sourceTree = "<group>"; };
+		ADD8E994215CE7550078140E /* storySmallPassImage_022.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_022.png; sourceTree = "<group>"; };
+		ADD8E995215CE7550078140E /* storySmallPassImage_023.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_023.png; sourceTree = "<group>"; };
+		ADD8E996215CE7550078140E /* storySmallPassImage_037.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_037.png; sourceTree = "<group>"; };
+		ADD8E997215CE7550078140E /* storySmallPassImage_009.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_009.png; sourceTree = "<group>"; };
+		ADD8E998215CE7550078140E /* storySmallPassImage_021.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_021.png; sourceTree = "<group>"; };
+		ADD8E999215CE7550078140E /* storySmallPassImage_035.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_035.png; sourceTree = "<group>"; };
+		ADD8E99A215CE7550078140E /* storySmallPassImage_034.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_034.png; sourceTree = "<group>"; };
+		ADD8E99B215CE7550078140E /* storySmallPassImage_020.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_020.png; sourceTree = "<group>"; };
+		ADD8E99C215CE7550078140E /* storySmallPassImage_008.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = storySmallPassImage_008.png; sourceTree = "<group>"; };
 		ADE2BB7821106BE100565CDB /* WWWNetworkingManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWNetworkingManager.h; sourceTree = "<group>"; };
 		ADE2BB7921106BE100565CDB /* WWWNetworkingManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWNetworkingManager.m; sourceTree = "<group>"; };
 		ADE2BB7B2111837A00565CDB /* Test.text */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Test.text; sourceTree = "<group>"; };
@@ -371,6 +474,7 @@
 				0493B716212D9DE900F1230B /* setting.png */,
 				0450DF572120014A00892171 /* icon.png */,
 				AD8F524C20F6042500E765B8 /* Assets.xcassets */,
+				ADD8E96A215CE7550078140E /* storySmallPassImage */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -421,6 +525,8 @@
 				04644FBE214A9A7B00DBFE58 /* WWWSuperClass.m */,
 				04644FC0214A9AE300DBFE58 /* WWWChildClass.h */,
 				04644FC1214A9AE300DBFE58 /* WWWChildClass.m */,
+				ADD8E967215CE4F10078140E /* WWWImageViewAnimationView.h */,
+				ADD8E968215CE4F10078140E /* WWWImageViewAnimationView.m */,
 				AD674EBE21254E1F00A03886 /* Light.json */,
 				ADE2BB7B2111837A00565CDB /* Test.text */,
 				ADE2BB842114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log */,
@@ -487,6 +593,63 @@
 				ADCA8E07210F1777003296D8 /* WWWStreamOperationManager.m */,
 			);
 			path = StreamOperationManager;
+			sourceTree = "<group>";
+		};
+		ADD8E96A215CE7550078140E /* storySmallPassImage */ = {
+			isa = PBXGroup;
+			children = (
+				ADD8E96B215CE7550078140E /* storySmallPassImage_005.png */,
+				ADD8E96C215CE7550078140E /* storySmallPassImage_011.png */,
+				ADD8E96D215CE7550078140E /* storySmallPassImage_039.png */,
+				ADD8E96E215CE7550078140E /* storySmallPassImage_038.png */,
+				ADD8E96F215CE7550078140E /* storySmallPassImage_010.png */,
+				ADD8E970215CE7550078140E /* storySmallPassImage_004.png */,
+				ADD8E971215CE7550078140E /* storySmallPassImage_012.png */,
+				ADD8E972215CE7550078140E /* storySmallPassImage_006.png */,
+				ADD8E973215CE7550078140E /* storySmallPassImage_007.png */,
+				ADD8E974215CE7550078140E /* storySmallPassImage_013.png */,
+				ADD8E975215CE7550078140E /* storySmallPassImage_017.png */,
+				ADD8E976215CE7550078140E /* storySmallPassImage_003.png */,
+				ADD8E977215CE7550078140E /* storySmallPassImage_002.png */,
+				ADD8E978215CE7550078140E /* storySmallPassImage_016.png */,
+				ADD8E979215CE7550078140E /* storySmallPassImage_028.png */,
+				ADD8E97A215CE7550078140E /* storySmallPassImage_000.png */,
+				ADD8E97B215CE7550078140E /* storySmallPassImage_014.png */,
+				ADD8E97C215CE7550078140E /* storySmallPassImage_015.png */,
+				ADD8E97D215CE7550078140E /* storySmallPassImage_001.png */,
+				ADD8E97E215CE7550078140E /* storySmallPassImage_029.png */,
+				ADD8E97F215CE7550078140E /* storySmallPassImage_048.png */,
+				ADD8E980215CE7550078140E /* storySmallPassImage_049.png */,
+				ADD8E981215CE7550078140E /* storySmallPassImage_047.png */,
+				ADD8E982215CE7550078140E /* storySmallPassImage_046.png */,
+				ADD8E983215CE7550078140E /* storySmallPassImage_044.png */,
+				ADD8E984215CE7550078140E /* storySmallPassImage_045.png */,
+				ADD8E985215CE7550078140E /* storySmallPassImage_041.png */,
+				ADD8E986215CE7550078140E /* storySmallPassImage_040.png */,
+				ADD8E987215CE7550078140E /* storySmallPassImage_042.png */,
+				ADD8E988215CE7550078140E /* storySmallPassImage_043.png */,
+				ADD8E989215CE7550078140E /* storySmallPassImage_024.png */,
+				ADD8E98A215CE7550078140E /* storySmallPassImage_030.png */,
+				ADD8E98B215CE7550078140E /* storySmallPassImage_018.png */,
+				ADD8E98C215CE7550078140E /* storySmallPassImage_019.png */,
+				ADD8E98D215CE7550078140E /* storySmallPassImage_031.png */,
+				ADD8E98E215CE7550078140E /* storySmallPassImage_025.png */,
+				ADD8E98F215CE7550078140E /* storySmallPassImage_033.png */,
+				ADD8E990215CE7550078140E /* storySmallPassImage_027.png */,
+				ADD8E991215CE7550078140E /* storySmallPassImage_026.png */,
+				ADD8E992215CE7550078140E /* storySmallPassImage_032.png */,
+				ADD8E993215CE7550078140E /* storySmallPassImage_036.png */,
+				ADD8E994215CE7550078140E /* storySmallPassImage_022.png */,
+				ADD8E995215CE7550078140E /* storySmallPassImage_023.png */,
+				ADD8E996215CE7550078140E /* storySmallPassImage_037.png */,
+				ADD8E997215CE7550078140E /* storySmallPassImage_009.png */,
+				ADD8E998215CE7550078140E /* storySmallPassImage_021.png */,
+				ADD8E999215CE7550078140E /* storySmallPassImage_035.png */,
+				ADD8E99A215CE7550078140E /* storySmallPassImage_034.png */,
+				ADD8E99B215CE7550078140E /* storySmallPassImage_020.png */,
+				ADD8E99C215CE7550078140E /* storySmallPassImage_008.png */,
+			);
+			path = storySmallPassImage;
 			sourceTree = "<group>";
 		};
 		ADE2BB7721106B6800565CDB /* NetworkingManager */ = {
@@ -680,24 +843,74 @@
 			files = (
 				AD8F527420F736C500E765B8 /* WiFiInfoDirection in Resources */,
 				AD8F525020F6042500E765B8 /* LaunchScreen.storyboard in Resources */,
+				ADD8E9B2215CE7550078140E /* storySmallPassImage_049.png in Resources */,
+				ADD8E9C6215CE7550078140E /* storySmallPassImage_022.png in Resources */,
+				ADD8E9B4215CE7550078140E /* storySmallPassImage_046.png in Resources */,
 				AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */,
+				ADD8E9A6215CE7550078140E /* storySmallPassImage_013.png in Resources */,
 				ADE6C5D72105B3D00061674B /* KVOObservation in Resources */,
+				ADD8E9AF215CE7550078140E /* storySmallPassImage_001.png in Resources */,
+				ADD8E9C0215CE7550078140E /* storySmallPassImage_025.png in Resources */,
+				ADD8E9BA215CE7550078140E /* storySmallPassImage_043.png in Resources */,
+				ADD8E9AC215CE7550078140E /* storySmallPassImage_000.png in Resources */,
 				ADE2BB852114021300565CDB /* com.www.MyiOSFramework 2018-08-03--01-43-23-370.log in Resources */,
 				0493B717212D9DEA00F1230B /* microphone.png in Resources */,
 				AD8F524D20F6042500E765B8 /* Assets.xcassets in Resources */,
+				ADD8E9C4215CE7550078140E /* storySmallPassImage_032.png in Resources */,
+				ADD8E9B3215CE7550078140E /* storySmallPassImage_047.png in Resources */,
 				AD8F527D20F743F000E765B8 /* TCPSocketDirection in Resources */,
 				AD8F52B52100690800E765B8 /* BottomPickerView in Resources */,
+				ADD8E9BB215CE7550078140E /* storySmallPassImage_024.png in Resources */,
+				ADD8E9C2215CE7550078140E /* storySmallPassImage_027.png in Resources */,
+				ADD8E9B0215CE7550078140E /* storySmallPassImage_029.png in Resources */,
+				ADD8E9A7215CE7550078140E /* storySmallPassImage_017.png in Resources */,
+				ADD8E99F215CE7550078140E /* storySmallPassImage_039.png in Resources */,
+				ADD8E9CC215CE7550078140E /* storySmallPassImage_034.png in Resources */,
 				AD8F52C2210083B600E765B8 /* Multi_lineTextAlertView in Resources */,
+				ADD8E9BE215CE7550078140E /* storySmallPassImage_019.png in Resources */,
+				ADD8E9AB215CE7550078140E /* storySmallPassImage_028.png in Resources */,
+				ADD8E9A4215CE7550078140E /* storySmallPassImage_006.png in Resources */,
+				ADD8E9C7215CE7550078140E /* storySmallPassImage_023.png in Resources */,
+				ADD8E9B8215CE7550078140E /* storySmallPassImage_040.png in Resources */,
+				ADD8E9C5215CE7550078140E /* storySmallPassImage_036.png in Resources */,
 				0450DF582120014A00892171 /* icon.png in Resources */,
+				ADD8E9CE215CE7550078140E /* storySmallPassImage_008.png in Resources */,
 				ADAC871A210EF6DE0093BCE0 /* DrawingBoardView in Resources */,
+				ADD8E9AD215CE7550078140E /* storySmallPassImage_014.png in Resources */,
 				ADE2BB7C2111837A00565CDB /* Test.text in Resources */,
 				0493B719212D9DEA00F1230B /* setting.png in Resources */,
+				ADD8E9BF215CE7550078140E /* storySmallPassImage_031.png in Resources */,
+				ADD8E9B5215CE7550078140E /* storySmallPassImage_044.png in Resources */,
+				ADD8E99D215CE7550078140E /* storySmallPassImage_005.png in Resources */,
 				0493B7132121D83A00F1230B /* ChangeIcon in Resources */,
+				ADD8E9CA215CE7550078140E /* storySmallPassImage_021.png in Resources */,
+				ADD8E9A8215CE7550078140E /* storySmallPassImage_003.png in Resources */,
+				ADD8E9B6215CE7550078140E /* storySmallPassImage_045.png in Resources */,
 				AD8F529E20FC350500E765B8 /* RecordScreen in Resources */,
+				ADD8E99E215CE7550078140E /* storySmallPassImage_011.png in Resources */,
 				ADB10804212EAD280084735F /* AFNetworking in Resources */,
+				ADD8E9AA215CE7550078140E /* storySmallPassImage_016.png in Resources */,
+				ADD8E9B1215CE7550078140E /* storySmallPassImage_048.png in Resources */,
+				ADD8E9A0215CE7550078140E /* storySmallPassImage_038.png in Resources */,
+				ADD8E9BC215CE7550078140E /* storySmallPassImage_030.png in Resources */,
+				ADD8E9CB215CE7550078140E /* storySmallPassImage_035.png in Resources */,
+				ADD8E9A3215CE7550078140E /* storySmallPassImage_012.png in Resources */,
+				ADD8E9B9215CE7550078140E /* storySmallPassImage_042.png in Resources */,
+				ADD8E9A5215CE7550078140E /* storySmallPassImage_007.png in Resources */,
+				ADD8E9C9215CE7550078140E /* storySmallPassImage_009.png in Resources */,
+				ADD8E9A2215CE7550078140E /* storySmallPassImage_004.png in Resources */,
+				ADD8E9A1215CE7550078140E /* storySmallPassImage_010.png in Resources */,
+				ADD8E9A9215CE7550078140E /* storySmallPassImage_002.png in Resources */,
+				ADD8E9C1215CE7550078140E /* storySmallPassImage_033.png in Resources */,
 				AD4C43242154BEF400F0B695 /* UncaughtExceptionManager in Resources */,
+				ADD8E9BD215CE7550078140E /* storySmallPassImage_018.png in Resources */,
 				0493B71B212DA9F400F1230B /* QRCode.png in Resources */,
+				ADD8E9C8215CE7550078140E /* storySmallPassImage_037.png in Resources */,
+				ADD8E9CD215CE7550078140E /* storySmallPassImage_020.png in Resources */,
+				ADD8E9C3215CE7550078140E /* storySmallPassImage_026.png in Resources */,
+				ADD8E9B7215CE7550078140E /* storySmallPassImage_041.png in Resources */,
 				AD674EBF21254E2000A03886 /* Light.json in Resources */,
+				ADD8E9AE215CE7550078140E /* storySmallPassImage_015.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +983,7 @@
 				ADE6C6032105E2700061674B /* UIImage-Extensions.m in Sources */,
 				AD8F52BD21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m in Sources */,
 				AD8F526A20F708D500E765B8 /* WWWBaseViewController.m in Sources */,
+				ADD8E969215CE4F10078140E /* WWWImageViewAnimationView.m in Sources */,
 				ADE6C5F32105D7B90061674B /* BlazeiceDooleView.m in Sources */,
 				AD8F52AA20FD8AF100E765B8 /* UIButton+AddSelectorForClick.m in Sources */,
 				0450DF6B2120303A00892171 /* UIViewController+MethodSwizzling.m in Sources */,

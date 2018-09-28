@@ -18,9 +18,9 @@
 #import "WWWTestObject.h"
 #import "WWWQRCodeCreate.h"
 #import "WWWTestView.h"
+#import "WWWImageViewAnimationView.h"
 
-
-@interface WWWTestViewController () {
+@interface WWWTestViewController () <YORStoryImageViewAnimationViewDelegate> {
     dispatch_queue_t queue;
 }
 
@@ -106,12 +106,12 @@
 //    }
 
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map"]];
-    [self.view addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.view);
-        make.left.mas_equalTo(self.view);
-    }];
+//    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"map"]];
+//    [self.view addSubview:imageView];
+//    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.mas_equalTo(self.view);
+//        make.left.mas_equalTo(self.view);
+//    }];
     
 //    WWWTestView *testView = [[WWWTestView alloc] init];
 ////    testView.backgroundColor = [UIColor redColor];
@@ -122,6 +122,22 @@
 ////        make.left.mas_equalTo(self.view).offset(20);
 ////        make.size.mas_equalTo(CGSizeMake(100, 100));
 //    }];
+    
+    WWWImageViewAnimationView *animationView = [[WWWImageViewAnimationView alloc] initWithImageFileName:@"storySmallPassImage" andImageCount:50 andIsCricle:YES];
+    animationView.backgroundColor = [UIColor redColor];
+//    animationView.imageFileName = @"storySmallPassImage";
+    animationView.delegate = self;
+    [self.view addSubview:animationView];
+    [animationView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(100, 100));
+    }];
+    [animationView startAnimation];
+}
+
+#pragma mark -- 代理方法
+- (void)storyImageViewAnimationStop {
+    NSLog(@"donghuajieshu");
 }
 
 #pragma mark - 手势执行的方法
