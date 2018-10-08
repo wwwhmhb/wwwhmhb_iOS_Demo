@@ -29,6 +29,7 @@
 		AD674E90212268C900A03886 /* WWWGCDReadWriteFile.m in Sources */ = {isa = PBXBuildFile; fileRef = AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */; };
 		AD674EBD2123DC7600A03886 /* GCDReadWriteFile in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBC2123DC7600A03886 /* GCDReadWriteFile */; };
 		AD674EBF21254E2000A03886 /* Light.json in Resources */ = {isa = PBXBuildFile; fileRef = AD674EBE21254E1F00A03886 /* Light.json */; };
+		AD88BB13216B321C0086795F /* UILabel+WWWSize.m in Sources */ = {isa = PBXBuildFile; fileRef = AD88BB12216B321C0086795F /* UILabel+WWWSize.m */; };
 		AD8BC564215A24D4007A64E9 /* WWWTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8BC563215A24D4007A64E9 /* WWWTestView.m */; };
 		AD8F524520F6042300E765B8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524420F6042300E765B8 /* AppDelegate.m */; };
 		AD8F524820F6042300E765B8 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD8F524720F6042300E765B8 /* MainViewController.m */; };
@@ -190,6 +191,8 @@
 		AD674E8F212268C900A03886 /* WWWGCDReadWriteFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WWWGCDReadWriteFile.m; sourceTree = "<group>"; };
 		AD674EBC2123DC7600A03886 /* GCDReadWriteFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = GCDReadWriteFile; sourceTree = "<group>"; };
 		AD674EBE21254E1F00A03886 /* Light.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Light.json; sourceTree = "<group>"; };
+		AD88BB11216B321C0086795F /* UILabel+WWWSize.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+WWWSize.h"; sourceTree = "<group>"; };
+		AD88BB12216B321C0086795F /* UILabel+WWWSize.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+WWWSize.m"; sourceTree = "<group>"; };
 		AD8BC562215A24D4007A64E9 /* WWWTestView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWTestView.h; sourceTree = "<group>"; };
 		AD8BC563215A24D4007A64E9 /* WWWTestView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWTestView.m; sourceTree = "<group>"; };
 		AD8F524020F6042300E765B8 /* MyiOSFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyiOSFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -502,6 +505,8 @@
 			children = (
 				AD8F52A820FD8AF100E765B8 /* UIButton+AddSelectorForClick.h */,
 				AD8F52A920FD8AF100E765B8 /* UIButton+AddSelectorForClick.m */,
+				AD88BB11216B321C0086795F /* UILabel+WWWSize.h */,
+				AD88BB12216B321C0086795F /* UILabel+WWWSize.m */,
 				ADAC8716210EF0550093BCE0 /* NSArray+LXDExtension.h */,
 				ADAC8717210EF0550093BCE0 /* NSArray+LXDExtension.m */,
 				0450DF692120303A00892171 /* UIViewController+MethodSwizzling.h */,
@@ -983,6 +988,7 @@
 				ADE6C6032105E2700061674B /* UIImage-Extensions.m in Sources */,
 				AD8F52BD21007BC700E765B8 /* WWWMulti_lineTextAlertViewManager.m in Sources */,
 				AD8F526A20F708D500E765B8 /* WWWBaseViewController.m in Sources */,
+				AD88BB13216B321C0086795F /* UILabel+WWWSize.m in Sources */,
 				ADD8E969215CE4F10078140E /* WWWImageViewAnimationView.m in Sources */,
 				ADE6C5F32105D7B90061674B /* BlazeiceDooleView.m in Sources */,
 				AD8F52AA20FD8AF100E765B8 /* UIButton+AddSelectorForClick.m in Sources */,

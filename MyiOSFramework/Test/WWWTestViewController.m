@@ -19,6 +19,8 @@
 #import "WWWQRCodeCreate.h"
 #import "WWWTestView.h"
 #import "WWWImageViewAnimationView.h"
+#import "UIColor+Extend.h"
+#import "UILabel+WWWSize.h"
 
 @interface WWWTestViewController () <YORStoryImageViewAnimationViewDelegate> {
     dispatch_queue_t queue;
@@ -51,6 +53,7 @@
     NSArray *array = testStr.pathComponents;
     NSLog(@"array = %@",array);
     NSLog(@"png = %@;name = %@;lastPathComponent = %@",png,name,testStr.lastPathComponent);
+    
     
     //二维码
 //    WWWQRCodeCreate *QRCodeImage = [[WWWQRCodeCreate alloc] initWithQRCodeContent:@{@"key" : @"value"}];
@@ -133,29 +136,70 @@
 //        make.size.mas_equalTo(CGSizeMake(100, 100));
 //    }];
 //    [animationView startAnimation];
-    UIImage *imageL = [UIImage imageNamed:@"mapLableLeftImage"];
-    UIImage *imageM = [UIImage imageNamed:@"mapLableMiddleImage"];
-    UIImage *imageR = [UIImage imageNamed:@"mapLableRightImage"];
-    UIImage *image = [self combineWithLeftImg:imageL middleImg:imageM rightImg:imageR withMargin:100];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    
+    UIImageView *imageView = [[UIImageView alloc] init];
     [self.view addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);
-        make.size.mas_equalTo(CGSizeMake(image.size.width, image.size.height));
     }];
     
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"城郊海滩";
+    label.font = [UIFont systemFontOfSize:16];
+    label.textColor = [UIColor colorWithHexString:@"#ffe13c"];
+    [imageView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(imageView);
+    }];
+    
+//    NSMutableDictionary *attrDict = [NSMutableDictionary dictionary];
+//    attrDict[NSFontAttributeName] = label.font;
+//    NSDictionary *attrDict = @{
+//                               NSFontAttributeName : label.font
+//                               };
+    CGSize size = [label getLabelSize];
+    
+    UIImage *imageL = [UIImage imageNamed:@"mapLableLeftImage"];
+    UIImage *imageM = [UIImage imageNamed:@"mapLableMiddleImage"];
+    UIImage *imageR = [UIImage imageNamed:@"mapLableRightImage"];
+    UIImage *image = [self combineWithLeftImg:imageL middleImg:imageM rightImg:imageR withMargin:size.width];
+    imageView.image = image;
+    
+    
+    
+
+    
+//    [self shakeAnimaionForView:imageView];
 }
+
+//视图抖动
+- (void)shakeAnimaionForView:(UIView *)view {
+    //创建动画
+    CAKeyframeAnimation * keyAnimaion = [CAKeyframeAnimation animation];
+    keyAnimaion.keyPath = @"transform.rotation";
+    keyAnimaion.values = @[@(-10 / 180.0 * M_PI),@(10 /180.0 * M_PI),@(-10/ 180.0 * M_PI)];//度数转弧度
+    
+    keyAnimaion.removedOnCompletion = NO;
+    keyAnimaion.fillMode = kCAFillModeForwards;
+    keyAnimaion.duration = 0.3;
+    keyAnimaion.repeatCount = MAXFLOAT;
+    [view.layer addAnimation:keyAnimaion forKey:nil];
+}
+
 
 //leftImage:左侧图片 rightImage:右侧图片 margin:两者间隔
 - (UIImage *)combineWithLeftImg:(UIImage*)leftImage middleImg:(UIImage *)middleImage rightImg:(UIImage*)rightImage withMargin:(NSInteger)margin {
     if (rightImage == nil) {
         return leftImage;
     }
+    
+    
+    
     CGFloat width = leftImage.size.width + rightImage.size.width + margin - 2;
     CGFloat height = leftImage.size.height;
     CGSize offScreenSize = CGSizeMake(width, height);
     
-    // UIGraphicsBeginImageContext(offScreenSize);用这个重绘图片会模糊
+//     UIGraphicsBeginImageContext(offScreenSize);//用这个重绘图片会模糊
     UIGraphicsBeginImageContextWithOptions(offScreenSize, NO, [UIScreen mainScreen].scale);
     
     CGRect rectL = CGRectMake(0, 0, leftImage.size.width, height);
@@ -169,12 +213,51 @@
     [rightImage drawInRect:rectR];
     [middleImage drawInRect:rectM];
     
+//    UILabel *label = [[UILabel alloc] init];
+//    label.frame = rectM;
+//    label.text = @"城郊海滩";
+//    label.font = [UIFont systemFontOfSize:16];
+//    label.textColor = [UIColor colorWithHexString:@"#ffe13c"];
+//
+//    if ([label respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)]) {
+//        [label drawViewHierarchyInRect:rectM afterScreenUpdates:YES];
+//    } else {
+//        [label.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    }
+    
     UIImage* imagez = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
     
     return imagez;
 }
+
+- (UIImage *)imageForView:(UIView *)view
+{
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, 0);
+    
+    if ([view respondsToSelector:@selector(drawViewHierarchyInRect:afterScreenUpdates:)])
+        [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+    else
+        [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+- (UIImage *)imageFromString:(NSString *)string attributes:(NSDictionary *)attributes size:(CGSize)size
+{
+    UIGraphicsBeginImageContextWithOptions(size, NO, 0);
+    [string drawInRect:CGRectMake(0, 0, size.width, size.height) withAttributes:attributes];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
+
 
 #pragma mark -- 代理方法
 - (void)storyImageViewAnimationStop {
