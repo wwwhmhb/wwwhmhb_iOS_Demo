@@ -18,29 +18,27 @@
 @implementation MainViewController
 
 
-#pragma mark -- self declare （本类声明）
+#pragma mark -- 本类声明
 
-#pragma mark -- initliaze data(初始化数据)
+#pragma mark -- 初始化方法
 
-#pragma mark -- lifecycle（生命周期）
+#pragma mark -- 生命周期方法
 
-#pragma mark -- override super （重写父类）
+#pragma mark -- 重写父类方法
 
-#pragma mark -- public Methods（公有方法）
+#pragma mark -- 公有方法
 
-#pragma mark -- config control（布局控件）
+#pragma mark -- 布局控件
 
-#pragma mark -- actions （点击事件）
+#pragma mark -- 响应事件
 
-#pragma mark -- IBActions （响应事件）
+#pragma mark -- 网络请求方法
 
-#pragma mark -- networkRequest (网络请求)
+#pragma mark -- 代理方法
 
-#pragma mark -- protocol Methods（代理方法）
+#pragma mark -- set和getter方法
 
-#pragma mark -- setter getter （set和getter方法）
-
-#pragma mark -- private Methods（私有方法）
+#pragma mark -- 私有方法
 
 - (void)viewDidLoad {
     [super viewDidLoad];

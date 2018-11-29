@@ -10,6 +10,7 @@
 
 @implementation UILabel (WWWSize)
 
+//获取Label单行时的大小尺寸
 - (CGSize)getLabelSize {
     NSDictionary *attrDict = @{
                                NSFontAttributeName : self.font

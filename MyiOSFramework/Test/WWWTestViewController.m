@@ -126,44 +126,48 @@
 ////        make.size.mas_equalTo(CGSizeMake(100, 100));
 //    }];
     
-//    WWWImageViewAnimationView *animationView = [[WWWImageViewAnimationView alloc] initWithImageFileName:@"storySmallPassImage" andImageCount:50 andIsCricle:YES];
-//    animationView.backgroundColor = [UIColor redColor];
-////    animationView.imageFileName = @"storySmallPassImage";
-//    animationView.delegate = self;
-//    [self.view addSubview:animationView];
-//    [animationView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.center.mas_equalTo(self.view);
-//        make.size.mas_equalTo(CGSizeMake(100, 100));
-//    }];
-//    [animationView startAnimation];
-    
-    UIImageView *imageView = [[UIImageView alloc] init];
-    [self.view addSubview:imageView];
-    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    WWWImageViewAnimationView *animationView = [[WWWImageViewAnimationView alloc] initWithImageFileName:@"storySmallPassImage" andImageCount:50 andIsCricle:YES];
+    animationView.backgroundColor = [UIColor redColor];
+//    animationView.imageFileName = @"storySmallPassImage";
+    animationView.delegate = self;
+    [self.view addSubview:animationView];
+    [animationView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.center.mas_equalTo(self.view);
+        make.size.mas_equalTo(CGSizeMake(100, 100));
     }];
+    [animationView startAnimation];
     
-    UILabel *label = [[UILabel alloc] init];
-    label.text = @"城郊海滩";
-    label.font = [UIFont systemFontOfSize:16];
-    label.textColor = [UIColor colorWithHexString:@"#ffe13c"];
-    [imageView addSubview:label];
-    [label mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(imageView);
-    }];
-    
-//    NSMutableDictionary *attrDict = [NSMutableDictionary dictionary];
-//    attrDict[NSFontAttributeName] = label.font;
-//    NSDictionary *attrDict = @{
-//                               NSFontAttributeName : label.font
-//                               };
-    CGSize size = [label getLabelSize];
-    
-    UIImage *imageL = [UIImage imageNamed:@"mapLableLeftImage"];
-    UIImage *imageM = [UIImage imageNamed:@"mapLableMiddleImage"];
-    UIImage *imageR = [UIImage imageNamed:@"mapLableRightImage"];
-    UIImage *image = [self combineWithLeftImg:imageL middleImg:imageM rightImg:imageR withMargin:size.width];
-    imageView.image = image;
+//    UIImageView *imageView = [[UIImageView alloc] init];
+//    [self.view addSubview:imageView];
+//    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.mas_equalTo(self.view);
+//    }];
+//
+//    UILabel *label = [[UILabel alloc] init];
+//    label.text = @"城郊海滩";
+//    label.font = [UIFont systemFontOfSize:16];
+//    label.textColor = [UIColor colorWithHexString:@"#ffe13c"];
+////    [self.view addSubview:label];
+//    [self.view insertSubview:label belowSubview:imageView];
+//
+//    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.center.mas_equalTo(self.view);
+//    }];
+//
+////    NSMutableDictionary *attrDict = [NSMutableDictionary dictionary];
+////    attrDict[NSFontAttributeName] = label.font;
+////    NSDictionary *attrDict = @{
+////                               NSFontAttributeName : label.font
+////                               };
+//    CGSize size = [label getLabelSize];
+//
+//    UIImage *imageL = [UIImage imageNamed:@"mapLableLeftImage"];
+//    UIImage *imageM = [UIImage imageNamed:@"mapLableMiddleImage"];
+////    UIImage *imageM = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"QRCode" ofType:@"png"]];
+//
+//    UIImage *imageR = [UIImage imageNamed:@"mapLableRightImage"];
+//    UIImage *image = [self combineWithLeftImg:imageL middleImg:imageM rightImg:imageR withMargin:size.width];
+//    imageView.image = image;
     
     
     
