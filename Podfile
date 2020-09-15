@@ -1,3 +1,4 @@
+source 'https://github.com/CocoaPods/Specs' 
 platform :ios, '9.0'
 use_frameworks!
 target 'MyiOSFramework' do 

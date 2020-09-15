@@ -49,7 +49,7 @@ singleton_implementation(WWWNetworkingManager)
     switch (type) {
         case GET:
         {
-            [self GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self GET:urlString parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 //成功回调
                 finishBlock(responseObject,nil);
             } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -64,7 +64,7 @@ singleton_implementation(WWWNetworkingManager)
             break;
         case POST:
         {
-            [self POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self POST:urlString parameters:parameters headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 //成功回调
                 finishBlock(responseObject,nil);
@@ -80,7 +80,7 @@ singleton_implementation(WWWNetworkingManager)
             break;
         case PUT:
         {
-            [self PUT:urlString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self PUT:urlString parameters:parameters headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 //成功回调
                 finishBlock(responseObject,nil);
@@ -97,7 +97,7 @@ singleton_implementation(WWWNetworkingManager)
         case DELETE:
         {
             
-            [self DELETE:urlString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            [self DELETE:urlString parameters:parameters headers:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 
                 //成功回调
                 finishBlock(responseObject,nil);
@@ -157,7 +157,7 @@ singleton_implementation(WWWNetworkingManager)
     //合并上传参数
     parameters = [self resetDictionary:parameters];
     
-    [self POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [self POST:urlStr parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         for (int i = 0; i < imageArray.count; i++) {
             NSString *type = [NSString stringWithFormat:@"%@%d",name,i];
@@ -219,7 +219,10 @@ singleton_implementation(WWWNetworkingManager)
     parameters = [self resetDictionary:parameters];
     
     //上传文件数据
-    [self POST:urlStr parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+//    [self POST:<#(nonnull NSString *)#> parameters:<#(nullable id)#> headers:<#(nullable NSDictionary<NSString *,NSString *> *)#> constructingBodyWithBlock:<#^(id<AFMultipartFormData>  _Nonnull formData)block#> progress:<#^(NSProgress * _Nonnull uploadProgress)uploadProgress#> success:<#^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)success#> failure:<#^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)failure#>];
+//    [self POST:<#(nonnull NSString *)#> parameters:<#(nullable id)#> headers:<#(nullable NSDictionary<NSString *,NSString *> *)#> progress:<#^(NSProgress * _Nonnull uploadProgress)uploadProgress#> success:<#^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)success#> failure:<#^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)failure#>];
+    
+    [self POST:urlStr parameters:parameters headers:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
         [formData appendPartWithFileData:fileData name:name fileName:fileName mimeType:mimeType];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
