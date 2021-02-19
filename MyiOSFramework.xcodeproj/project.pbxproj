@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -129,6 +129,7 @@
 		ADE6C5FD2105E2140061674B /* UIColor+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5FC2105E2140061674B /* UIColor+Extend.m */; };
 		ADE6C6002105E2400061674B /* UIView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5FE2105E2400061674B /* UIView+UIImage.m */; };
 		ADE6C6032105E2700061674B /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C6012105E2700061674B /* UIImage-Extensions.m */; };
+		FF94AFF525DFDA4400C31753 /* WWWInnerShadowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF94AFF425DFDA4400C31753 /* WWWInnerShadowLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -334,6 +335,8 @@
 		ADE6C6012105E2700061674B /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		ADE6C6022105E2700061674B /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		FF94AFF325DFDA4400C31753 /* WWWInnerShadowLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWInnerShadowLayer.h; sourceTree = "<group>"; };
+		FF94AFF425DFDA4400C31753 /* WWWInnerShadowLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWInnerShadowLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -436,6 +439,7 @@
 				AD8F525F20F6F6F100E765B8 /* Resource */,
 				AD8F526220F6FD3500E765B8 /* Unit */,
 				AD8F526320F6FDDC00E765B8 /* Category */,
+				FF94AFF225DFD56100C31753 /* RewriteSystemClass */,
 				AD8F526420F6FEAE00E765B8 /* Test */,
 			);
 			path = MyiOSFramework;
@@ -756,6 +760,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF94AFF225DFD56100C31753 /* RewriteSystemClass */ = {
+			isa = PBXGroup;
+			children = (
+				FF94AFF325DFDA4400C31753 /* WWWInnerShadowLayer.h */,
+				FF94AFF425DFDA4400C31753 /* WWWInnerShadowLayer.m */,
+			);
+			path = RewriteSystemClass;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -985,6 +998,7 @@
 				AD8F524820F6042300E765B8 /* MainViewController.m in Sources */,
 				AD8F527820F73C1500E765B8 /* WWWTcpSocketStreamManager.m in Sources */,
 				ADE6C5F42105D7B90061674B /* ACEDrawingTools.m in Sources */,
+				FF94AFF525DFDA4400C31753 /* WWWInnerShadowLayer.m in Sources */,
 				AD8F52B320FF36D300E765B8 /* WWWBottomPickerView.m in Sources */,
 				AD8F525320F6042500E765B8 /* main.m in Sources */,
 				04644FC2214A9AE300DBFE58 /* WWWChildClass.m in Sources */,
