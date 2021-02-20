@@ -45,7 +45,6 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     NVLogInfo(@"日志文件地址:\n%@", [[NVLogManager shareInstance] getCurrentLogFilePath])
-    DDLogInfo(@"1234567890");
     
     UIButton *testButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [testButton setTitle:@"Test" forState:UIControlStateNormal];
