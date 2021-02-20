@@ -129,6 +129,7 @@
 		ADE6C5FD2105E2140061674B /* UIColor+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5FC2105E2140061674B /* UIColor+Extend.m */; };
 		ADE6C6002105E2400061674B /* UIView+UIImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C5FE2105E2400061674B /* UIView+UIImage.m */; };
 		ADE6C6032105E2700061674B /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ADE6C6012105E2700061674B /* UIImage-Extensions.m */; };
+		FF823E6D25E0DA0D000EDBB4 /* WWWFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FF823E6C25E0DA0D000EDBB4 /* WWWFileManager.m */; };
 		FF94AFF525DFDA4400C31753 /* WWWInnerShadowLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = FF94AFF425DFDA4400C31753 /* WWWInnerShadowLayer.m */; };
 /* End PBXBuildFile section */
 
@@ -335,6 +336,8 @@
 		ADE6C6012105E2700061674B /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		ADE6C6022105E2700061674B /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		E1A622592C483C09458951D7 /* Pods-MyiOSFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyiOSFramework.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyiOSFramework/Pods-MyiOSFramework.debug.xcconfig"; sourceTree = "<group>"; };
+		FF823E6B25E0DA0D000EDBB4 /* WWWFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWFileManager.h; sourceTree = "<group>"; };
+		FF823E6C25E0DA0D000EDBB4 /* WWWFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWFileManager.m; sourceTree = "<group>"; };
 		FF94AFF325DFDA4400C31753 /* WWWInnerShadowLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WWWInnerShadowLayer.h; sourceTree = "<group>"; };
 		FF94AFF425DFDA4400C31753 /* WWWInnerShadowLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WWWInnerShadowLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -489,6 +492,7 @@
 		AD8F526220F6FD3500E765B8 /* Unit */ = {
 			isa = PBXGroup;
 			children = (
+				FF823E6A25E0D9CE000EDBB4 /* FileManager */,
 				AD4C43252154C01C00F0B695 /* QRCodeManager */,
 				AD01076221539D4C004AC0DA /* UncaughtExceptionManager */,
 				AD674E8D2122677300A03886 /* GCDReadWriteFile */,
@@ -760,6 +764,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF823E6A25E0D9CE000EDBB4 /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				FF823E6B25E0DA0D000EDBB4 /* WWWFileManager.h */,
+				FF823E6C25E0DA0D000EDBB4 /* WWWFileManager.m */,
+			);
+			path = FileManager;
+			sourceTree = "<group>";
+		};
 		FF94AFF225DFD56100C31753 /* RewriteSystemClass */ = {
 			isa = PBXGroup;
 			children = (
@@ -1004,6 +1017,7 @@
 				04644FC2214A9AE300DBFE58 /* WWWChildClass.m in Sources */,
 				AD8F527120F7364300E765B8 /* getgateway.c in Sources */,
 				AD4C432B2154C36400F0B695 /* WWWQRCodeCreate.m in Sources */,
+				FF823E6D25E0DA0D000EDBB4 /* WWWFileManager.m in Sources */,
 				ADE6C5FD2105E2140061674B /* UIColor+Extend.m in Sources */,
 				AD8F527B20F741B700E765B8 /* GCDAsyncSocket.m in Sources */,
 				AD8F52A720FD80C300E765B8 /* ASScreenRecorder.m in Sources */,
