@@ -14,6 +14,7 @@
 
 #import "WWWUncaughtExceptionManager.h"
 #import <libkern/OSAtomic.h>//OSAtomicIncrement32函数
+#import <stdatomic.h>//atomic_fetch_ 函数
 #include <execinfo.h>//backtrace函数
 
 @interface WWWUncaughtExceptionManager () {
@@ -26,33 +27,33 @@
 @implementation WWWUncaughtExceptionManager
 
 #pragma mark -- self declare （本类声明）
-//异常处理指针
+//处理NSException异常的方法指针，该指针指向系统或者别人的 NSUncaughtExceptionHandler
 static NSUncaughtExceptionHandler *g_vaildUncaughtExceptionHandler;
 
-//重定义异常处理方法指针
+//注册处理NSException异常的方法指针，该指针指向系统的 NSSetUncaughtExceptionHandler 函数
 static void (*ori_NSSetUncaughtExceptionHandler)(NSUncaughtExceptionHandler *);
 
 //自定义发生异常的数
+/*volatile是一个类型修饰符,它是被设计用来修饰被不同线程访问和修改的变量.也就是说volatile的变量可能会被意想不到地改变，这样，编译器在优化时，不会将其保存到寄存器中备份。
+ */
 volatile int32_t UncaughtExceptionCount = 0;
+atomic_int UncaughtExceptionCount_atomic = 0;
 
 //自定义最大异常数
 const int32_t UncaughtExceptionMaximum = 10;
+atomic_int UncaughtExceptionMaximum_atomic = 10;
 
 //自定义异常地址的开始位置
 const NSInteger UncaughtExceptionHandlerSkipAddressCount = 4;
-
 //自定义汇报异常地址的数目
 const NSInteger UncaughtExceptionHandlerReportAddressCount = 5;
 
 //自定义 signal 异常名称
 NSString * const UncaughtExceptionHandlerSignalExceptionName = @"UncaughtExceptionHandlerSignalExceptionName";
-
 //自定义 Signal 抛出的错误标志的关键词
 NSString * const UncaughtExceptionHandlerSignalKey = @"UncaughtExceptionHandlerSignalKey";
-
 //自定义异常地址信息关键词
 NSString * const UncaughtExceptionHandlerAddressesKey = @"UncaughtExceptionHandlerAddressesKey";
-
 //自定义崩溃的类型
 NSString * const UncaughtExceptionHandlerTypeKey = @"UncaughtExceptionHandlerTypeKey";
 
@@ -107,10 +108,23 @@ NSString * const UncaughtExceptionHandlerTypeKey = @"UncaughtExceptionHandlerTyp
     [self markAndSaveException:exception];
 
     //异常数量太多就不处理了
-    int32_t exceptionCount = OSAtomicIncrement32(&UncaughtExceptionCount);
-    if (exceptionCount > UncaughtExceptionMaximum) {
-        return;
+    /*
+     OSAtomicAdd32 替换-> atomic_fetch_add(&atomicCount,1);
+     OSAtomicDecrement32 替换-> atomic_fetch_sub(&atomicCount, 1);
+     */
+    if (@available(iOS 10.0,*)) {
+        //OSAtomicIncrement32Barrier
+        int32_t exceptionCount = OSAtomicIncrement32(&UncaughtExceptionCount);
+        if (exceptionCount > UncaughtExceptionMaximum) {
+            return;
+        }
+    } else {
+        atomic_int exceptionCount = atomic_fetch_add_explicit(&UncaughtExceptionCount_atomic, 1, memory_order_relaxed);
+        if (exceptionCount > UncaughtExceptionMaximum_atomic) {
+            return;
+        }
     }
+    
 
     //程序崩溃时的信息提示
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Unhandled exception", nil) message:[NSString stringWithFormat:NSLocalizedString(@"You can try to continue but the application may be unstable.\n\n" @"Debug details follow:\n%@\n%@", nil),[exception reason],[[exception userInfo] objectForKey:UncaughtExceptionHandlerAddressesKey]] preferredStyle:UIAlertControllerStyleAlert];
@@ -173,7 +187,8 @@ NSString * const UncaughtExceptionHandlerTypeKey = @"UncaughtExceptionHandlerTyp
     NSArray *callStack = [exception callStackSymbols];
     NSString *reason = [exception reason];
     NSString *name = [exception name];
-
+//    NSDictionary *userInfo = [exception userInfo];
+    
     //日期
     NSString * dateStr = [WWWTools getCurrentDateWithFormat:nil];
 
@@ -227,14 +242,14 @@ NSString * const UncaughtExceptionHandlerTypeKey = @"UncaughtExceptionHandlerTyp
     //收集全部的异常地址
     NSMutableArray *backtrace = [NSMutableArray arrayWithCapacity:frames];
     for (int i = 0; i < frames; i++) {
-
         [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
     }
 
-    //    //收集异常地址，从指定的位置开始并有指定数目
-    //    for (int i = UncaughtExceptionHandlerSkipAddressCount; i < UncaughtExceptionHandlerSkipAddressCount + UncaughtExceptionHandlerReportAddressCount; i++) {
-    //        [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
-    //    }
+//    //收集异常地址，从指定的位置开始并有指定数目
+//    NSInteger count = MIN(frames, UncaughtExceptionHandlerSkipAddressCount + UncaughtExceptionHandlerReportAddressCount);
+//    for (int i = UncaughtExceptionHandlerSkipAddressCount; i < count; i++) {
+//        [backtrace addObject:[NSString stringWithUTF8String:strs[i]]];
+//    }
 
     //释放字符串数组的指针
     free(strs);
@@ -244,19 +259,19 @@ NSString * const UncaughtExceptionHandlerTypeKey = @"UncaughtExceptionHandlerTyp
 }
 
 
-//注册 NSException 错误的异常处理函数，并保证不拦截别人的异常处理 handler
+//注册我的 NSException 异常处理函数，并保证不拦截别人的异常处理函数
 void my_NSSetUncaughtExceptionHandler(NSUncaughtExceptionHandler *handler) {
-    //定义的异常处理 handler 进行赋值，并用来保存先前别人注册的 handler
+    //用来保存系统注册的或者先前别人注册的 handler
     g_vaildUncaughtExceptionHandler = NSGetUncaughtExceptionHandler();
     
-    //定义的函数指针进行赋值，并指向 NSSetUncaughtExceptionHandler 函数
+    //指向系统的 NSSetUncaughtExceptionHandler 函数
     ori_NSSetUncaughtExceptionHandler = NSSetUncaughtExceptionHandler;
     
     //注册自己的异常处理方法
     ori_NSSetUncaughtExceptionHandler(handler);
 }
 
-//NSException 异常处理函数
+//自定义我的 NSException 异常处理函数
 void UncaughtExceptionHandler(NSException *exception) {
     
     //构建 OC 错误信息
@@ -274,7 +289,7 @@ void UncaughtExceptionHandler(NSException *exception) {
                                                               waitUntilDone:YES];
 }
 
-//注册 Signal 抛出的异常处理函数
+//自定义我的 Signal 抛出的异常处理函数
 void SignalHandler(int signal) {
     //构建 signal 错误信息
     NSMutableDictionary *userInfo = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:signal] forKey:UncaughtExceptionHandlerSignalKey];
